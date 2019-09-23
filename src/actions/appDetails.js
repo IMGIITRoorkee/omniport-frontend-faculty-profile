@@ -8,7 +8,7 @@ export const fetchAppDetails = () => {
       .get("/api/faculty_profile/profile/")
       .then(response => {
         theme = response.data[0].theme;
-        dispatch(setAppDetails(true, theme, undefined));
+        dispatch(setAppDetails(true, "blue", undefined));
       })
       .catch(error => {
         console.log(error);
