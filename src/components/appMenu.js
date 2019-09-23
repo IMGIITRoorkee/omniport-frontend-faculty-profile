@@ -27,11 +27,29 @@ export class AppMenu extends Component {
             />
             <Menu.Item
               color={theme}
-              name="Accomplishments"
-              active={activeItem === "Accomplishments"}
+              name="Education"
+              active={activeItem === "Education"}
               onClick={() => {
                 this.props.onMenuClick("education");
-                this.setState({ activeItem: "Accomplishments" });
+                this.setState({ activeItem: "Education" });
+              }}
+            />
+            <Menu.Item
+              color={theme}
+              name="Achievements"
+              active={activeItem === "Achievements"}
+              onClick={() => {
+                this.props.onMenuClick("honour");
+                this.setState({ activeItem: "Achievements" });
+              }}
+            />
+            <Menu.Item
+              color={theme}
+              name="Engagements"
+              active={activeItem === "Engagements"}
+              onClick={() => {
+                this.props.onMenuClick("engagement");
+                this.setState({ activeItem: "Engagements" });
               }}
             />
             <Menu.Item
@@ -52,7 +70,15 @@ export class AppMenu extends Component {
                 this.setState({ activeItem: "Projects" });
               }}
             />
-
+            <Menu.Item
+              color={theme}
+              name="Events"
+              active={activeItem === "Events"}
+              onClick={() => {
+                this.props.onMenuClick("event");
+                this.setState({ activeItem: "Events" });
+              }}
+            />
             <Menu.Item
               color={theme}
               name="Publications"
@@ -60,16 +86,6 @@ export class AppMenu extends Component {
               onClick={() => {
                 this.props.onMenuClick("book");
                 this.setState({ activeItem: "Publications" });
-              }}
-            />
-
-            <Menu.Item
-              color={theme}
-              name="References"
-              active={activeItem === "References"}
-              onClick={() => {
-                this.props.onMenuClick("referee");
-                this.setState({ activeItem: "References" });
               }}
             />
           </Menu>

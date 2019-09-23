@@ -5,9 +5,7 @@ export const components = [
   "visit",
   "collaboration",
   "associateScholar",
-  "position",
   "project",
   "book",
   "paper",
-  "referee"
 ];

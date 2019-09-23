@@ -116,19 +116,6 @@ export const initial = {
     },
     links: ["paper"]
   },
-  referee: {
-    update: false,
-    data: {
-      referee: "",
-      designation: "",
-      institute: "",
-      phoneNumber: "",
-      email: "",
-      priority: 1,
-      visibility: true
-    },
-    links: []
-  },
   project: {
     update: false,
     data: {

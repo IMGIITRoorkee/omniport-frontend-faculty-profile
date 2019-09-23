@@ -37,7 +37,7 @@ export function ResumeDownload(props) {
           )}
           <Link to={""} target="_blank">
             <Label size="large" color={theme}>
-              <Icon name="eye" />
+              <Icon name="upload" />
               Publish
             </Label>
           </Link>
