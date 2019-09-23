@@ -5,20 +5,19 @@ import { graduationOptionsMap } from "../../constants/graduationOptions";
 
 import style from "../../styles.css";
 
-const PreviousEducation = props => {
+const Honour = props => {
+  const {item, rearrange, data, componentName} = props;
+  console.log(item, "this");
   return (
     <Segment>
       <div styleName="style.flex-box">
         <List.Item>
-          {/*  */}
           <List.Content>
             <div>
-              {props.item.degree} - {graduationOptionsMap[props.item.graduation]} in {props.item.field}
+              {item.award} 
               <p styleName="style.gray">
-                {props.item.institute + ", "}
-                {props.item.year}
-                <br />
-                CGPA {props.item.cgpa}
+                {item.organisation + ", "}
+                {item.year}
               </p>
             </div>
           </List.Content>
@@ -26,12 +25,12 @@ const PreviousEducation = props => {
 
         <div>
           <EditIcon
-            rearrange={props.rearrange}
-            onClick={() => props.manageData(props.item.id, props.data, props.componentName)}
+            rearrange={rearrange}
+            onClick={() => props.manageData(item.id, data, componentName)}
           />
         </div>
       </div>
     </Segment>
   );
 };
-export default PreviousEducation;
+export default Honour;

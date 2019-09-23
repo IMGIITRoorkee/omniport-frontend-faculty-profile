@@ -4,11 +4,12 @@ import { connect } from "react-redux";
 import { components } from "./genericComponents";
 
 import Interest from "../components/displayComponents/interest";
-import Achievement from "../components/displayComponents/achievement";
-import CurrentEducation from "../components/displayComponents/currentEducation";
-import PreviousEducation from "../components/displayComponents/previousEducation";
+import Education from "../components/displayComponents/education";
+import Honour from "../components/displayComponents/honour";
+import Visit from "../components/displayComponents/visit";
+import Collaboration from "../components/displayComponents/collaboration";
+import AssociateScholar from "../components/displayComponents/associate_scholar";
 import Position from "../components/displayComponents/position";
-import Experience from "../components/displayComponents/experience";
 import Project from "../components/displayComponents/project";
 import Book from "../components/displayComponents/book";
 import Paper from "../components/displayComponents/paper";
@@ -17,11 +18,12 @@ import Referee from "../components/displayComponents/referee";
 //can use eval() method to reduce the code
 export const displayComponents = {
   interest: Interest,
-  achievement: Achievement,
-  currentEducation: CurrentEducation,
-  previousEducation: PreviousEducation,
+  education: Education,
+  honour: Honour,
+  collaboration: Collaboration,
+  associateScholar: AssociateScholar,
+  visit: Visit,
   position: Position,
-  experience: Experience,
   project: Project,
   book: Book,
   paper: Paper,

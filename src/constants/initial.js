@@ -5,23 +5,7 @@ export const initial = {
     data: { topic: "", id: -1, visibility: true },
     links: []
   },
-  achievement: {
-    update: false,
-    data: { achievement: "", id: -1, visibility: true },
-    links: []
-  },
-  currentEducation: {
-    update: false,
-    data: {
-      semester: "",
-      cgpa: "",
-      sgpa: "",
-      priority: 1,
-      visibility: true
-    },
-    links: []
-  },
-  previousEducation: {
+  education: {
     update: false,
     data: {
       year: "",
@@ -37,6 +21,48 @@ export const initial = {
     },
     links: []
   },
+  honour: {
+    update: false,
+    data: {
+      year: "",
+      organisation: "",
+      award: "",
+      priority: 1,
+      visibility: true,
+    },
+    links: []
+  },
+  collaboration: {
+    update: false,
+    data: {
+      topic: "",
+      organisation: "",
+      priority: 1,
+      visibility: true,
+    },
+    links: []
+  },
+  associateScholar: {
+    update: false,
+    data: {
+      scholarName: "",
+      institution: "",
+      priority: 1,
+      visibility: true,
+    },
+    links: []
+  },
+  visit: {
+    update: false,
+    data: {
+      date: "",
+      place: "",
+      purpose: "",
+      priority: 1,
+      visibility: true,
+    },
+    links: []
+  },
   position: {
     update: false,
     data: {
@@ -49,22 +75,6 @@ export const initial = {
       description: "",
       priority: 1,
       visibility: true
-    },
-    links: []
-  },
-  experience: {
-    update: false,
-    data: {
-      id: -1,
-      startDate: "",
-      endDate: "",
-      isFullDate: true,
-      position: "",
-      organisation: "",
-      description: "",
-      priority: 1,
-      visibility: true,
-      experienceType: ""
     },
     links: []
   },

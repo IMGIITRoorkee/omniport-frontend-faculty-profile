@@ -27,29 +27,20 @@ export class AppMenu extends Component {
             />
             <Menu.Item
               color={theme}
-              name="Achievements"
-              active={activeItem === "Achievements"}
+              name="Accomplishments"
+              active={activeItem === "Accomplishments"}
               onClick={() => {
-                this.props.onMenuClick("achievement");
-                this.setState({ activeItem: "Achievements" });
+                this.props.onMenuClick("education");
+                this.setState({ activeItem: "Accomplishments" });
               }}
             />
             <Menu.Item
               color={theme}
-              name="Education"
-              active={activeItem === "Education"}
+              name="Associations"
+              active={activeItem === "Associations"}
               onClick={() => {
-                this.props.onMenuClick("currentEducation");
-                this.setState({ activeItem: "Education" });
-              }}
-            />
-            <Menu.Item
-              color={theme}
-              name="Experience"
-              active={activeItem === "Experience"}
-              onClick={() => {
-                this.props.onMenuClick("experience");
-                this.setState({ activeItem: "Experience" });
+                this.props.onMenuClick("collaboration");
+                this.setState({ activeItem: "Associations" });
               }}
             />
             <Menu.Item

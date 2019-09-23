@@ -1,5 +1,4 @@
-import { graduationOptions } from "./graduationOptions";
-import { experienceOptions } from "./experienceOptions";
+import {projectOptions, roleOptions, scopeOptions, supervisionOptions, graduationOptions} from "./options";
 
 export const specs = {
   interest: {
@@ -38,101 +37,12 @@ export const specs = {
     url: "interest",
     name: "Interest"
   },
-  achievement: {
-    icon: "winner",
-    draggable: true,
-    sortBy: "priority",
-    ascending: true,
-    plural: "Achievements",
-    fields: [
-      {
-        group: false,
-        name: "achievement",
-        type: "input_field",
-        const_props: {
-          name: "achievement",
-          key: "Achievement",
-          placeholder: "Achievement",
-          label: "Achievement",
-          required: true
-        },
-        user_props: ["handleChange"]
-      },
-      {
-        group: false,
-        name: "visibility",
-        type: "boolean_field",
-        const_props: {
-          name: "visibility",
-          key: "Visibility",
-          label: "Visible to others",
-          required: false
-        },
-        user_props: ["handleChange"]
-      }
-    ],
-    url: "achievement",
-    name: "Achievement"
-  },
-  currentEducation: {
-    icon: "faculty",
-    draggable: false,
-    sortBy: "semester",
-    ascending: true,
-    plural: "Current Education",
-    fields: [
-      {
-        group: true,
-        widths: "equal",
-        fields: [
-          {
-            name: "semester",
-            type: "input_field",
-            const_props: {
-              name: "semester",
-              key: "Semester",
-              placeholder: "semester",
-              label: "Semester number",
-              required: true
-            },
-            user_props: ["handleChange"]
-          },
-          {
-            name: "cgpa",
-            type: "input_field",
-            const_props: {
-              name: "cgpa",
-              key: "CGPA",
-              placeholder: "CGPA",
-              label: "CGPA",
-              required: true
-            },
-            user_props: ["handleChange"]
-          },
-          {
-            name: "sgpa",
-            type: "input_field",
-            const_props: {
-              name: "sgpa",
-              key: "SGPA",
-              placeholder: "SGPA",
-              label: "SGPA",
-              required: true
-            },
-            user_props: ["handleChange"]
-          }
-        ]
-      }
-    ],
-    url: "current_education",
-    name: "Current education"
-  },
-  previousEducation: {
-    icon: "faculty",
+  education: {
+    icon: "book",
     draggable: false,
     sortBy: "year",
     ascending: true,
-    plural: "Previous Education",
+    plural: "Education",
     fields: [
       {
         group: true,
@@ -173,7 +83,7 @@ export const specs = {
           key: "Year",
           placeholder: "Year",
           label: "Year",
-          required: false
+          required: true
         },
         user_props: ["handleChange"]
       },
@@ -206,39 +116,124 @@ export const specs = {
       },
       {
         group: false,
-        name: "cgpa",
+        name: "visibility",
+        type: "boolean_field",
+        const_props: {
+          name: "visibility",
+          key: "Visibility",
+          label: "Visible to others",
+          required: false
+        },
+        user_props: ["handleChange"]
+      }
+    ],
+    url: "education",
+    name: "Education"
+  },
+  honour: {
+    icon: "star",
+    draggable: true,
+    sortBy: "priority",
+    ascending: true,
+    plural: "Honours",
+    fields: [
+      {
+        group: false,
+        name: "award",
         type: "input_field",
         const_props: {
-          name: "cgpa",
-          key: "Cgpa",
-          placeholder: "CGPA",
-          label: "CGPA",
+          name: "award",
+          key: "Award",
+          placeholder: "Name of the award",
+          label: "Award",
           required: false
         },
         user_props: ["handleChange"]
       },
       {
         group: false,
-        name: "percentage",
+        name: "organisation",
         type: "input_field",
         const_props: {
-          name: "percentage",
-          key: "Percentage",
-          placeholder: "Percentage",
-          label: "Percentage",
+          name: "organisation",
+          key: "Organisation",
+          placeholder: "Organisation",
+          label: "Organisation",
+          required: true,
+        },
+        user_props: ["handleChange"]
+      },
+      {
+        group: false,
+        name: "year",
+        type: "year_field",
+        const_props: {
+          name: "year",
+          key: "Year",
+          placeholder: "Year",
+          label: "Year",
           required: true
         },
         user_props: ["handleChange"]
       },
       {
         group: false,
-        name: "isPercentage",
+        name: "visibility",
         type: "boolean_field",
         const_props: {
-          name: "isPercentage",
-          key: "IsPercentage",
-          placeholder: "",
-          label: "Consider priority of percentage greater than CGPA",
+          name: "visibility",
+          key: "Visibility",
+          label: "Visible to others",
+          required: false
+        },
+        user_props: ["handleChange"]
+      }
+    ],
+    url: "honour",
+    name: "Honour"
+  },
+  visit: {
+    icon: "plane",
+    draggable: true,
+    sortBy: "priority",
+    ascending: true,
+    plural: "Visits",
+    fields: [
+      {
+        group: false,
+        name: "Place",
+        type: "input_field",
+        const_props: {
+          name: "place",
+          key: "Place",
+          placeholder: "Place",
+          label: "Place",
+          required: true
+        },
+        user_props: ["handleChange"]
+      },
+      {
+        group: false,
+        name: "Purpose",
+        type: "input_field",
+        const_props: {
+          name: "purpose",
+          key: "Purpose",
+          placeholder: "Purpose",
+          label: "Purpose",
+          required: true,
+        },
+        user_props: ["handleChange"]
+      },
+      {
+        group: false,
+        name: "date",
+        type: "date_field",
+        const_props: {
+          name: "date",
+          key: "Date",
+          placeholder: "Date",
+          label: "Date",
           required: false
         },
         user_props: ["handleChange"]
@@ -256,10 +251,107 @@ export const specs = {
         user_props: ["handleChange"]
       }
     ],
-    url: "previous_education",
-    name: "Previous education"
+    url: "visit",
+    name: "Visit"
   },
-
+  collaboration: {
+    icon: "handshake",
+    draggable: true,
+    sortBy: "priority",
+    ascending: true,
+    plural: "Collaborations",
+    fields: [
+      {
+        group: false,
+        name: "topic",
+        type: "input_field",
+        const_props: {
+          name: "topic",
+          key: "Topic",
+          placeholder: "Topic",
+          label: "Topic",
+          required: true
+        },
+        user_props: ["handleChange"]
+      },
+      {
+        group: false,
+        name: "organisation",
+        type: "input_field",
+        const_props: {
+          name: "organisation",
+          key: "Organisation",
+          placeholder: "Organisation",
+          label: "Organisation",
+          required: true,
+        },
+        user_props: ["handleChange"]
+      },
+      {
+        group: false,
+        name: "visibility",
+        type: "boolean_field",
+        const_props: {
+          name: "visibility",
+          key: "Visibility",
+          label: "Visible to others",
+          required: false
+        },
+        user_props: ["handleChange"]
+      }
+    ],
+    url: "collaboration",
+    name: "Collaboration"
+  },
+  associateScholar: {
+    icon: "student",
+    draggable: true,
+    sortBy: "priority",
+    ascending: true,
+    plural: "Associate scholars",
+    fields: [
+      {
+        group: false,
+        name: "scholarName",
+        type: "input_field",
+        const_props: {
+          name: "scholarName",
+          key: "ScholarName",
+          placeholder: "Scholar name",
+          label: "Scholar name",
+          required: true
+        },
+        user_props: ["handleChange"]
+      },
+      {
+        group: false,
+        name: "institution",
+        type: "input_field",
+        const_props: {
+          name: "institution",
+          key: "Institution",
+          placeholder: "Institution",
+          label: "Institution",
+          required: true,
+        },
+        user_props: ["handleChange"]
+      },
+      {
+        group: false,
+        name: "visibility",
+        type: "boolean_field",
+        const_props: {
+          name: "visibility",
+          key: "Visibility",
+          label: "Visible to others",
+          required: false
+        },
+        user_props: ["handleChange"]
+      }
+    ],
+    url: "associate_scholar",
+    name: "Associate Scholar"
+  },
   position: {
     icon: "bookmark",
     draggable: false,
@@ -365,126 +457,6 @@ export const specs = {
     url: "position",
     name: "Position"
   },
-  experience: {
-    icon: "suitcase",
-    draggable: false,
-    sortBy: "priority",
-    ascending: true,
-    plural: "Experiences",
-    fields: [
-      {
-        group: false,
-        name: "position",
-        type: "input_field",
-        const_props: {
-          name: "position",
-          key: "Position",
-          placeholder: "Position",
-          label: "Position",
-          required: true
-        },
-        user_props: ["handleChange"]
-      },
-      {
-        group: false,
-        name: "organisation",
-        type: "input_field",
-        const_props: {
-          name: "organisation",
-          key: "Organisation",
-          placeholder: "Organisation",
-          label: "Organisation",
-          required: true
-        },
-        user_props: ["handleChange"]
-      },
-      {
-        group: true,
-        widths: "equal",
-        fields: [
-          {
-            name: "startDate",
-            type: "date_field",
-            const_props: {
-              name: "startDate",
-              key: "StartDate",
-              placeholder: "YYYY-MM-DD",
-              label: "Start date",
-              required: true
-            },
-            user_props: ["handleChange"]
-          },
-          {
-            name: "endDate",
-            type: "date_field",
-            const_props: {
-              name: "endDate",
-              key: "EndDate",
-              placeholder: "YYYY-MM-DD",
-              label: "End Date",
-              required: false
-            },
-            user_props: ["handleChange"]
-          }
-        ]
-      },
-
-      {
-        group: false,
-        name: "isFullDate",
-        type: "boolean_field",
-        const_props: {
-          name: "isFullDate",
-          key: "IsFullDate",
-          placeholder: "",
-          label: "I remember the exact date",
-          required: false
-        },
-        user_props: ["handleChange"]
-      },
-      {
-        group: false,
-        name: "experienceType",
-        type: "choice_field",
-        const_props: {
-          name: "experienceType",
-          key: "ExperienceType",
-          placeholder: "Job/Internship",
-          label: "ExperienceType",
-          required: true,
-          options: experienceOptions
-        },
-        user_props: ["handleChange"]
-      },
-      {
-        group: false,
-        name: "description",
-        type: "text_area_field",
-        const_props: {
-          name: "description",
-          key: "Description",
-          placeholder: "Description",
-          label: "Description",
-          required: false
-        },
-        user_props: ["handleChange"]
-      },
-      {
-        group: false,
-        name: "visibility",
-        type: "boolean_field",
-        const_props: {
-          name: "visibility",
-          key: "Visibility",
-          label: "Visible to others",
-          required: false
-        },
-        user_props: ["handleChange"]
-      }
-    ],
-    url: "experience",
-    name: "Experience"
-  },
   project: {
     icon: "folder",
     draggable: false,
@@ -576,6 +548,59 @@ export const specs = {
       },
       {
         group: false,
+        name: "projectType",
+        type: "choice_field",
+        const_props: {
+          name: "projectType",
+          key: "ProjectType",
+          placeholder: "Project type",
+          label: "Project type",
+          options: projectOptions,
+          required: true
+        },
+        user_props: ["handleChange"]
+      },
+      {
+        group: false,
+        name: "financialOutlay",
+        type: "text_area_field",
+        const_props: {
+          name: "financialOutlay",
+          key: "FinancialOutlay",
+          placeholder: "Describe the financial outlay of the project",
+          label: "Financial Outlay",
+          required: true
+        },
+        user_props: ["handleChange"]
+      },
+      {
+        group: false,
+        name: "fundingAgency",
+        type: "input_field",
+        const_props: {
+          name: "fundingAgency",
+          key: "FundingAgency",
+          placeholder: "Funding agencies",
+          label: "Funding agency",
+          required: true
+        },
+        user_props: ["handleChange"]
+      },
+      {
+        group: false,
+        name: "otherInvestigatingOfficers",
+        type: "input_field",
+        const_props: {
+          name: "otherInvestigatingOfficers",
+          key: "OtherInvestingOfficers",
+          placeholder: "Names of the other investigating officers",
+          label: "Other investigating officers",
+          required: false
+        },
+        user_props: ["handleChange"]
+      },
+      {
+        group: false,
         name: "image",
         type: "file_field",
         const_props: {
@@ -598,7 +623,7 @@ export const specs = {
           required: false
         },
         user_props: ["handleChange"]
-      }
+      },
     ],
     url: "project",
     name: "Project"
