@@ -1,0 +1,8 @@
+{
+  "nomenclature":{
+		"name": "faculty_profile",
+		"verboseName": "Faculty profile"
+	},
+  "baseUrl": "/faculty_profile",
+  "source": "faculty_profile/src/index"
+}
