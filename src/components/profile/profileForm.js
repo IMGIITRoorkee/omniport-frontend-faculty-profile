@@ -71,19 +71,18 @@ export class ProfileForm extends React.Component {
     axios
       .get("/api/faculty_profile/profile/" + value + "/handle/")
       .then(response => {
-        if (value == this.props.data.handle) {
+	let valid = response.data;
+        if (valid == "yes") {
           this.isHandleAllowed(true);
-        } else {
-          this.isHandleAllowed(false);
+        } else if (valid == "no" && value == this.props.data.handle) {
+          this.isHandleAllowed(true);
         }
+	else {
+	  this.isHandleAllowed(false);
+	}
       })
       .catch(error => {
-        console.log(error);
-        if (error.response.status == 404 && value != "") {
-          this.isHandleAllowed(true);
-        } else {
-          this.isHandleAllowed(false);
-        }
+        this.isHandleAllowed(false);}
       });
 
   }

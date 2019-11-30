@@ -17,9 +17,7 @@ const Education = props => {
               <p styleName="style.gray">
                 {props.item.institute + ", "}
                 {props.item.year}
-                <br />
-                CGPA {props.item.cgpa}
-              </p>
+                </p>
             </div>
           </List.Content>
         </List.Item>
