@@ -1,6 +1,6 @@
 import moment from "moment";
 
-export const formatDate = (startDate, endDate, isFullDate) => {
+export const formatDate =   (startDate, endDate, isFullDate) => {
   let data = {};
   console.log(startDate, endDate, isFullDate);
   let start = moment(startDate);

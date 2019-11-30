@@ -32,6 +32,20 @@ export const initial = {
     },
     links: []
   },
+  supervision:{
+    update: false,
+    data: {
+      topic: "",
+      category: "",
+      startDate: "",
+      nameOfOtherSupervisors:"",
+      scholarsName:"",
+      endDate: 1,
+      priority:1,
+      visibility: true,
+    },
+    links: []
+  },
   collaboration: {
     update: false,
     data: {
@@ -60,21 +74,6 @@ export const initial = {
       purpose: "",
       priority: 1,
       visibility: true,
-    },
-    links: []
-  },
-  position: {
-    update: false,
-    data: {
-      id: -1,
-      startDate: "",
-      endDate: "",
-      isFullDate: true,
-      position: "",
-      organisation: "",
-      description: "",
-      priority: 1,
-      visibility: true
     },
     links: []
   },

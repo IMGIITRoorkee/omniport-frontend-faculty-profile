@@ -38,10 +38,19 @@ export const graduationOptions = [
     { text: "Doctorate", key: "DOCTORATE", value: "doc" },
     { text: "Postdoctorate", key: "POSTDOCTORATE", value: "pdo" }
   ];
-  
-  let list = {};
-  for (let index in graduationOptions) {
-    list[graduationOptions[index]["value"]] = graduationOptions[index]["text"];
-  }
-  export const graduationOptionsMap = list;
+
+
+
+let list = {};
+for (let index in graduationOptions) {
+list[graduationOptions[index]["value"]] = graduationOptions[index]["text"];
+}
+
+export const graduationOptionsMap = list;
+
+for (let index in supervisionOptions) {
+list[supervisionOptions[index]["value"]] = supervisionOptions[index]["text"];
+}
+
+export const supervisionOptionsMap = list;
   

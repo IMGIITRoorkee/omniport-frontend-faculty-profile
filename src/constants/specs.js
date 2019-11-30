@@ -192,6 +192,125 @@ export const specs = {
     url: "honour",
     name: "Honour"
   },
+  supervision: {
+    icon: "star",
+    draggable: true,
+    sortBy: "priority",
+    ascending: true,
+    plural: "Supervision",
+    fields: [
+      {
+        group: false,
+        name: "topic",
+        type: "input_field",
+        const_props: {
+          name: "topic",
+          key: "Topic",
+          placeholder: "Topic",
+          label: "Topic",
+          required: true
+        },
+        user_props: ["handleChange"]
+      },
+      {
+        group: false,
+        name: "category",
+        type: "choice_field",
+        const_props: {
+          name: "category",
+          key: "Category",
+          placeholder: "Category",
+          label: "Category",
+          options: supervisionOptions,
+          required: true,
+        },
+        user_props: ["handleChange"]
+      },
+      {
+        group: true,
+        widths: "equal",
+        fields: [
+          {
+            name: "startDate",
+            type: "date_field",
+            const_props: {
+              name: "startDate",
+              key: "StartDate",
+              placeholder: "YYYY-MM-DD",
+              label: "Start date",
+              required: true
+            },
+            user_props: ["handleChange"]
+          },
+          {
+            name: "endDate",
+            type: "date_field",
+            const_props: {
+              name: "endDate",
+              key: "EndDate",
+              placeholder: "YYYY-MM-DD",
+              label: "End Date",
+              required: false
+            },
+            user_props: ["handleChange"]
+          }
+        ]
+      },
+      {
+        group: false,
+        name: "isFullDate",
+        type: "boolean_field",
+        const_props: {
+          name: "isFullDate",
+          key: "IsFullDate",
+          placeholder: "",
+          label: "I remember the exact date",
+          required: false
+        },
+        user_props: ["handleChange"]
+      },
+      {
+        group: false,
+        name: "scholarsName",
+        type: "input_field",
+        const_props: {
+          name: "scholarsName",
+          key: "ScholarsName",
+          placeholder: "Enter the scholars you supervised",
+          label: "Name of the scholar(s)",
+          required: true
+        },
+        user_props: ["handleChange"]
+      },
+      {
+        group: false,
+        name: "nameOfOtherSupervisors",
+        type: "text_area_field",
+        const_props: {
+          name: "nameOfOtherSupervisors",
+          key: "NameOfOtherSupervisors",
+          placeholder: "Enter the names of the other supervisors",
+          label: "Other supervisors",
+          required: true
+        },
+        user_props: ["handleChange"]
+      },
+      {
+        group: false,
+        name: "visibility",
+        type: "boolean_field",
+        const_props: {
+          name: "visibility",
+          key: "Visibility",
+          label: "Visible to others",
+          required: false
+        },
+        user_props: ["handleChange"]
+      }
+    ],
+    url: "supervision",
+    name: "Supervision"
+  },
   visit: {
     icon: "plane",
     draggable: true,
@@ -201,7 +320,7 @@ export const specs = {
     fields: [
       {
         group: false,
-        name: "Place",
+        name: "place",
         type: "input_field",
         const_props: {
           name: "place",
@@ -214,7 +333,7 @@ export const specs = {
       },
       {
         group: false,
-        name: "Purpose",
+        name: "purpose",
         type: "input_field",
         const_props: {
           name: "purpose",

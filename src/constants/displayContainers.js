@@ -9,6 +9,7 @@ import Honour from "../components/displayComponents/honour";
 import Visit from "../components/displayComponents/visit";
 import Collaboration from "../components/displayComponents/collaboration";
 import AssociateScholar from "../components/displayComponents/associate_scholar";
+import Supervision from "../components/displayComponents/supervision";
 import Project from "../components/displayComponents/project";
 import Book from "../components/displayComponents/book";
 import Paper from "../components/displayComponents/paper";
@@ -21,6 +22,7 @@ export const displayComponents = {
   collaboration: Collaboration,
   associateScholar: AssociateScholar,
   visit: Visit,
+  supervision: Supervision,
   project: Project,
   book: Book,
   paper: Paper,

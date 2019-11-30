@@ -82,8 +82,7 @@ export class ProfileForm extends React.Component {
 	}
       })
       .catch(error => {
-        this.isHandleAllowed(false);}
-      });
+        this.isHandleAllowed(false);});
 
   }
   handleChange = (event, { name, value }) => {
