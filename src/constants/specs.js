@@ -130,6 +130,125 @@ export const specs = {
     url: "education",
     name: "Education"
   },
+  teachingEngagement:{
+    icon: "book",
+    draggable: true,
+    sortBy: "priority",
+    ascending: true,
+    plural: "Teaching Engagements",
+    fields: [
+      {
+        group: true,
+        widths: "equal",
+        fields: [
+          {
+            name: "courseTitle",
+            type: "input_field",
+            const_props: {
+              name: "courseTitle",
+              key: "CourseTitle",
+              placeholder: "Course Title",
+              label: "Name of the course",
+              required: true
+            },
+            user_props: ["handleChange"]
+          },
+          {
+            name: "courseCode",
+            type: "input_field",
+            const_props: {
+              name: "courseCode",
+              key: "CourseCode",
+              placeholder: "Eg: CSN 101",
+              label: "Course Code",
+              required: true
+            },
+            user_props: ["handleChange"]
+          }
+        ]
+      },
+      {
+        group: false,
+        name: "className",
+        type: "input_field",
+        const_props: {
+          name: "className",
+          key: "ClassName",
+          placeholder: "Name of the class",
+          label: "Class Name",
+          required: true
+        },
+        user_props: ["handleChange"]
+      },
+      {
+        group: false,
+        name: "studentCount",
+        type: "input_field",
+        const_props: {
+          name: "studentCount",
+          key: "StudentCount",
+          placeholder: "Number of students in class",
+          label: "Number of Students",
+          required: true,
+        },
+        user_props: ["handleChange"]
+      },
+      {
+        group: false,
+        name: "lectureHours",
+        type: "input_field",
+        const_props: {
+          name: "lectureHours",
+          key: "LectureHours",
+          placeholder: "Lecture hours per week",
+          label: "Lecture Hours",
+          required: false
+        },
+        user_props: ["handleChange"]
+      },
+      {
+        group: false,
+        name: "practicalHours",
+        type: "input_field",
+        const_props: {
+          name: "practicalHours",
+          key: "PracticalHours",
+          placeholder: "Practical hours per week",
+          label: "Practical Hours",
+          required: false
+        },
+        user_props: ["handleChange"]
+      },
+      {
+        group: false,
+        name: "tutorialHours",
+        type: "input_field",
+        const_props: {
+          name: "tutorialHours",
+          key: "TutorialHours",
+          placeholder: "Tutorial hours per week",
+          label: "Tutorial Hours",
+          required: false
+        },
+        user_props: ["handleChange"]
+      },
+      {
+        group: false,
+        name: "visibility",
+        type: "boolean_field",
+        const_props: {
+          name: "visibility",
+          key: "Visibility",
+          label: "Visible to others",
+          required: false
+        },
+        user_props: ["handleChange"]
+      }
+    ],
+    url: "teaching_engagement",
+    name: "TeachingEngagement"
+  },
+
   honour: {
     icon: "star",
     draggable: true,
@@ -310,6 +429,125 @@ export const specs = {
     ],
     url: "supervision",
     name: "Supervision"
+  },
+  administrativePosition : {
+    icon: "building",
+    draggable: true,
+    sortBy: "priority",
+    ascending: true,
+    plural: "Administrative Positions",
+    fields: [
+      {
+        group: false,
+        name: "organisation",
+        type: "input_field",
+        const_props: {
+          name: "organisation",
+          key: "Organisation",
+          placeholder: "",
+          label: "Organisation",
+          required: true
+        },
+        user_props: ["handleChange"]
+      },
+      {
+        group: false,
+        name: "category",
+        type: "choice_field",
+        const_props: {
+          name: "category",
+          key: "Category",
+          placeholder: "Category",
+          label: "Category",
+          options: supervisionOptions,
+          required: true,
+        },
+        user_props: ["handleChange"]
+      },
+      {
+        group: true,
+        widths: "equal",
+        fields: [
+          {
+            name: "startDate",
+            type: "date_field",
+            const_props: {
+              name: "startDate",
+              key: "StartDate",
+              placeholder: "YYYY-MM-DD",
+              label: "Start date",
+              required: true
+            },
+            user_props: ["handleChange"]
+          },
+          {
+            name: "endDate",
+            type: "date_field",
+            const_props: {
+              name: "endDate",
+              key: "EndDate",
+              placeholder: "YYYY-MM-DD",
+              label: "End Date",
+              required: false
+            },
+            user_props: ["handleChange"]
+          }
+        ]
+      },
+      {
+        group: false,
+        name: "isFullDate",
+        type: "boolean_field",
+        const_props: {
+          name: "isFullDate",
+          key: "IsFullDate",
+          placeholder: "",
+          label: "I remember the exact date",
+          required: false
+        },
+        user_props: ["handleChange"]
+      },
+      {
+        group: false,
+        name: "scholarsName",
+        type: "input_field",
+        const_props: {
+          name: "scholarsName",
+          key: "ScholarsName",
+          placeholder: "Enter the scholars you supervised",
+          label: "Name of the scholar(s)",
+          required: true
+        },
+        user_props: ["handleChange"]
+      },
+      {
+        group: false,
+        name: "nameOfOtherSupervisors",
+        type: "text_area_field",
+        const_props: {
+          name: "nameOfOtherSupervisors",
+          key: "NameOfOtherSupervisors",
+          placeholder: "Enter the names of the other supervisors",
+          label: "Other supervisors",
+          required: true
+        },
+        user_props: ["handleChange"]
+      },
+      {
+        group: false,
+        name: "visibility",
+        type: "boolean_field",
+        const_props: {
+          name: "visibility",
+          key: "Visibility",
+          label: "Visible to others",
+          required: false
+        },
+        user_props: ["handleChange"]
+      }
+    ],
+    url: "administrative_position",
+    name: "AdministrativePosition"
   },
   visit: {
     icon: "plane",

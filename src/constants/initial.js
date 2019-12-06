@@ -21,6 +21,21 @@ export const initial = {
     },
     links: []
   },
+  teachingEngagement: {
+    update: false,
+    data: {
+      courseTitle: "",
+      courseCode: "",
+      className: "",
+      studentCount: "",
+      lectureHours: "",
+      priority: 1,
+      visibility: true,
+      practicalHours: "",
+      tutorialHours: "",
+      },
+    links: []
+  },
   honour: {
     update: false,
     data: {

@@ -4,7 +4,7 @@ import { EditIcon } from "../editIcon";
 
 import style from "../../styles.css";
 
-const Book = props => {
+const TeachingEngagement = props => {
   return (
     <Segment>
       <div styleName="style.flex-box">
@@ -13,16 +13,14 @@ const Book = props => {
             <List.Item>
               <List.Content>
                 <div>
-                  {props.item.title} by {props.item.authors} <br />
+                  {props.item.courseTitle} ( {props.item.courseCode} ) <br />
                   <p styleName="style.gray">
-                    Published by {props.item.publisher}, {props.item.year}
+                    Class: {props.item.className} <br/>
                   </p>
-                  {props.item.contribution ? (
-                    <div styleName="style.gray">Contribution: {props.item.contribution}</div>
-                  ) : null}
-                  {props.item.pages ? <div styleName="style.gray">Pages: {props.item.pages}</div> : null}
-                  {props.item.volumes ? <div styleName="style.gray">Volumes: {props.item.volumes}</div> : null}
-                  {props.item.editors ? <div styleName="style.gray">ISBN Code: {props.item.editors}</div> : null}
+                  <div styleName="style.gray">Number of Students: {props.item.studentCount}</div>
+                  {props.item.lectureHours ? <div styleName="style.gray">Lecture Hours: {props.item.lectureHours}</div> : null}
+                  {props.item.practicalHours ? <div styleName="style.gray">Practical Hours: {props.item.practicalHours}</div> : null}
+                  {props.item.tutorialHours ? <div styleName="style.gray">Tutorial Hours: {props.item.tutorialHours}</div> : null}
                 </div>
               </List.Content>
             </List.Item>
@@ -38,4 +36,4 @@ const Book = props => {
     </Segment>
   );
 };
-export default Book;
+export default TeachingEngagement;

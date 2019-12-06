@@ -3,6 +3,7 @@ export const components = [
   "education",
   "honour",
   "visit",
+  "teachingEngagement",
   "collaboration",
   "associateScholar",
   "supervision",

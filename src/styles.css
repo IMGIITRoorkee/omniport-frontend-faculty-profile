@@ -40,7 +40,11 @@
   display: inline;
   margin: 0;
 }
-
+.description-box {
+  display: flex;
+  color: black !important;
+  justify-content: space-between;
+}
 .buttonBox {
   display: flex;
   justify-content: flex-start;

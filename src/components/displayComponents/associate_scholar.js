@@ -1,7 +1,6 @@
 import React from "react";
 import { List, Segment } from "semantic-ui-react";
 import { EditIcon } from "../editIcon";
-import { graduationOptionsMap } from "../../constants/graduationOptions";
 
 import style from "../../styles.css";
 

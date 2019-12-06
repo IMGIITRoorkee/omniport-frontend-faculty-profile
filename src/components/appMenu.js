@@ -46,10 +46,10 @@ export class AppMenu extends Component {
             <Menu.Item
               color={theme}
               name="Engagements"
-              active={activeItem === "Engagements"}
+              active={activeItem === "TeachingEngagements"}
               onClick={() => {
-                this.props.onMenuClick("engagement");
-                this.setState({ activeItem: "Engagements" });
+                this.props.onMenuClick("teachingEngagement");
+                this.setState({ activeItem: "TeachingEngagements" });
               }}
             />
             <Menu.Item

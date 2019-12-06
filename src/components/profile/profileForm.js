@@ -16,6 +16,7 @@ import { headers } from "../../constants/formPostRequestHeaders";
 import { themeOptions } from "../../constants/themeOptions";
 
 import { ProfileImagePreview } from "./profileImagePreview";
+import {Crop} from "./crop";
 
 export class ProfileForm extends React.Component {
   constructor(props) {
@@ -31,7 +32,9 @@ export class ProfileForm extends React.Component {
       image: props.person_data.displayPicture,
       img_file: "",
       initial_handle: props.data.handle,
-      handleFieldProperties: { loading: false, color: null, name: null }
+      handleFieldProperties: { loading: false, color: null, name: null },
+      crop: false,
+      crop_image:""
     };
   }
   componentDidMount() {
@@ -203,12 +206,43 @@ export class ProfileForm extends React.Component {
 
     reader.readAsDataURL(file);
   };
+
+  cropImageChange = e => {
+    e.preventDefault();
+    let reader = new FileReader();
+    let file = e.target.files[0];
+    reader.onloadend = () => {
+      const image = reader.result;
+      this.setState({
+        crop_image: image,
+        crop: true
+      });
+    };
+
+    reader.readAsDataURL(file);
+
+  }
   removeImage = () => {
     this.setState({ image: "", img_file: "" });
   };
+
+  cancelCrop = () => {
+    this.setState({crop:false, crop_image:""});
+  }
+
+  setImage = (crop_image, croppedImageUrl) => {
+    console.log('setImage', croppedImageUrl);
+    this.setState({
+      img_file: crop_image,
+      image: croppedImageUrl,
+      crop:false,
+      crop_image:""
+    });
+  }
+
   render() {
-    const { handleFile, handleImageChange, handleDelete, removeImage, handleChange, handleErrors} = this;
-    const {image, resumeLink, errors, data} = this.state;
+    const { handleFile, handleImageChange, handleDelete, removeImage, handleChange, handleErrors, cancelCrop, setImage} = this;
+    const {image, resumeLink, errors, data, crop, crop_image} = this.state;
     const {handleHide, theme} = this.props;
     const { name, color, loading } = this.state.handleFieldProperties;
     const buttonClass = "ui " + theme + " button";
@@ -232,7 +266,7 @@ export class ProfileForm extends React.Component {
       <div>
         <input
           type="file"
-          onChange={handleImageChange}
+          onChange={this.cropImageChange }
           styleName="style.inputfile"
           id="embedpollfileinput"
         />
@@ -245,12 +279,10 @@ export class ProfileForm extends React.Component {
       </div>
     );
     if (image) {
+      console.log("hello");
       imagePreview = (
         <ProfileImagePreview
-          imagePreviewUrl={image.replace(
-            "http://localhost:3003/",
-            "http://192.168.121.228:60025/"
-          )}
+          imagePreviewUrl={image}
           removeImage={removeImage}
         />
       );
@@ -263,7 +295,15 @@ export class ProfileForm extends React.Component {
         </Form.Field>
       );
     }
-    return (
+    let Cropper = null;
+    if (crop) {
+      Cropper = <Crop
+        src = {crop_image}
+        cancelCrop = {cancelCrop}
+        setImage = {setImage}
+      />;
+    }
+    return crop ? Cropper :(
       <ComponentTransition>
         <div style={{ minWidth: "350px" }}>
           <Segment attached="top" styleName="style.headingBox">
@@ -315,7 +355,7 @@ export class ProfileForm extends React.Component {
           </Segment>
 
           <Segment attached="bottom" styleName="style.buttonBox">
-            <Button onClick={handleErrors} color={theme} type="submit">
+            <Button onClick={handleErrors} color={"blue"} type="submit">
               Submit
             </Button>
           </Segment>

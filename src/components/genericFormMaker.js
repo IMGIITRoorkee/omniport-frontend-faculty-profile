@@ -16,6 +16,7 @@ export default function genericFormMaker(info) {
   class Generic extends React.Component {
     constructor(props) {
       super(props);
+      console.log(props);
       this.state = {
         data: props.formData,
         update: props.update,
