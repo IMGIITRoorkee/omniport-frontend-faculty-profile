@@ -762,7 +762,7 @@ export const specs = {
     name: "Project"
   },
   administrativePosition:  {
-    icon: "folder",
+    icon: "building",
     draggable: true,
     sortBy: "priority",
     ascending: true,
@@ -881,7 +881,7 @@ export const specs = {
     name: "Administrative position"
   },
   membership:  {
-    icon: "folder",
+    icon: "group",
     draggable: true,
     sortBy: "priority",
     ascending: true,
