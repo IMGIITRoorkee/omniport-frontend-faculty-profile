@@ -67,7 +67,6 @@ export class ProfileForm extends React.Component {
   checkHandle = (name) => {
     if(name != "handle") return;
     const value = this.state.data.handle;
-    console.log(value);
     this.setState({
       handleFieldProperties: { loading: true, color: "green", name: null }
     });
@@ -231,7 +230,6 @@ export class ProfileForm extends React.Component {
   }
 
   setImage = (crop_image, croppedImageUrl) => {
-    console.log('setImage', croppedImageUrl);
     this.setState({
       img_file: crop_image,
       image: croppedImageUrl,
@@ -279,7 +277,6 @@ export class ProfileForm extends React.Component {
       </div>
     );
     if (image) {
-      console.log("hello");
       imagePreview = (
         <ProfileImagePreview
           imagePreviewUrl={image}

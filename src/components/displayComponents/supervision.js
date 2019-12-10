@@ -10,7 +10,6 @@ import style from "../../styles.css";
 const Supervision = props => {
     const {item, rearrange, data, componentName} = props;
     const {startDate, endDate, isFullDate} =  item;
-    console.log(startDate, endDate, isFullDate);
     const date = formatDate(startDate, endDate, isFullDate);
     let duration = date.startDate;
     if(date.startDate != date.endDate) duration += " to " + date.endDate;

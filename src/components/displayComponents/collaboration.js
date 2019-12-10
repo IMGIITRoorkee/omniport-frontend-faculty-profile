@@ -7,7 +7,6 @@ import style from "../../styles.css";
 
 const Collaboration = props => {
   const {item, rearrange, data, componentName} = props;
-  console.log(item, "this");
   return (
     <Segment>
       <div styleName="style.flex-box">

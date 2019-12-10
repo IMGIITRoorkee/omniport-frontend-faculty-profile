@@ -28,7 +28,6 @@ export class Crop extends React.Component {
 	}
 
 	onCropComplete = (crop, pixelCrop) => {
-		console.log("onCropComp");
 		this.makeClientCrop(crop, pixelCrop)
 	}
 
@@ -74,11 +73,9 @@ export class Crop extends React.Component {
 			blob.name = fileName
 			window.URL.revokeObjectURL(this.fileUrl)
 			this.fileUrl = window.URL.createObjectURL(blob)
-			console.log(this.fileUrl)
 			this.setState({
 			  crop_image: blob
 			})
-			console.log(blob);
 			// Here the cropped image blob is created
 			resolve(this.fileUrl)
 		  }, 'image/jpeg')
@@ -88,7 +85,6 @@ export class Crop extends React.Component {
 
 	handleSubmit = e => {
 		const {crop_image, croppedImageUrl} = this.state;
-		console.log('handle Sub',croppedImageUrl);
 		const {setImage} = this.props;
 		setImage(
 			crop_image,

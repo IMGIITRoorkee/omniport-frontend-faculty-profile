@@ -6,9 +6,7 @@ import { graduationOptionsMap } from "../../constants/graduationOptions";
 import style from "../../styles.css";
 
 const Visit = props => {
-  console.log("data", data);
   const {item, rearrange, data, componentName} = props;
-  console.log(item, "this");
   return (
     <Segment>
       <div styleName="style.flex-box">

@@ -6,7 +6,6 @@ import style from "../../styles.css";
 
 const AssociateScholar = props => {
   const {item, rearrange, data, componentName} = props;
-  console.log(item, "this");
   return (
     <Segment>
       <div styleName="style.flex-box">

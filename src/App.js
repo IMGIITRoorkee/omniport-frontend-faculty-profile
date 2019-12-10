@@ -45,7 +45,6 @@ class App extends Component {
   };
 
   render() {
-    console.log(count++);
     const { handle, theme, loading } = this.props.state.appDetails;
 
     let genericComponentList = [];

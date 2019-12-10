@@ -16,7 +16,6 @@ export default function genericFormMaker(info) {
   class Generic extends React.Component {
     constructor(props) {
       super(props);
-      console.log(props);
       this.state = {
         data: props.formData,
         update: props.update,
@@ -155,7 +154,7 @@ export default function genericFormMaker(info) {
             });
           })
           .catch(error => {
-            console.log(error);
+            console.error(error);
             if (error.response.status == "400") {
               this.handleErrors(error.response.data);
             } else {
@@ -184,7 +183,7 @@ export default function genericFormMaker(info) {
             });
           })
           .catch(error => {
-            console.log(error);
+            console.error(error);
             if (error.response.status == "400") {
               this.handleErrors(error.response.data);
             } else {
