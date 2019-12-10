@@ -1,4 +1,4 @@
-import {projectOptions, roleOptions, scopeOptions, supervisionOptions, graduationOptions} from "./options";
+import {projectOptions, roleOptions, scopeOptions, supervisionOptions, graduationOptions, categoryOptions} from "./options";
 
 export const specs = {
   interest: {
@@ -430,125 +430,6 @@ export const specs = {
     url: "supervision",
     name: "Supervision"
   },
-  administrativePosition : {
-    icon: "building",
-    draggable: true,
-    sortBy: "priority",
-    ascending: true,
-    plural: "Administrative Positions",
-    fields: [
-      {
-        group: false,
-        name: "organisation",
-        type: "input_field",
-        const_props: {
-          name: "organisation",
-          key: "Organisation",
-          placeholder: "",
-          label: "Organisation",
-          required: true
-        },
-        user_props: ["handleChange"]
-      },
-      {
-        group: false,
-        name: "category",
-        type: "choice_field",
-        const_props: {
-          name: "category",
-          key: "Category",
-          placeholder: "Category",
-          label: "Category",
-          options: supervisionOptions,
-          required: true,
-        },
-        user_props: ["handleChange"]
-      },
-      {
-        group: true,
-        widths: "equal",
-        fields: [
-          {
-            name: "startDate",
-            type: "date_field",
-            const_props: {
-              name: "startDate",
-              key: "StartDate",
-              placeholder: "YYYY-MM-DD",
-              label: "Start date",
-              required: true
-            },
-            user_props: ["handleChange"]
-          },
-          {
-            name: "endDate",
-            type: "date_field",
-            const_props: {
-              name: "endDate",
-              key: "EndDate",
-              placeholder: "YYYY-MM-DD",
-              label: "End Date",
-              required: false
-            },
-            user_props: ["handleChange"]
-          }
-        ]
-      },
-      {
-        group: false,
-        name: "isFullDate",
-        type: "boolean_field",
-        const_props: {
-          name: "isFullDate",
-          key: "IsFullDate",
-          placeholder: "",
-          label: "I remember the exact date",
-          required: false
-        },
-        user_props: ["handleChange"]
-      },
-      {
-        group: false,
-        name: "scholarsName",
-        type: "input_field",
-        const_props: {
-          name: "scholarsName",
-          key: "ScholarsName",
-          placeholder: "Enter the scholars you supervised",
-          label: "Name of the scholar(s)",
-          required: true
-        },
-        user_props: ["handleChange"]
-      },
-      {
-        group: false,
-        name: "nameOfOtherSupervisors",
-        type: "text_area_field",
-        const_props: {
-          name: "nameOfOtherSupervisors",
-          key: "NameOfOtherSupervisors",
-          placeholder: "Enter the names of the other supervisors",
-          label: "Other supervisors",
-          required: true
-        },
-        user_props: ["handleChange"]
-      },
-      {
-        group: false,
-        name: "visibility",
-        type: "boolean_field",
-        const_props: {
-          name: "visibility",
-          key: "Visibility",
-          label: "Visible to others",
-          required: false
-        },
-        user_props: ["handleChange"]
-      }
-    ],
-    url: "administrative_position",
-    name: "AdministrativePosition"
-  },
   visit: {
     icon: "plane",
     draggable: true,
@@ -711,7 +592,7 @@ export const specs = {
   },
   project: {
     icon: "folder",
-    draggable: false,
+    draggable: true,
     sortBy: "priority",
     ascending: true,
     plural: "Projects",
@@ -879,6 +760,350 @@ export const specs = {
     ],
     url: "project",
     name: "Project"
+  },
+  administrativePosition:  {
+    icon: "folder",
+    draggable: true,
+    sortBy: "priority",
+    ascending: true,
+    plural: "Administrative Positions",
+    fields: [
+      {
+        group: false,
+        name: "position",
+        type: "input_field",
+        const_props: {
+          name: "position",
+          key: "Position",
+          placeholder: "",
+          label: "Position",
+          required: true
+        },
+        user_props: ["handleChange"]
+      },
+      {
+        group: false,
+        name: "organisation",
+        type: "input_field",
+        const_props: {
+          name: "organisation",
+          key: "Organisation",
+          placeholder: "",
+          label: "Organisation",
+          required: false
+        },
+        user_props: ["handleChange"]
+      },
+      {
+        group: true,
+        widths: "equal",
+        fields: [
+          {
+            name: "startDate",
+            type: "date_field",
+            const_props: {
+              name: "startDate",
+              key: "StartDate",
+              placeholder: "YYYY-MM-DD",
+              label: "Start date",
+              required: true
+            },
+            user_props: ["handleChange"]
+          },
+          {
+            name: "endDate",
+            type: "date_field",
+            const_props: {
+              name: "endDate",
+              key: "EndDate",
+              placeholder: "YYYY-MM-DD",
+              label: "End Date",
+              required: false
+            },
+            user_props: ["handleChange"]
+          }
+        ]
+      },
+      {
+        group: false,
+        name: "isFullDate",
+        type: "boolean_field",
+        const_props: {
+          name: "isFullDate",
+          key: "IsFullDate",
+          placeholder: "",
+          label: "I remember the exact date",
+          required: false
+        },
+        user_props: ["handleChange"]
+      },
+      {
+        group: false,
+        name: "scope",
+        type: "choice_field",
+        const_props: {
+          name: "scope",
+          key: "Scope",
+          placeholder: "Scope",
+          label: "Scope of the position",
+          options: scopeOptions,
+          required: true
+        },
+        user_props: ["handleChange"]
+        },
+        {
+        group: false,
+        name: "description",
+        type: "text_area_field",
+        const_props: {
+          name: "description",
+          key: "Description",
+          placeholder: "Description",
+          label: "Description",
+          required: false
+        },
+        user_props: ["handleChange"]
+      },
+      {
+        group: false,
+        name: "visibility",
+        type: "boolean_field",
+        const_props: {
+          name: "visibility",
+          key: "Visibility",
+          label: "Visible to others",
+          required: false
+        },
+        user_props: ["handleChange"]
+      },
+    ],
+    url: "administrative_position",
+    name: "Administrative position"
+  },
+  membership:  {
+    icon: "folder",
+    draggable: true,
+    sortBy: "priority",
+    ascending: true,
+    plural: "Memberships",
+    fields: [
+      {
+        group: false,
+        name: "position",
+        type: "input_field",
+        const_props: {
+          name: "position",
+          key: "Position",
+          placeholder: "",
+          label: "Position",
+          required: true
+        },
+        user_props: ["handleChange"]
+      },
+      {
+        group: false,
+        name: "organisation",
+        type: "input_field",
+        const_props: {
+          name: "organisation",
+          key: "Organisation",
+          placeholder: "",
+          label: "Organisation",
+          required: false
+        },
+        user_props: ["handleChange"]
+      },
+      {
+        group: true,
+        widths: "equal",
+        fields: [
+          {
+            name: "startDate",
+            type: "date_field",
+            const_props: {
+              name: "startDate",
+              key: "StartDate",
+              placeholder: "YYYY-MM-DD",
+              label: "Start date",
+              required: true
+            },
+            user_props: ["handleChange"]
+          },
+          {
+            name: "endDate",
+            type: "date_field",
+            const_props: {
+              name: "endDate",
+              key: "EndDate",
+              placeholder: "YYYY-MM-DD",
+              label: "End Date",
+              required: false
+            },
+            user_props: ["handleChange"]
+          }
+        ]
+      },
+      {
+        group: false,
+        name: "isFullDate",
+        type: "boolean_field",
+        const_props: {
+          name: "isFullDate",
+          key: "IsFullDate",
+          placeholder: "",
+          label: "I remember the exact date",
+          required: false
+        },
+        user_props: ["handleChange"]
+      },
+      {
+        group: false,
+        name: "description",
+        type: "text_area_field",
+        const_props: {
+          name: "description",
+          key: "Description",
+          placeholder: "Description",
+          label: "Description",
+          required: false
+        },
+        user_props: ["handleChange"]
+      },
+      {
+        group: false,
+        name: "visibility",
+        type: "boolean_field",
+        const_props: {
+          name: "visibility",
+          key: "Visibility",
+          label: "Visible to others",
+          required: false
+        },
+        user_props: ["handleChange"]
+      },
+    ],
+    url: "membership",
+    name: "Membership"
+  },
+  event: {
+    icon: "handshake",
+    draggable: true,
+    sortBy: "priority",
+    ascending: true,
+    plural: "Events",
+    fields: [
+      {
+        group: false,
+        name: "name",
+        type: "input_field",
+        const_props: {
+          name: "name",
+          key: "Name",
+          placeholder: "",
+          label: "Name of the event",
+          required: true
+        },
+        user_props: ["handleChange"]
+      },
+      {
+        group: false,
+        name: "place",
+        type: "input_field",
+        const_props: {
+          name: "place",
+          key: "Place",
+          placeholder: "",
+          label: "Place of the event",
+          required: true
+        },
+        user_props: ["handleChange"]
+      },
+      {
+        group: true,
+        widths: "equal",
+        fields: [
+          {
+            name: "startDate",
+            type: "date_field",
+            const_props: {
+              name: "startDate",
+              key: "StartDate",
+              placeholder: "YYYY-MM-DD",
+              label: "Start date",
+              required: true
+            },
+            user_props: ["handleChange"]
+          },
+          {
+            name: "endDate",
+            type: "date_field",
+            const_props: {
+              name: "endDate",
+              key: "EndDate",
+              placeholder: "YYYY-MM-DD",
+              label: "End Date",
+              required: false
+            },
+            user_props: ["handleChange"]
+          }
+        ]
+      },
+      {
+        group: false,
+        name: "sponsor",
+        type: "input_field",
+        const_props: {
+          name: "sponsor",
+          key: "Sponsor",
+          placeholder: "",
+          label: "Sponsorer of the event",
+          required: false
+        },
+        user_props: ["handleChange"]
+      },
+      {
+        group: false,
+        name: "category",
+        type: "choice_field",
+        const_props: {
+          name: "category",
+          key: "category",
+          placeholder: "Category",
+          label: "Event Category",
+          options: categoryOptions,
+          required: true
+        },
+        user_props: ["handleChange"]
+      },
+      {
+        group: false,
+        name: "role",
+        type: "choice_field",
+        const_props: {
+          name: "role",
+          key: "Role",
+          placeholder: "Role",
+          label: "Role",
+          options: roleOptions,
+          required: true
+        },
+        user_props: ["handleChange"]
+      },
+      {
+        group: false,
+        name: "visibility",
+        type: "boolean_field",
+        const_props: {
+          name: "visibility",
+          key: "Visibility",
+          label: "Visible to others",
+          required: false
+        },
+        user_props: ["handleChange"]
+      },
+    ],
+    url: "event",
+    name: "Event"
   },
   book: {
     icon: "book",

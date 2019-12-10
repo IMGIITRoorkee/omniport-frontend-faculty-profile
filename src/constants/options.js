@@ -12,6 +12,14 @@ export const projectOptions = [
     { text: "Consultancy", key: "CONSULTANCY", value: "c" }
 ];
 
+export const categoryOptions = [
+    { text: "Conference", key: "CONFERENCE", value: "con"},
+    { text: "Guest Lecture", key: "GUEST_LECTURE", value: "gue"},
+    { text: "Seminar", key: "SEMINAR", value: "sem"},
+    { text: "Short Term Course", key: "SHORT_TERM_COURSE", value: "stc"},
+    { text: "Lecture", key: "LECTURE", value: "spl"},
+    { text: "Special Talk", key: "SPECIAL_TALK", value: "tlk"}
+]
 export const roleOptions = [
     { text: "Organiser", key: "ORGANISER", value: "o" },
     { text: "Attendee", key: "ATTENDEE", value: "a" }
@@ -54,3 +62,6 @@ list[supervisionOptions[index]["value"]] = supervisionOptions[index]["text"];
 
 export const supervisionOptionsMap = list;
   
+export const reduceValueToText = (value, object) => {
+    return value == object.value ? object.text : value;
+}

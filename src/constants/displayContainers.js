@@ -14,6 +14,9 @@ import Project from "../components/displayComponents/project";
 import Book from "../components/displayComponents/book";
 import Paper from "../components/displayComponents/paper";
 import TeachingEngagement from "../components/displayComponents/teaching_engagement";
+import Event from "../components/displayComponents/event";
+import Membership from "../components/displayComponents/membership";
+import AdministrativePosition from "../components/displayComponents/administrativePosition";
 
 //can use eval() method to reduce the code
 export const displayComponents = {
@@ -22,12 +25,15 @@ export const displayComponents = {
   honour: Honour,
   collaboration: Collaboration,
   associateScholar: AssociateScholar,
+  membership: Membership,
   visit: Visit,
   supervision: Supervision,
   project: Project,
+  event: Event,
   book: Book,
   paper: Paper,
-  teachingEngagement: TeachingEngagement
+  teachingEngagement: TeachingEngagement,
+  administrativePosition: AdministrativePosition
 };
 
 const mapStateToProps = state => {

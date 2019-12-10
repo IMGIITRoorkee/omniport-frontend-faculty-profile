@@ -145,5 +145,48 @@ export const initial = {
       visibility: true
     },
     links: ["image"]
+  },
+  event: {
+    update: false,
+    data: {
+      id: -1,
+      name: "",
+      sponsor: "",
+      place: "",
+      startDate: "",
+      endDate: "",
+      category: "sem",
+      role: "o",
+      visibility: true
+    },
+    links: []
+  },
+  membership: {
+    update: false,
+    data: {
+      id: -1,
+      organisation: "",
+      position: "",
+      description: "",
+      startDate: "",
+      endDate: "",
+      isFullDate: true,
+      visibility: true
+    },
+    links: []
+  },
+  administrativePosition: {
+    update: false,
+    data: {
+      id: -1,
+      organisation: "",
+      position: "",
+      description: "",
+      startDate: "",
+      endDate: "",
+      isFullDate: true,
+      visibility: true
+    },
+    links: []
   }
 };
