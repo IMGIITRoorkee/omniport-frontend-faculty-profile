@@ -4,7 +4,8 @@ export const eventOptions  = [
     { text: "Seminar", key: "SEMINAR", value: "sem" },
     { text: "Short term course", key: "SHORT_TERM_COURSE", value: "stc" },
     { text: "Special lecture", key: "SPECIAL_LECTURE", value: "spl" },
-    { text: "Talk", key: "TALK", value: "tlk" }
+    { text: "Talk", key: "TALK", value: "tlk" },
+    { text: "Other", key: "OTHER", value: "oth" }
 ];
 
 export const projectOptions = [
@@ -18,11 +19,13 @@ export const categoryOptions = [
     { text: "Seminar", key: "SEMINAR", value: "sem"},
     { text: "Short Term Course", key: "SHORT_TERM_COURSE", value: "stc"},
     { text: "Lecture", key: "LECTURE", value: "spl"},
-    { text: "Special Talk", key: "SPECIAL_TALK", value: "tlk"}
+    { text: "Special Talk", key: "SPECIAL_TALK", value: "tlk"},
+    { text: "Other", key: "OTHER", value: "oth" }
 ]
 export const roleOptions = [
     { text: "Organiser", key: "ORGANISER", value: "o" },
-    { text: "Attendee", key: "ATTENDEE", value: "a" }
+    { text: "Attendee", key: "ATTENDEE", value: "a" },
+    { text: "Invitee", key: "INVITEE", value: "i" }
 ];
 
 export const scopeOptions = [
