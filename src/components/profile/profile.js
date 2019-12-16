@@ -3,7 +3,7 @@ import { Card, Icon, Image, Dimmer, Segment, Label, Button } from "semantic-ui-r
 
 import axios from "axios";
 
-import DefaultDP  from "../../../../../formula_one/src/components/default-dp";
+import DefaultDP from "../../../../../formula_one/src/components/default-dp";
 import { getCookie } from "formula_one";
 
 import { ProfileForm } from "./profileForm";
@@ -43,14 +43,14 @@ export class Profile extends React.Component {
     };
     const person_promise = axios
       .get("/kernel/who_am_i/")
-      .then(function(response) {
+      .then(function (response) {
         self.setState({ person_data: response.data });
       })
-      .catch(function(error) {
+      .catch(function (error) {
         console.error(error);
       });
     const faculty_promise = axios
-      .get("/api/faculty_profile/profile/" )
+      .get("/api/faculty_profile/profile/")
       .then(response => {
         if (response.data.length != 0) {
           let data = response.data[0];
@@ -59,10 +59,10 @@ export class Profile extends React.Component {
           self.setState({ createNew: true });
         }
       })
-      .catch(function(error) {
+      .catch(function (error) {
         console.error(error);
       });
-    Promise.all([person_promise, faculty_promise]).then(() => this.setState({loading:false}));
+    Promise.all([person_promise, faculty_promise]).then(() => this.setState({ loading: false }));
   };
 
   handleShow = e => {
@@ -84,17 +84,17 @@ export class Profile extends React.Component {
 
   render() {
     const desc = this.state.data.description;
-    let { theme, changeTheme} = this.props;
+    let { theme, changeTheme } = this.props;
     theme = "blue";
-    const {handleHide, handleUpdate} = this;
-    const { data, person_data, createNew, loading} = this.state;
+    const { handleHide, handleUpdate } = this;
+    const { data, person_data, createNew, loading } = this.state;
     const ownHandle = data.handle;
     const style = {
       boxShadow: "0 0 0 1px #d4d4d5,0 2px 0 0 #d4d4d5,0 1px 3px 0 #d4d4d5"
     };
     let imageView = <Image centered src={person_data.displayPicture} size="small" circular />;
     if (loading == false && data.facultyMember != "" && person_data.displayPicture == null) {
-      imageView = <DefaultDP name={data.facultyMember} size={"2em"}/>
+      imageView = <DefaultDP name={data.facultyMember} size={"7em"} />
     }
     if (data)
       return (
@@ -107,11 +107,11 @@ export class Profile extends React.Component {
               </div>
             </Card.Content>
             <div className="center aligned content"
-                 style={{ border: "0", textAlign: "center" }}>
+              style={{ border: "0", textAlign: "center" }}>
               {imageView}
             </div>
             <div className="center aligned content"
-                 style={{ border: "0", textAlign: "center" }}>
+              style={{ border: "0", textAlign: "center" }}>
               <Card.Header textAlign="center">{data.faculty}</Card.Header>
               <Card.Meta textAlign="center">
                 {data.handle ? "@" : null}
@@ -132,7 +132,7 @@ export class Profile extends React.Component {
             </Dimmer>
           </Card>
 
-          <ResumeDownload  url={data.resume} ownHandle={ownHandle} theme={theme} />
+          <ResumeDownload url={data.resume} ownHandle={ownHandle} theme={theme} />
         </div>
       );
   }
