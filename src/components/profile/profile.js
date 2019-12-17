@@ -167,8 +167,8 @@ export class Profile extends React.Component {
         console.error(error);
         toast({
           type: 'error',
-          title: 'Preview Error',
-          icon: 'print',
+          title: 'Publish Error',
+          icon: 'upload',
           description: <p>Some error has occurred. Try publishing your page after some time!</p>,
           time: 2000
         });
