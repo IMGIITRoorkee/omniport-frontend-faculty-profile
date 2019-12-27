@@ -17,6 +17,7 @@ import { themeOptions } from "../../constants/themeOptions";
 
 import { ProfileImagePreview } from "./profileImagePreview";
 import {Crop} from "./crop";
+import {debounce} from "./../../utils/debounce";
 
 export class ProfileForm extends React.Component {
   constructor(props) {
@@ -36,6 +37,8 @@ export class ProfileForm extends React.Component {
       crop: false,
       crop_image:""
     };
+    this.checkHandleWithDebounce = debounce(this.checkHandle, 1000);
+
   }
   componentDidMount() {
     document.addEventListener("keydown", this.handleEscape, false);
@@ -67,9 +70,6 @@ export class ProfileForm extends React.Component {
   checkHandle = (name) => {
     if(name != "handle") return;
     const value = this.state.data.handle;
-    this.setState({
-      handleFieldProperties: { loading: true, color: "green", name: null }
-    });
     axios
       .get("/api/faculty_profile/profile/" + value + "/handle/")
       .then(response => {
@@ -90,7 +90,13 @@ export class ProfileForm extends React.Component {
   handleChange = (event, { name, value }) => {
     event.persist();
     if (this.state.data.hasOwnProperty(name)) {
-      this.setState({ data: { ...this.state.data, [name]: value } }, () => this.checkHandle(name));
+      this.setState({ data: { ...this.state.data, [name]: value } });
+    }
+    if(name == 'handle') {
+      this.setState({
+        handleFieldProperties: { loading: true, color: "green", name: null }
+      });
+      this.checkHandleWithDebounce(name);
     }
   };
   handleSubmit = e => {
