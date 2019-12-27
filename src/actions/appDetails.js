@@ -11,7 +11,7 @@ export const fetchAppDetails = () => {
         dispatch(setAppDetails(true, "blue", undefined));
       })
       .catch(error => {
-        console.error(error);
+        // console.error(error);
         if (error.response.status == 401) {
           document.location = "/auth/login?next=/faculty_profile";
         }

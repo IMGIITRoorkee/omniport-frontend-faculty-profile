@@ -57,7 +57,7 @@ export class Profile extends React.Component {
         self.setState({ person_data: response.data });
       })
       .catch(function (error) {
-        console.error(error);
+        // console.error(error);
       });
     const faculty_promise = axios
       .get("/api/faculty_profile/profile/")
@@ -70,7 +70,7 @@ export class Profile extends React.Component {
         }
       })
       .catch(function (error) {
-        console.error(error);
+        // console.error(error);
       });
     Promise.all([person_promise, faculty_promise]).then(() => this.setState({ loading: false }));
   };
@@ -118,7 +118,7 @@ export class Profile extends React.Component {
         return 'success';
       })
       .catch(error => {
-        console.error(error);
+        // console.error(error);
         toast({
           type: 'error',
           title: 'Preview Error',
@@ -164,7 +164,7 @@ export class Profile extends React.Component {
         return 'success';
       })
       .catch(error => {
-        console.error(error);
+        // console.error(error);
         toast({
           type: 'error',
           title: 'Publish Error',

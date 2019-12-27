@@ -2,6 +2,7 @@ import React from "react";
 import { Form, Button, Icon, Segment, Confirm } from "semantic-ui-react";
 import { snakeCase, startCase } from "lodash";
 import axios from "axios";
+import { toast } from 'react-semantic-toasts';
 
 import { getCookie } from "formula_one";
 
@@ -154,7 +155,7 @@ export default function genericFormMaker(info) {
             });
           })
           .catch(error => {
-            console.error(error);
+            // console.error(error);
             if (error.response.status == "400") {
               this.handleErrors(error.response.data);
             } else {
@@ -187,7 +188,15 @@ export default function genericFormMaker(info) {
             if (error.response.status == "400") {
               this.handleErrors(error.response.data);
             } else {
+
                 handleHide(componentName);
+                toast({
+                  type: 'error',
+                  title: 'Preview Error',
+                  icon: 'upload',
+                  description: <p>Some error has occurred. Try adding the information again</p>,
+                  time: 2000
+                });
             }
           });
       }
