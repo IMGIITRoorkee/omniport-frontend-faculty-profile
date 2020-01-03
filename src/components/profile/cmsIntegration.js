@@ -36,7 +36,7 @@ class CMSIntegration extends React.PureComponent {
     })
       .then(response => {
         const data = response.data;
-        const url = `${urlCms()}${data.url}`;
+        const url = data.url;
         const description = (
           <p>
             Click on this{' '}
@@ -93,7 +93,7 @@ class CMSIntegration extends React.PureComponent {
     })
       .then(response => {
         let data = response.data;
-        const url = `${urlIITRMain()}${data.url}`
+        const url = data.url;
         const description = (
           <p>
             Your page will be published at{' '}
