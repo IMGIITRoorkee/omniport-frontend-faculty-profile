@@ -5,3 +5,7 @@ export function urlMainApp() {
 export function urlCmsIntegration() {
   return `${urlMainApp()}cms/`;
 }
+
+export function urlWebSocketServer() {
+  return `ws://localhost:60025/ws/faculty_profile/cms/`;
+}

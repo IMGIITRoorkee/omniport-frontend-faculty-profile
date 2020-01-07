@@ -5,7 +5,7 @@ import { Icon, Segment, Button } from 'semantic-ui-react';
 import { toast } from 'react-semantic-toasts';
 
 import { jsonHeaders } from '../../constants/formPostRequestHeaders'
-import { urlCmsIntegration, urlIITRMain, urlCms } from '../../urls';
+import { urlCmsIntegration, urlWebSocketServer } from '../../urls';
 
 import style from '../../styles.css';
 
@@ -20,10 +20,22 @@ class CMSIntegration extends React.PureComponent {
         publish: false
       }
     }
+    this.streamSocket = new WebSocket(urlWebSocketServer());
+  }
+  componentDidMount() {
+    this.streamSocket.onmessage = (e) => {
+      const data = JSON.parse(e.data)
+      this.setState({
+        loading: {
+          ...this.state.loading,
+          publish: !(data.published === 'published'),
+        }
+      })
+    }
   }
   onPreview = () => {
     this.setState({
-      loading:{
+      loading: {
         ... this.state.loading,
         preview: true
       }
@@ -80,7 +92,7 @@ class CMSIntegration extends React.PureComponent {
 
   onPublish = () => {
     this.setState({
-      loading:{
+      loading: {
         ... this.state.loading,
         publish: true
       }
@@ -120,6 +132,12 @@ class CMSIntegration extends React.PureComponent {
             Try previewing your page after some time!
           </p>
         )
+        this.setState({
+          loading:{
+            ... this.state.loading,
+            publish: false
+          }
+        });
         toast({
           type: 'error',
           title: 'Publish Error',
@@ -129,21 +147,13 @@ class CMSIntegration extends React.PureComponent {
         });
         return 'error';
       })
-      .finally(code =>{
-        this.setState({
-          loading:{
-            ... this.state.loading,
-            publish: false
-          }
-        });
-      });
   }
 
   render() {
     const { theme } = this.props;
     const previewLoad = this.state.loading.preview;
     const publishLoad = this.state.loading.publish;
-    return (   
+    return (
       <div>
         <BrowserView>
           <Segment
