@@ -96,10 +96,10 @@ class CMSIntegration extends React.PureComponent {
         const url = data.url;
         const description = (
           <p>
-            Your page will be published at{' '}
+            Your page will be published at this{' '}
             <a href={url} target="_blank" styleName="style.toastLink">
-              { url }
-            </a>
+              link
+            </a>.
             <br/>
             Wait some time for content to update.
           </p>
