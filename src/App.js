@@ -70,10 +70,10 @@ class App extends Component {
     const app = (
       <div styleName="style.wrapper">
         <AppHeader
-          appName="Student Profile"
+          appName="faculty_profile"
           appLogo={false}
-          appLink={`http://${window.location.host}`}
           userDropdown
+          mode="app"
         />
         <AppMain>
           <div style={{ flexGrow: "1", backgroundColor: "rgb(245, 245, 245)" }}>
