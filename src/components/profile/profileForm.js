@@ -107,6 +107,7 @@ export class ProfileForm extends React.Component {
     request.append("handle", data.handle);
     request.append("theme", data.theme);
     request.append("description", data.description);
+    request.append("personalWebsite", data.personalWebsite);
 
     if (resumeLink != null && resume != null) {
       request.append("resume", this.state.resume);
@@ -332,6 +333,16 @@ export class ProfileForm extends React.Component {
                   <input />
                 </Form.Input>
               </Form.Field>
+              <Form.Field>
+                <Form.Input
+                  label="Personal Website"
+                  onChange={handleChange}
+                  value={data.personalWebsite}
+                  name="personalWebsite"
+                  placeholder="Add personal website's url"
+                >
+                </Form.Input>
+              </Form.Field>
               <Form.Field required styleName="style.themeField">
                 <label>Theme</label>
                 <Dropdown
@@ -345,6 +356,7 @@ export class ProfileForm extends React.Component {
               </Form.Field>
               <Form.Field>
                 <Form.TextArea
+                  required
                   label="Description"
                   onChange={handleChange}
                   value={data.description}
