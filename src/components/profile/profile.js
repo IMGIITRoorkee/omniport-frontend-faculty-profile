@@ -100,7 +100,6 @@ export class Profile extends React.Component {
   };  
 
   render() {
-    const desc = this.state.data.description;
     let { theme, changeTheme } = this.props;
     theme = "blue";
     const {handleHide, handleUpdate} = this;
@@ -140,7 +139,8 @@ export class Profile extends React.Component {
                 {data.handle ? "@" : null}
                 {data.handle}
               </Card.Meta>
-              <Card.Description textAlign="center"> {desc}</Card.Description>
+              <Card.Description textAlign="center">{data.description}</Card.Description>
+              <Card.Description textAlign="center"> <a target="_blank" href={data.personalWebsite}>{data.personalWebsite}</a> </Card.Description>
             </div>
             <Dimmer active={this.state.active} page>
               <ProfileForm
