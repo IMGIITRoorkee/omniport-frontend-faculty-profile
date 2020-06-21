@@ -57,6 +57,7 @@ export const initial = {
       scholarsName:"",
       endDate: 1,
       priority:1,
+      description: "",
       visibility: true,
     },
     links: []
@@ -157,6 +158,7 @@ export const initial = {
       endDate: "",
       category: "sem",
       role: "o",
+      description: "",
       visibility: true
     },
     links: []

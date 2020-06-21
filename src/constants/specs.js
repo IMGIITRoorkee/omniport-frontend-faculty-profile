@@ -410,7 +410,20 @@ export const specs = {
           key: "NameOfOtherSupervisors",
           placeholder: "Enter the names of the other supervisors",
           label: "Other supervisors",
-          required: true
+          required: false
+        },
+        user_props: ["handleChange"]
+      },
+      {
+        group: false,
+        name: "description",
+        type: "text_area_field",
+        const_props: {
+          name: "description",
+          key: "Description",
+          placeholder: "Description",
+          label: "Description",
+          required: false
         },
         user_props: ["handleChange"]
       },
@@ -1086,6 +1099,19 @@ export const specs = {
           label: "Role",
           options: roleOptions,
           required: true
+        },
+        user_props: ["handleChange"]
+      },
+      {
+        group: false,
+        name: "description",
+        type: "text_area_field",
+        const_props: {
+          name: "description",
+          key: "Description",
+          placeholder: "Description",
+          label: "Description",
+          required: false
         },
         user_props: ["handleChange"]
       },

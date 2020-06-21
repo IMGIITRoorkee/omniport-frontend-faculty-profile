@@ -18,9 +18,9 @@ export const Membership = props => {
             <List.Item>
               <List.Content>
                 <div>
-                  {item.position} in {item.organisation} <br/>
-                <div styleName="style.gray">{duration}</div> <br/>
-                <div styleName="style.gray">{item.description}</div>
+                  {item.position} in {item.organisation}
+                  <div styleName="style.gray">{duration}</div>
+                  {item.description === "" ? null : (<div styleName="style.description">{item.description}</div>)}
                 </div>
               </List.Content>
             </List.Item>
