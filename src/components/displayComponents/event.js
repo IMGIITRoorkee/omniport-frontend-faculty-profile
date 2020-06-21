@@ -22,13 +22,14 @@ export const Event = props => {
             <List.Item>
               <List.Content>
                 <div>
-                  {props.item.name} in {props.item.place} <br/>
+                  {props.item.name} in {props.item.place}
                   {props.item.category ? <div styleName="style.gray">( {category} )</div> : null}
-                  {item.sponsor ? <p styleName="style.gray">
+                  {item.sponsor ? <div styleName="style.gray">
                     Sponsored by {props.item.sponsor}
-                  </p>: null}
-                <div styleName="style.gray">{duration}</div>
-                <div styleName="style.gray">Role: {role}</div>
+                  </div>: null}
+                  <div styleName="style.gray">{duration}</div>
+                  <div styleName="style.gray">Role: {role}</div>
+                  {props.item.description === "" ? null : <div styleName="style.description">{props.item.description}</div>}
                 </div>
               </List.Content>
             </List.Item>
