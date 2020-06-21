@@ -198,3 +198,8 @@
   color: #336600;
   text-decoration: underline;
 }
+
+.description {
+  margin-top: 1em;
+  color: gray;
+}
