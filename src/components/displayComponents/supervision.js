@@ -22,11 +22,10 @@ const Supervision = props => {
                             {item.topic + " "} {"( " + supervisionOptionsMap[item.category] + " )"}
                             <div styleName="style.gray">{duration}</div>
                             <div styleName="style.gray">{item.scholarsName}</div>
-                            {item.nameOfOtherSupervisors === "" ? null : (<div styleName="style.gray">Other supervisors: {item.nameOfOtherSupervisors}</div>)}
-                            {item.description === "" ? null : (<div styleName="style.description">{item.description}</div>)}
+                            {item.nameOfOtherSupervisors && <div styleName="style.gray">Other supervisors: {item.nameOfOtherSupervisors}</div>}
+                            {item.description && <div styleName="style.description">{item.description}</div>}
                         </div>
                     </List.Content>
-
                 </List.Item>
             <div>
           <EditIcon

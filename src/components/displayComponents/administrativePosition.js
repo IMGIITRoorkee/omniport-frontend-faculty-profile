@@ -24,7 +24,7 @@ export const AdministrativePosition = props => {
                   {item.position} in {item.organisation}
                   <div styleName="style.gray">{duration}</div>
                   <div styleName="style.gray">Scope: {scope}</div>
-                  {item.description === "" ? null : (<div styleName="style.description">{item.description}</div>)}
+                  {item.description && <div styleName="style.description">{item.description}</div>}
                 </div>
               </List.Content>
             </List.Item>

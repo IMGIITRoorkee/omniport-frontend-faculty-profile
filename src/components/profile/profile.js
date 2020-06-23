@@ -140,7 +140,11 @@ export class Profile extends React.Component {
                 {data.handle}
               </Card.Meta>
               <Card.Description textAlign="center">{data.description}</Card.Description>
-              <Card.Description textAlign="center"> <a target="_blank" href={data.personalWebsite}>{data.personalWebsite}</a> </Card.Description>
+              <Card.Description textAlign="center">
+                <a target="_blank" href={data.personalWebsite} rel="noopener noreferrer">
+                  {data.personalWebsite}
+                </a>
+              </Card.Description>
             </div>
             <Dimmer active={this.state.active} page>
               <ProfileForm
