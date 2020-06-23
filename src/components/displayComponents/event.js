@@ -23,13 +23,19 @@ export const Event = props => {
               <List.Content>
                 <div>
                   {props.item.name} in {props.item.place}
-                  {props.item.category ? <div styleName="style.gray">( {category} )</div> : null}
-                  {item.sponsor ? <div styleName="style.gray">
-                    Sponsored by {props.item.sponsor}
-                  </div>: null}
+                  {props.item.category && <div styleName="style.gray">( {category} )</div>}
+                  {props.item.sponsor && (
+                    <div styleName="style.gray">
+                      Sponsored by {props.item.sponsor}
+                    </div>
+                  )}
                   <div styleName="style.gray">{duration}</div>
                   <div styleName="style.gray">Role: {role}</div>
-                  {props.item.description === "" ? null : <div styleName="style.description">{props.item.description}</div>}
+                  {props.item.description && (
+                    <div styleName="style.description">
+                      {props.item.description}
+                    </div>
+                  )}
                 </div>
               </List.Content>
             </List.Item>
