@@ -77,6 +77,8 @@ export const initial = {
     data: {
       scholarName: "",
       institution: "",
+      interest: "",
+      homePage: "",
       priority: 1,
       visibility: true,
     },

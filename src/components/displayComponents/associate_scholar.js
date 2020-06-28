@@ -12,10 +12,24 @@ const AssociateScholar = props => {
         <List.Item>
           <List.Content>
             <div>
-              {item.scholarName} 
-              <p styleName="style.gray">
-                {item.institution}
-              </p>
+              {item.scholarName}
+              <div styleName="style.gray">Institution: {item.institution}</div>
+              {item.interest && (
+                <div styleName="style.gray">Interest: {item.interest}</div>
+              )}
+              {item.homePage && (
+                <div styleName="style.gray">
+                  Home page:{' '}
+                  <a
+                    target="_blank"
+                    href={item.homePage}
+                    rel="noopener noreferrer"
+                    styleName="style.gray"
+                  >
+                    {item.homePage}
+                  </a>
+                </div>
+              )}
             </div>
           </List.Content>
         </List.Item>
