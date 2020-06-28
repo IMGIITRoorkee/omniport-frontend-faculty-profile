@@ -589,6 +589,32 @@ export const specs = {
       },
       {
         group: false,
+        name: "interest",
+        type: "input_field",
+        const_props: {
+          name: "interest",
+          key: "Interest",
+          placeholder: "Interest",
+          label: "Interest",
+          required: false,
+        },
+        user_props: ["handleChange"]
+      },
+      {
+        group: false,
+        name: "homePage",
+        type: "input_field",
+        const_props: {
+          name: "homePage",
+          key: "HomePage",
+          placeholder: "Home page",
+          label: "Home page",
+          required: false,
+        },
+        user_props: ["handleChange"]
+      },
+      {
+        group: false,
         name: "visibility",
         type: "boolean_field",
         const_props: {
