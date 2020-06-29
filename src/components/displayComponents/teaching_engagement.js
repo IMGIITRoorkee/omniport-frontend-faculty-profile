@@ -5,6 +5,7 @@ import { EditIcon } from "../editIcon";
 import style from "../../styles.css";
 
 const TeachingEngagement = props => {
+  const { item } = props;
   return (
     <Segment>
       <div styleName="style.flex-box">
@@ -13,14 +14,31 @@ const TeachingEngagement = props => {
             <List.Item>
               <List.Content>
                 <div>
-                  {props.item.courseTitle} ( {props.item.courseCode} ) <br />
-                  <p styleName="style.gray">
-                    Class: {props.item.className} <br/>
-                  </p>
-                  <div styleName="style.gray">Number of Students: {props.item.studentCount}</div>
-                  {props.item.lectureHours ? <div styleName="style.gray">Lecture Hours: {props.item.lectureHours}</div> : null}
-                  {props.item.practicalHours ? <div styleName="style.gray">Practical Hours: {props.item.practicalHours}</div> : null}
-                  {props.item.tutorialHours ? <div styleName="style.gray">Tutorial Hours: {props.item.tutorialHours}</div> : null}
+                  {item.courseTitle} ( {item.courseCode} )
+                  <div styleName="style.gray">
+                    {item.semester === "s" ? "Spring" : "Autumn"} Semester
+                  </div>
+                  <div styleName="style.description">
+                    Class: {item.className}
+                  </div>
+                  <div styleName="style.gray">
+                    Number of Students: {item.studentCount}
+                  </div>
+                  {item.lectureHours && (
+                    <div styleName="style.gray">
+                      Lecture Hours: {item.lectureHours}
+                    </div>
+                  )}
+                  {item.practicalHours && (
+                    <div styleName="style.gray">
+                      Practical Hours: {item.practicalHours}
+                    </div>
+                  )}
+                  {item.tutorialHours && (
+                    <div styleName="style.gray">
+                      Tutorial Hours: {item.tutorialHours}
+                    </div>
+                  )}
                 </div>
               </List.Content>
             </List.Item>
