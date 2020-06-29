@@ -10,7 +10,8 @@ export default function ChoiceField(props) {
     handleChange,
     required,
     label,
-    autoFocus
+    autoFocus,
+    defaultValue
   } = props;
   return (
     <Form.Field key={name} required={required}>
@@ -23,6 +24,7 @@ export default function ChoiceField(props) {
         placeholder={placeholder}
         selection
         value={value}
+        defaultValue={defaultValue}
       />
     </Form.Field>
   );

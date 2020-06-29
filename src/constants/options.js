@@ -50,7 +50,10 @@ export const graduationOptions = [
     { text: "Postdoctorate", key: "POSTDOCTORATE", value: "pdo" }
   ];
 
-
+export const semesterOptions = [
+    { text: "Spring", key: "SPRING", value: "s" },
+    { text: "Autumn", key: "AUTUMN", value: "a" }
+];
 
 let list = {};
 for (let index in graduationOptions) {

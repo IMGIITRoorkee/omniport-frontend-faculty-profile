@@ -1,4 +1,12 @@
-import {projectOptions, roleOptions, scopeOptions, supervisionOptions, graduationOptions, categoryOptions} from "./options";
+import {
+  projectOptions,
+  roleOptions,
+  scopeOptions,
+  supervisionOptions,
+  graduationOptions,
+  categoryOptions,
+  semesterOptions,
+} from "./options";
 
 export const specs = {
   interest: {
@@ -166,6 +174,21 @@ export const specs = {
             user_props: ["handleChange"]
           }
         ]
+      },
+      {
+        group: false,
+        name: "semester",
+        type: "choice_field",
+        const_props: {
+          name: "semester",
+          key: "Semester",
+          placeholder: "Semester",
+          label: "Semester",
+          options: semesterOptions,
+          defaultValue: "s",
+          required: true
+        },
+        user_props: ["handleChange"]
       },
       {
         group: false,
