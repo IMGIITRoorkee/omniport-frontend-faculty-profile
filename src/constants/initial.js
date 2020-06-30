@@ -194,5 +194,15 @@ export const initial = {
       visibility: true
     },
     links: []
+  },
+  miscellaneous: {
+    update: false,
+    data: {
+      heading: "",
+      description: "",
+      priority: 1,
+      visibility: true,
+    },
+    links: []
   }
 };

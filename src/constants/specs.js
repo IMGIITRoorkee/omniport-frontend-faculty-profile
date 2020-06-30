@@ -1470,5 +1470,54 @@ export const specs = {
     ],
     url: "paper",
     name: "Paper"
+  },
+  miscellaneous: {
+    icon: "pencil",
+    draggable: true,
+    sortBy: "priority",
+    ascending: true,
+    plural: "Miscellaneous",
+    fields: [
+      {
+        group: false,
+        name: "heading",
+        type: "input_field",
+        const_props: {
+          name: "heading",
+          key: "Heading",
+          placeholder: "Heading",
+          label: "Heading",
+          required: true
+        },
+        user_props: ["handleChange"]
+      },
+      {
+        group: false,
+        name: "description",
+        type: "text_area_field",
+        const_props: {
+          name: "description",
+          key: "Description",
+          placeholder: "Description",
+          label: "Description",
+          required: false
+        },
+        user_props: ["handleChange"]
+      },
+      {
+        group: false,
+        name: "visibility",
+        type: "boolean_field",
+        const_props: {
+          name: "visibility",
+          key: "Visibility",
+          label: "Visible to others",
+          required: false
+        },
+        user_props: ["handleChange"]
+      }
+    ],
+    url: "miscellaneous",
+    name: "Miscellaneous"
   }
 };

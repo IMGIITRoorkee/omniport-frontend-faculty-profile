@@ -13,4 +13,5 @@ export const components = [
   "event",
   "book",
   "paper",
+  "miscellaneous"
 ];
