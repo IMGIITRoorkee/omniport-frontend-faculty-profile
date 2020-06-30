@@ -6,6 +6,7 @@ import {
   graduationOptions,
   categoryOptions,
   semesterOptions,
+  collaborationOptions
 } from "./options";
 
 export const specs = {
@@ -558,6 +559,20 @@ export const specs = {
           placeholder: "Organisation",
           label: "Organisation",
           required: true,
+        },
+        user_props: ["handleChange"]
+      },
+      {
+        group: false,
+        name: "level",
+        type: "choice_field",
+        const_props: {
+          name: "level",
+          key: "Level",
+          placeholder: "Level",
+          label: "Level",
+          options: collaborationOptions,
+          required: false,
         },
         user_props: ["handleChange"]
       },

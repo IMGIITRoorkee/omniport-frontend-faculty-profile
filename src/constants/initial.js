@@ -26,6 +26,7 @@ export const initial = {
     data: {
       courseTitle: "",
       courseCode: "",
+      semester: "",
       className: "",
       studentCount: "",
       lectureHours: "",
@@ -67,6 +68,7 @@ export const initial = {
     data: {
       topic: "",
       organisation: "",
+      level: "",
       priority: 1,
       visibility: true,
     },

@@ -55,6 +55,14 @@ export const semesterOptions = [
     { text: "Autumn", key: "AUTUMN", value: "a" }
 ];
 
+export const collaborationOptions = [
+    { text: "Undergraduate", key: "UNDERGRADUATE", value: "ug" },
+    { text: "Postgraduate", key: "POSTGRADUATE", value: "pg" },
+    { text: "PhD", key: "DOCTORATE", value: "phd" },
+    { text: "Research Project", key: "RESEARCH_PROJECT", value: "rp" },
+    { text: "Other", key: "OTHER", value: "oth" }
+];
+
 let list = {};
 for (let index in graduationOptions) {
 list[graduationOptions[index]["value"]] = graduationOptions[index]["text"];
