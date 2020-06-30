@@ -25,6 +25,7 @@ export default function ChoiceField(props) {
         selection
         value={value}
         defaultValue={defaultValue}
+        clearable
       />
     </Form.Field>
   );
