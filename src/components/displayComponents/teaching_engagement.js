@@ -1,11 +1,14 @@
 import React from "react";
 import { List, Segment } from "semantic-ui-react";
 import { EditIcon } from "../editIcon";
+import { semesterOptions, reduceValueToText } from "../../constants/options";
 
 import style from "../../styles.css";
 
 const TeachingEngagement = props => {
   const { item } = props;
+  let semester = item.semester;
+  semester = semesterOptions.reduce(reduceValueToText, semester);
   return (
     <Segment>
       <div styleName="style.flex-box">
@@ -16,7 +19,7 @@ const TeachingEngagement = props => {
                 <div>
                   {item.courseTitle} ( {item.courseCode} )
                   <div styleName="style.gray">
-                    {item.semester === "s" ? "Spring" : "Autumn"} Semester
+                    {semester} Semester
                   </div>
                   <div styleName="style.description">
                     Class: {item.className}
