@@ -1,22 +1,26 @@
 import React from "react";
 import { List, Segment } from "semantic-ui-react";
 import { EditIcon } from "../editIcon";
-import { graduationOptionsMap } from "../../constants/graduationOptions";
+import {
+  collaborationOptions,
+  reduceValueToText
+} from  "../../constants/options";
 
 import style from "../../styles.css";
 
 const Collaboration = props => {
   const {item, rearrange, data, componentName} = props;
+  let level = item.level;
+  level = collaborationOptions.reduce(reduceValueToText, level);
   return (
     <Segment>
       <div styleName="style.flex-box">
         <List.Item>
           <List.Content>
             <div>
-              {item.organisation} 
-              <p styleName="style.gray">
-                {"on " + item.topic }
-              </p>
+              {item.topic}
+              <div styleName="style.gray">with {item.organisation}</div>
+              { level && <div styleName="style.gray">Level: {level}</div> }
             </div>
           </List.Content>
         </List.Item>
