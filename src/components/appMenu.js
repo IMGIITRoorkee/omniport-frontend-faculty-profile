@@ -12,7 +12,7 @@ export class AppMenu extends Component {
   render() {
     const { activeItem } = this.state;
     const { theme } = this.props;
-    const menu = (
+    return (
       <div styleName="style.appMenu">
         <BrowserView>
           <Menu size="small" fluid icon="labeled" stackable widths={8}>
@@ -92,6 +92,5 @@ export class AppMenu extends Component {
         </BrowserView>
       </div>
     );
-    return <div> {menu} </div>;
   }
 }
