@@ -232,7 +232,7 @@ export default function genericFormMaker(info) {
       const { theme } = this.props.appDetails;
       let formElements = makeForm(info);
       return (
-        <Segment basic>
+        <Segment basic styleName="style.formMinWidth">
           <Segment attached="top" styleName="style.headingBox">
             <h3 styleName="style.heading">{name}</h3>
             <Icon

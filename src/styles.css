@@ -22,7 +22,9 @@
   max-height: 80vh;
 }
 
-
+.formMinWidth {
+  min-width: 475px;
+}
 .headingBox {
   display: flex;
   justify-content: space-between;
