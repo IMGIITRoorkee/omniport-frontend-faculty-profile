@@ -12,8 +12,7 @@ const Miscellaneous = (props) => {
         <List.Item>
           <List.Content>
             <div>
-              {item.heading} 
-              <div styleName="style.gray">{item.description}</div>
+              {item.heading}
             </div>
           </List.Content>
         </List.Item>
