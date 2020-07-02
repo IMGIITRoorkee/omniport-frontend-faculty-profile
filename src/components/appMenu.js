@@ -4,11 +4,38 @@ import { Menu } from "semantic-ui-react";
 
 import style from "./../styles.css";
 
+// Navbar items must be an ordered collection
+const NAV_ITEMS = [
+  { id: "interest", label: "Interests" },
+  { id: "education", label: "Education" },
+  { id: "honour", label: "Achievements" },
+  { id: "teachingEngagement", label: "Engagements" },
+  { id: "collaboration", label: "Associations" },
+  { id: "project", label: "Projects" },
+  { id: "event", label: "Events" },
+  { id: "book", label: "Publications" }
+]
+
 export class AppMenu extends Component {
   constructor(props) {
     super(props);
     this.state = { activeItem: "Interests" };
   }
+
+  componentDidMount() {
+    window.addEventListener("scroll", this.updateNavbar);
+    this.updateNavbar();
+  }
+
+  updateNavbar = () => {
+    for (const item of NAV_ITEMS) {
+      const element = document.getElementById(item.id);
+      if (window.scrollY >= element.offsetTop + 30) {
+        this.setState({ activeItem: item.label });
+      }
+    }
+  }
+
   render() {
     const { activeItem } = this.state;
     const { theme } = this.props;
@@ -16,78 +43,17 @@ export class AppMenu extends Component {
       <div styleName="style.appMenu">
         <BrowserView>
           <Menu size="small" fluid icon="labeled" stackable widths={8}>
-            <Menu.Item
-              color={theme}
-              name="Interests"
-              active={activeItem === "Interests"}
-              onClick={() => {
-                this.props.onMenuClick("interest");
-                this.setState({ activeItem: "Interests" });
-              }}
-            />
-            <Menu.Item
-              color={theme}
-              name="Education"
-              active={activeItem === "Education"}
-              onClick={() => {
-                this.props.onMenuClick("education");
-                this.setState({ activeItem: "Education" });
-              }}
-            />
-            <Menu.Item
-              color={theme}
-              name="Achievements"
-              active={activeItem === "Achievements"}
-              onClick={() => {
-                this.props.onMenuClick("honour");
-                this.setState({ activeItem: "Achievements" });
-              }}
-            />
-            <Menu.Item
-              color={theme}
-              name="Engagements"
-              active={activeItem === "TeachingEngagements"}
-              onClick={() => {
-                this.props.onMenuClick("teachingEngagement");
-                this.setState({ activeItem: "TeachingEngagements" });
-              }}
-            />
-            <Menu.Item
-              color={theme}
-              name="Associations"
-              active={activeItem === "Associations"}
-              onClick={() => {
-                this.props.onMenuClick("collaboration");
-                this.setState({ activeItem: "Associations" });
-              }}
-            />
-            <Menu.Item
-              color={theme}
-              name="Projects"
-              active={activeItem === "Projects"}
-              onClick={() => {
-                this.props.onMenuClick("project");
-                this.setState({ activeItem: "Projects" });
-              }}
-            />
-            <Menu.Item
-              color={theme}
-              name="Events"
-              active={activeItem === "Events"}
-              onClick={() => {
-                this.props.onMenuClick("event");
-                this.setState({ activeItem: "Events" });
-              }}
-            />
-            <Menu.Item
-              color={theme}
-              name="Publications"
-              active={activeItem === "Publications"}
-              onClick={() => {
-                this.props.onMenuClick("book");
-                this.setState({ activeItem: "Publications" });
-              }}
-            />
+            {NAV_ITEMS.map(item => (
+              <Menu.Item
+                color={theme}
+                name={item.label}
+                active={activeItem === item.label}
+                onClick={() => {
+                  this.props.onMenuClick(item.id);
+                  this.setState({ activeItem: item.label });
+                }}
+              />
+            ))}
           </Menu>
         </BrowserView>
       </div>
