@@ -270,7 +270,7 @@ export const specs = {
       }
     ],
     url: "teaching_engagement",
-    name: "TeachingEngagement"
+    name: "Teaching Engagement"
   },
 
   honour: {
@@ -974,7 +974,7 @@ export const specs = {
       },
     ],
     url: "administrative_position",
-    name: "Administrative position"
+    name: "Administrative Position"
   },
   membership:  {
     icon: "group",
