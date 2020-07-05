@@ -44,7 +44,7 @@ export const Project = props => {
             <List>
               <List.Item>
                 <List.Content>
-                  {props.item.topic} in {props.item.field}
+                  {props.item.topic} {props.item.field && `in ${props.item.field}`}
                   <div styleName="style.gray">
                     {duration}
                   </div>
