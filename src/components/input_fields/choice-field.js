@@ -11,7 +11,6 @@ export default function ChoiceField(props) {
     required,
     label,
     autoFocus,
-    defaultValue,
     disabled
   } = props;
   return (
@@ -25,7 +24,6 @@ export default function ChoiceField(props) {
         placeholder={placeholder}
         selection
         value={value}
-        defaultValue={defaultValue}
         clearable
         disabled={disabled}
       />

@@ -187,7 +187,6 @@ export const specs = {
           placeholder: "Semester",
           label: "Semester",
           options: semesterOptions,
-          defaultValue: "s",
           required: true
         },
         user_props: ["handleChange"]
