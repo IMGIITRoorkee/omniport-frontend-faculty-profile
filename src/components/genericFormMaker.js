@@ -62,9 +62,9 @@ export default function genericFormMaker(info) {
           }
           // combine user_props and const_props
 
-          props = {...props, ...field.const_props}; // combine the constant properties and the form properties
-          let elementClass = FieldMap[field.type];
-          let element = elementClass(props);
+          props = {...props, ...field.const_props, componentName: name}; // combine the constant properties and the form properties
+          let ElementClass = FieldMap[field.type];
+          let element = <ElementClass {...props} />;
           formElements.push(element);
         } else {
           let field_arr = field.fields;
@@ -82,9 +82,9 @@ export default function genericFormMaker(info) {
             } else {
               props["link"] = this.state.data[field.name + "Link"];
             }
-            props = { ...props, ...field.const_props}; // combine form properties and constant properties
-            let elementClass = FieldMap[field.type];
-            let element = elementClass(props);
+            props = { ...props, ...field.const_props, componentName: name}; // combine form properties and constant properties
+            let ElementClass = FieldMap[field.type];
+            let element = <ElementClass {...props} />;
             groupElements.push(element);
           }
           // push the fields to form a single group field element
@@ -203,15 +203,6 @@ export default function genericFormMaker(info) {
     };
 
     handleChange = (name, value) => {
-      //To handle dependent dropdown in Supervision section
-      if(name === "category"){
-        if(value === "pro"){
-          info.fields[1].fields[1].const_props.disabled = true;
-        }
-        if(value === "doc"){
-          info.fields[1].fields[1].const_props.disabled = false;
-        }
-      }
       if (this.state.data.hasOwnProperty(name) || true) {
         this.setState({ data: { ...this.state.data, [name]: value } });
       }
