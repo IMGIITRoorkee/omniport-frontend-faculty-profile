@@ -11,7 +11,8 @@ export default function ChoiceField(props) {
     required,
     label,
     autoFocus,
-    defaultValue
+    defaultValue,
+    disabled
   } = props;
   return (
     <Form.Field key={name} required={required}>
@@ -26,6 +27,7 @@ export default function ChoiceField(props) {
         value={value}
         defaultValue={defaultValue}
         clearable
+        disabled={disabled}
       />
     </Form.Field>
   );

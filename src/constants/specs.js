@@ -6,7 +6,8 @@ import {
   graduationOptions,
   categoryOptions,
   semesterOptions,
-  collaborationOptions
+  collaborationOptions,
+  phdOptions
 } from "./options";
 
 export const specs = {
@@ -356,18 +357,37 @@ export const specs = {
         user_props: ["handleChange"]
       },
       {
-        group: false,
-        name: "category",
-        type: "choice_field",
-        const_props: {
-          name: "category",
-          key: "Category",
-          placeholder: "Category",
-          label: "Category",
-          options: supervisionOptions,
-          required: true,
-        },
-        user_props: ["handleChange"]
+        group: true,
+        widths: "equal",
+        fields: [
+          {
+            name: "category",
+            type: "choice_field",
+            const_props: {
+              name: "category",
+              key: "Category",
+              placeholder: "Category",
+              label: "Category",
+              options: supervisionOptions,
+              required: true
+            },
+            user_props: ["handleChange"]
+          },
+          {
+            name: "phdType",
+            type: "choice_field",
+            const_props: {
+              name: "phdType",
+              key: "PhdType",
+              placeholder: "Phd Type",
+              label: "PhD type",
+              options: phdOptions,
+              disabled: false,
+              required: false
+            },
+            user_props: ["handleChange"]
+          }
+        ]
       },
       {
         group: true,
