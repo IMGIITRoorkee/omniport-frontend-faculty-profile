@@ -5,6 +5,7 @@ import TextField from "./../components/input_fields/text-field";
 import TextAreaField from "./../components/input_fields/textarea-field";
 import YearField from "./../components/input_fields/year-field";
 import FileField from "./../components/input_fields/fileField";
+import RichTextField from "./../components/input_fields/rich-text-field";
 
 const graduationOptions = [
   { text: "MATRICULATE", key: "MATRICULATE", value: "mat" },
@@ -24,5 +25,6 @@ export const FieldMap = {
   text_area_field: TextAreaField,
   year_field: YearField,
   file_field: FileField,
-  choice_field: ChoiceField
+  choice_field: ChoiceField,
+  rich_text_field: RichTextField,
 };

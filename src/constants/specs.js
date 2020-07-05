@@ -1494,11 +1494,10 @@ export const specs = {
       {
         group: false,
         name: "description",
-        type: "text_area_field",
+        type: "rich_text_field",
         const_props: {
           name: "description",
           key: "Description",
-          placeholder: "Description",
           label: "Description",
           required: false
         },
