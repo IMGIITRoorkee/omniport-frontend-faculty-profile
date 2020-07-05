@@ -40,6 +40,11 @@ export const supervisionOptions = [
     { text: "Doctorate", key: "DOCTORATE", value: "doc" }
 ];
 
+export const phdOptions = [
+    { text: "Fulltime", key: "FULLTIME", value: "f" },
+    { text: "Parttime", key: "PARTTIME", value: "p" }
+];
+
 export const graduationOptions = [
     { text: "Matriculate", key: "MATRICULATE", value: "mat" },
     { text: "Intermediate", key: "INTERMEDIATE", value: "int" },

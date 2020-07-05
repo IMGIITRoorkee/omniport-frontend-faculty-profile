@@ -53,6 +53,7 @@ export const initial = {
     data: {
       topic: "",
       category: "",
+      phdType: "",
       startDate: "",
       nameOfOtherSupervisors:"",
       scholarsName:"",

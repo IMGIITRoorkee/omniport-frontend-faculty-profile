@@ -203,6 +203,15 @@ export default function genericFormMaker(info) {
     };
 
     handleChange = (name, value) => {
+      //To handle dependent dropdown in Supervision section
+      if(name === "category"){
+        if(value === "pro"){
+          info.fields[1].fields[1].const_props.disabled = true;
+        }
+        if(value === "doc"){
+          info.fields[1].fields[1].const_props.disabled = false;
+        }
+      }
       if (this.state.data.hasOwnProperty(name) || true) {
         this.setState({ data: { ...this.state.data, [name]: value } });
       }
