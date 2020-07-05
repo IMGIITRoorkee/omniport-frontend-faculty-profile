@@ -22,7 +22,7 @@ export const Event = props => {
             <List.Item>
               <List.Content>
                 <div>
-                  {props.item.name} in {props.item.place}
+                  {props.item.name} {props.item.place && `in ${props.item.place}`}
                   {props.item.category && <div styleName="style.gray">( {category} )</div>}
                   {props.item.sponsor && (
                     <div styleName="style.gray">
