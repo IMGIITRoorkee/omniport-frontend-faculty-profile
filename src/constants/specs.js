@@ -374,15 +374,15 @@ export const specs = {
           },
           {
             name: "phdType",
-            type: "choice_field",
+            type: "dependent_choice_field",
             const_props: {
               name: "phdType",
               key: "PhdType",
               placeholder: "Phd Type",
               label: "PhD type",
               options: phdOptions,
-              disabled: false,
-              required: false
+              dependencies: [{field: "category", option: "doc"}],
+              required: false,
             },
             user_props: ["handleChange"]
           }
