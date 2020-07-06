@@ -146,7 +146,11 @@ export class Profile extends React.Component {
                 </a>
               </Card.Description>
             </div>
-            <Dimmer active={this.state.active} page>
+            <Dimmer
+              active={this.state.active}
+              page
+              onClickOutside={handleHide}
+            >
               <ProfileForm
                 theme={theme}
                 data={data}

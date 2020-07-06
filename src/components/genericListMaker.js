@@ -103,7 +103,13 @@ const genericListMaker = (componentName, FormComponent) => {
                   </span>
                 ) : null} */}
               </div>
-              <Dimmer active={active} page>
+              <Dimmer
+                active={active}
+                page
+                onClickOutside={() => {
+                  handleHide(componentName);
+                }}
+              >
                 <FormComponent
                   appDetails={this.props.appDetails}
                   update={update}
@@ -117,7 +123,13 @@ const genericListMaker = (componentName, FormComponent) => {
               </Dimmer>
               {/* rearrange word not clear */}
               {localSpecs.draggable ? (
-                <Dimmer active={rearrange} page>
+                <Dimmer
+                  active={rearrange}
+                  page
+                  onClickOutside={() => {
+                    handleDragHide(componentName);
+                  }}
+                >
                   <DragAndDropBox
                     appDetails={this.props.appDetails}
                     data={data}
