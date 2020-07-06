@@ -13,7 +13,8 @@ const NAV_ITEMS = [
   { id: "collaboration", label: "Associations" },
   { id: "project", label: "Projects" },
   { id: "event", label: "Events" },
-  { id: "book", label: "Publications" }
+  { id: "book", label: "Publications" },
+  { id: "miscellaneous", label: "Miscellaneous" },
 ]
 
 export class AppMenu extends Component {
@@ -42,7 +43,7 @@ export class AppMenu extends Component {
     return (
       <div styleName="style.appMenu">
         <BrowserView>
-          <Menu size="small" fluid icon="labeled" stackable widths={8}>
+          <Menu size="small" fluid icon="labeled" stackable widths={9}>
             {NAV_ITEMS.map(item => (
               <Menu.Item
                 color={theme}
