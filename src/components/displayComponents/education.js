@@ -13,11 +13,13 @@ const Education = props => {
           {/*  */}
           <List.Content>
             <div>
-              {props.item.degree} - {graduationOptionsMap[props.item.graduation]} in {props.item.field}
+              {props.item.degree} -{" "}
+              {graduationOptionsMap[props.item.graduation]}{" "}
+              {props.item.field && `in ${props.item.field}`}
               <p styleName="style.gray">
                 {props.item.institute + ", "}
                 {props.item.year}
-                </p>
+              </p>
             </div>
           </List.Content>
         </List.Item>

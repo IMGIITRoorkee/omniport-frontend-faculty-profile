@@ -191,7 +191,7 @@ export const specs = {
           key: "StudentCount",
           placeholder: "Number of students in class",
           label: "Number of Students",
-          required: true,
+          required: false,
         },
         user_props: ["handleChange"]
       },
@@ -256,7 +256,7 @@ export const specs = {
           key: "Award",
           placeholder: "Name of the award",
           label: "Award",
-          required: false
+          required: true
         },
         user_props: ["handleChange"]
       },
@@ -396,7 +396,7 @@ export const specs = {
           key: "ScholarsName",
           placeholder: "Enter the scholars you supervised",
           label: "Name of the scholar(s)",
-          required: true
+          required: false
         },
         user_props: ["handleChange"]
       },
@@ -627,7 +627,7 @@ export const specs = {
           key: "Field",
           placeholder: "Field of project",
           label: "Field",
-          required: false
+          required: true
         },
         user_props: ["handleChange"]
       },
@@ -787,7 +787,7 @@ export const specs = {
           key: "Organisation",
           placeholder: "",
           label: "Organisation",
-          required: false
+          required: true
         },
         user_props: ["handleChange"]
       },
@@ -895,7 +895,7 @@ export const specs = {
           key: "Organisation",
           placeholder: "",
           label: "Organisation",
-          required: false
+          required: true
         },
         user_props: ["handleChange"]
       },
@@ -1117,19 +1117,6 @@ export const specs = {
       },
       {
         group: false,
-        name: "contribution",
-        type: "input_field",
-        const_props: {
-          name: "contribution",
-          key: "contribution",
-          placeholder: "Your contribution",
-          label: "Contribution",
-          required: true
-        },
-        user_props: ["handleChange"]
-      },
-      {
-        group: false,
         name: "publisher",
         type: "input_field",
         const_props: {
@@ -1193,7 +1180,7 @@ export const specs = {
           key: "isbnCode",
           placeholder: "ISBN Code",
           label: "IsbnCode",
-          required: true
+          required: false
         },
         user_props: ["handleChange"]
       },
@@ -1206,7 +1193,7 @@ export const specs = {
           key: "editors",
           placeholder: "",
           label: "Editors",
-          required: true
+          required: false
         },
         user_props: ["handleChange"]
       },
@@ -1284,6 +1271,19 @@ export const specs = {
           placeholder: "Year",
           label: "Year",
           required: true
+        },
+        user_props: ["handleChange"]
+      },
+      {
+        group: false,
+        name: "contribution",
+        type: "input_field",
+        const_props: {
+          name: "contribution",
+          key: "contribution",
+          placeholder: "Your contribution",
+          label: "Contribution",
+          required: false
         },
         user_props: ["handleChange"]
       },

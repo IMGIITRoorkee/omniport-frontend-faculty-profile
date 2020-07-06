@@ -24,9 +24,11 @@ const TeachingEngagement = props => {
                   <div styleName="style.description">
                     Class: {item.className}
                   </div>
-                  <div styleName="style.gray">
-                    Number of Students: {item.studentCount}
-                  </div>
+                  {item.studentCount && (
+                    <div styleName="style.gray">
+                      Number of Students: {item.studentCount}
+                    </div>
+                  )}
                   {item.lectureHours && (
                     <div styleName="style.gray">
                       Lecture Hours: {item.lectureHours}
