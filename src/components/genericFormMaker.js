@@ -9,6 +9,7 @@ import { getCookie } from "formula_one";
 import { ErrorTransition } from "./transition";
 import { FieldMap } from "./../constants/input";
 import { headers } from "../constants/formPostRequestHeaders";
+import commonSpecs from "../constants/commonSpecs";
 import style from "../styles.css";
 
 export default function genericFormMaker(info) {
@@ -44,6 +45,11 @@ export default function genericFormMaker(info) {
     };
     makeForm = () => {
       let formElements = [];
+      let set = new Set(fields);
+      for (let index in commonSpecs) {
+        set.add(commonSpecs[index]);
+      }
+      fields = [...set];
       for (let index in fields) {
         let field = fields[index];
         if (field.group == false) {
