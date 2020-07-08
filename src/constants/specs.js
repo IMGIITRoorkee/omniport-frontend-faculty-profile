@@ -9,6 +9,7 @@ import {
   collaborationOptions,
   phdOptions
 } from "./options";
+import { priority } from "./commonSpecs";
 
 export const specs = {
   interest: {
@@ -31,18 +32,7 @@ export const specs = {
         },
         user_props: ["handleChange"]
       },
-      {
-        group: false,
-        name: "visibility",
-        type: "boolean_field",
-        const_props: {
-          name: "visibility",
-          key: "Visibility",
-          label: "Visible to others",
-          required: false
-        },
-        user_props: ["handleChange"]
-      }
+      priority,
     ],
     url: "interest",
     name: "Interest"
@@ -124,18 +114,6 @@ export const specs = {
         },
         user_props: ["handleChange"]
       },
-      {
-        group: false,
-        name: "visibility",
-        type: "boolean_field",
-        const_props: {
-          name: "visibility",
-          key: "Visibility",
-          label: "Visible to others",
-          required: false
-        },
-        user_props: ["handleChange"]
-      }
     ],
     url: "education",
     name: "Education"
@@ -256,18 +234,7 @@ export const specs = {
         },
         user_props: ["handleChange"]
       },
-      {
-        group: false,
-        name: "visibility",
-        type: "boolean_field",
-        const_props: {
-          name: "visibility",
-          key: "Visibility",
-          label: "Visible to others",
-          required: false
-        },
-        user_props: ["handleChange"]
-      }
+      priority,
     ],
     url: "teaching_engagement",
     name: "Teaching Engagement"
@@ -319,18 +286,7 @@ export const specs = {
         },
         user_props: ["handleChange"]
       },
-      {
-        group: false,
-        name: "visibility",
-        type: "boolean_field",
-        const_props: {
-          name: "visibility",
-          key: "Visibility",
-          label: "Visible to others",
-          required: false
-        },
-        user_props: ["handleChange"]
-      }
+      priority,
     ],
     url: "honour",
     name: "Honour"
@@ -470,18 +426,7 @@ export const specs = {
         },
         user_props: ["handleChange"]
       },
-      {
-        group: false,
-        name: "visibility",
-        type: "boolean_field",
-        const_props: {
-          name: "visibility",
-          key: "Visibility",
-          label: "Visible to others",
-          required: false
-        },
-        user_props: ["handleChange"]
-      }
+      priority,
     ],
     url: "supervision",
     name: "Supervision"
@@ -532,18 +477,7 @@ export const specs = {
         },
         user_props: ["handleChange"]
       },
-      {
-        group: false,
-        name: "visibility",
-        type: "boolean_field",
-        const_props: {
-          name: "visibility",
-          key: "Visibility",
-          label: "Visible to others",
-          required: false
-        },
-        user_props: ["handleChange"]
-      }
+      priority,
     ],
     url: "visit",
     name: "Visit"
@@ -595,18 +529,7 @@ export const specs = {
         },
         user_props: ["handleChange"]
       },
-      {
-        group: false,
-        name: "visibility",
-        type: "boolean_field",
-        const_props: {
-          name: "visibility",
-          key: "Visibility",
-          label: "Visible to others",
-          required: false
-        },
-        user_props: ["handleChange"]
-      }
+      priority,
     ],
     url: "collaboration",
     name: "Collaboration"
@@ -670,18 +593,7 @@ export const specs = {
         },
         user_props: ["handleChange"]
       },
-      {
-        group: false,
-        name: "visibility",
-        type: "boolean_field",
-        const_props: {
-          name: "visibility",
-          key: "Visibility",
-          label: "Visible to others",
-          required: false
-        },
-        user_props: ["handleChange"]
-      }
+      priority,
     ],
     url: "associate_scholar",
     name: "Associate Scholar"
@@ -841,18 +753,7 @@ export const specs = {
         },
         user_props: ["handleFile", "handleDelete"]
       },
-      {
-        group: false,
-        name: "visibility",
-        type: "boolean_field",
-        const_props: {
-          name: "visibility",
-          key: "Visibility",
-          label: "Visible to others",
-          required: false
-        },
-        user_props: ["handleChange"]
-      },
+      priority,
     ],
     url: "project",
     name: "Project"
@@ -960,18 +861,7 @@ export const specs = {
         },
         user_props: ["handleChange"]
       },
-      {
-        group: false,
-        name: "visibility",
-        type: "boolean_field",
-        const_props: {
-          name: "visibility",
-          key: "Visibility",
-          label: "Visible to others",
-          required: false
-        },
-        user_props: ["handleChange"]
-      },
+      priority,
     ],
     url: "administrative_position",
     name: "Administrative Position"
@@ -1065,18 +955,7 @@ export const specs = {
         },
         user_props: ["handleChange"]
       },
-      {
-        group: false,
-        name: "visibility",
-        type: "boolean_field",
-        const_props: {
-          name: "visibility",
-          key: "Visibility",
-          label: "Visible to others",
-          required: false
-        },
-        user_props: ["handleChange"]
-      },
+      priority,
     ],
     url: "membership",
     name: "Membership"
@@ -1198,18 +1077,7 @@ export const specs = {
         },
         user_props: ["handleChange"]
       },
-      {
-        group: false,
-        name: "visibility",
-        type: "boolean_field",
-        const_props: {
-          name: "visibility",
-          key: "Visibility",
-          label: "Visible to others",
-          required: false
-        },
-        user_props: ["handleChange"]
-      },
+      priority,
     ],
     url: "event",
     name: "Event"
@@ -1342,20 +1210,8 @@ export const specs = {
         },
         user_props: ["handleChange"]
       },
-      {
-        group: false,
-        name: "visibility",
-        type: "boolean_field",
-        const_props: {
-          name: "visibility",
-          key: "Visibility",
-          label: "Visible to others",
-          required: false
-        },
-        user_props: ["handleChange"]
-      }
+      priority,
     ],
-
     url: "book",
     name: "Book"
   },
@@ -1474,18 +1330,7 @@ export const specs = {
         },
         user_props: ["handleFile", "handleDelete"]
       },
-      {
-        group: false,
-        name: "visibility",
-        type: "boolean_field",
-        const_props: {
-          name: "visibility",
-          key: "Visibility",
-          label: "Visible to others",
-          required: false
-        },
-        user_props: ["handleChange"]
-      }
+      priority,
     ],
     url: "paper",
     name: "Paper"
@@ -1522,18 +1367,7 @@ export const specs = {
         },
         user_props: ["handleChange"]
       },
-      {
-        group: false,
-        name: "visibility",
-        type: "boolean_field",
-        const_props: {
-          name: "visibility",
-          key: "Visibility",
-          label: "Visible to others",
-          required: false
-        },
-        user_props: ["handleChange"]
-      }
+      priority,
     ],
     url: "miscellaneous",
     name: "Miscellaneous"
