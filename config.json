@@ -1,7 +1,7 @@
 {
   "nomenclature":{
 		"name": "faculty_profile",
-		"verboseName": "Faculty profile"
+		"verboseName": "FacApp"
 	},
   "baseUrl": "/faculty_profile",
   "source": "faculty_profile/src/index"
