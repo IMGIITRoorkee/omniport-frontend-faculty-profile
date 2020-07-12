@@ -24,22 +24,22 @@ const TeachingEngagement = props => {
                   <div styleName="style.description">
                     Class: {item.className}
                   </div>
-                  {item.studentCount && (
+                  {item.studentCount !== null && (
                     <div styleName="style.gray">
                       Number of Students: {item.studentCount}
                     </div>
                   )}
-                  {item.lectureHours && (
+                  {item.lectureHours !== null && (
                     <div styleName="style.gray">
                       Lecture Hours: {item.lectureHours}
                     </div>
                   )}
-                  {item.practicalHours && (
+                  {item.practicalHours !== null && (
                     <div styleName="style.gray">
                       Practical Hours: {item.practicalHours}
                     </div>
                   )}
-                  {item.tutorialHours && (
+                  {item.tutorialHours !== null && (
                     <div styleName="style.gray">
                       Tutorial Hours: {item.tutorialHours}
                     </div>
