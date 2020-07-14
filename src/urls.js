@@ -5,3 +5,7 @@ export function urlMainApp() {
 export function urlCmsIntegration() {
   return `${urlMainApp()}cms/`;
 }
+
+export function urlWriteAppendMultipleObjects() {
+  return `${urlMainApp()}csv/`;
+}
