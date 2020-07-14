@@ -6,7 +6,7 @@ import axios from "axios";
 // local imports
 import { specs } from "./../constants/specs";
 import { DragAndDropBox } from "./dragAndDropBox";
-import { CsvIntegration } from "./csvIntegration";
+import { WriteAppendMultipleObjects } from "./csvIntegration";
 //check transition working or not
 import { ComponentTransition } from "./transition";
 import { displayContainers } from "../constants/displayContainers";
@@ -100,7 +100,7 @@ const genericListMaker = (componentName, FormComponent) => {
                     />
                   ) : null}
                   {editMode &&
-                  localSpecs.csv == true ? (
+                  localSpecs.csvVisibility == true ? (
                     <Icon
                       color="grey"
                       name="file excel"
@@ -141,9 +141,9 @@ const genericListMaker = (componentName, FormComponent) => {
                   />
                 </Dimmer>
               ) : null}
-              {localSpecs.csv ? (
+              {localSpecs.csvVisibility ? (
                 <Dimmer active={csv} page>
-                  <CsvIntegration
+                  <WriteAppendMultipleObjects
                     appDetails={this.props.appDetails}
                     componentName={componentName}
                     handleCsvHide={handleCsvHide}

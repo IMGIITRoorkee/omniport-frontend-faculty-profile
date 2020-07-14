@@ -3,9 +3,11 @@ import { Segment, Button, Icon } from "semantic-ui-react";
 import { upperFirst } from "lodash"
 import axios from "axios";
 
+import { urlWriteAppendMultipleObjects } from "../urls";
+
 import style from "../styles.css";
 
-export class CsvIntegration extends Component {
+export class WriteAppendMultipleObjects extends Component {
   constructor(props) {
     super(props);
     this.state = {
@@ -27,13 +29,23 @@ export class CsvIntegration extends Component {
   };
 
   downloadCsv = () => {
-  	axios({
-  		method: "get",
-  		url: "/api/faculty_profile/csv",
-  		params: {
-        	model: this.state.modelName
-      	}
-  	});
+    axios({
+      method: "get",
+      url: urlWriteAppendMultipleObjects(),
+      params: {
+        model: this.state.modelName
+      },
+    }).then((response) => {
+      const url = window.URL.createObjectURL(new Blob([response.data]));
+      const link = document.createElement("a");
+      const name = response.headers["content-disposition"].split(
+        "filename="
+      )[1];
+      link.href = url;
+      link.setAttribute("download", name);
+      document.body.appendChild(link);
+      link.click();
+    });
   }
 
   render() {
@@ -50,9 +62,12 @@ export class CsvIntegration extends Component {
           />
         </Segment>
         <Segment style={{ width: "30vw" }} attached>
-        	<Button color={appDetails.theme} onClick={this.downloadCsv}>
+        	<Button
+            color={appDetails.theme}
+            onClick={this.downloadCsv}
+          >
             	Download Sample
-          	</Button>
+          </Button>
         </Segment>
       </Segment>
     );
