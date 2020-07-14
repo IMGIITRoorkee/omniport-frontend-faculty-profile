@@ -146,3 +146,17 @@ export function handleUpdate(data, componentName) {
     rearrange: false
   };
 }
+
+export function handleCsvShow(componentName) {
+  return {
+    type: "HANDLE_CSV_SHOW" + "--" + componentName,
+    csv: true
+  };
+}
+
+export function handleCsvHide(componentName) {
+  return {
+    type: "HANDLE_CSV_HIDE" + "--" + componentName,
+    csv: false
+  };
+}

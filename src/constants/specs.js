@@ -15,6 +15,7 @@ export const specs = {
   interest: {
     icon: "game",
     draggable: true,
+    csv: false,
     sortBy: "priority",
     ascending: true,
     plural: "Interests",
@@ -40,6 +41,7 @@ export const specs = {
   education: {
     icon: "book",
     draggable: false,
+    csv: false,
     sortBy: "year",
     ascending: true,
     plural: "Education",
@@ -121,6 +123,7 @@ export const specs = {
   teachingEngagement:{
     icon: "book",
     draggable: true,
+    csv: false,
     sortBy: "priority",
     ascending: true,
     plural: "Teaching Engagements",
@@ -243,6 +246,7 @@ export const specs = {
   honour: {
     icon: "star",
     draggable: true,
+    csv: false,
     sortBy: "priority",
     ascending: true,
     plural: "Honours",
@@ -294,6 +298,7 @@ export const specs = {
   supervision: {
     icon: "star",
     draggable: true,
+    csv: true,
     sortBy: "priority",
     ascending: true,
     plural: "Supervision",
@@ -434,6 +439,7 @@ export const specs = {
   visit: {
     icon: "plane",
     draggable: true,
+    csv: false,
     sortBy: "priority",
     ascending: true,
     plural: "Visits",
@@ -485,6 +491,7 @@ export const specs = {
   collaboration: {
     icon: "handshake",
     draggable: true,
+    csv: false,
     sortBy: "priority",
     ascending: true,
     plural: "Collaborations",
@@ -537,6 +544,7 @@ export const specs = {
   associateScholar: {
     icon: "student",
     draggable: true,
+    csv: false,
     sortBy: "priority",
     ascending: true,
     plural: "Associate scholars",
@@ -601,6 +609,7 @@ export const specs = {
   project: {
     icon: "folder",
     draggable: true,
+    csv: false,
     sortBy: "priority",
     ascending: true,
     plural: "Projects",
@@ -761,6 +770,7 @@ export const specs = {
   administrativePosition:  {
     icon: "building",
     draggable: true,
+    csv: false,
     sortBy: "priority",
     ascending: true,
     plural: "Administrative Positions",
@@ -869,6 +879,7 @@ export const specs = {
   membership:  {
     icon: "group",
     draggable: true,
+    csv: false,
     sortBy: "priority",
     ascending: true,
     plural: "Memberships",
@@ -963,6 +974,7 @@ export const specs = {
   event: {
     icon: "handshake",
     draggable: true,
+    csv: false,
     sortBy: "priority",
     ascending: true,
     plural: "Events",
@@ -1085,6 +1097,7 @@ export const specs = {
   book: {
     icon: "book",
     draggable: true,
+    csv: true,
     sortBy: "priority",
     ascending: true,
     plural: "Books",
@@ -1218,6 +1231,7 @@ export const specs = {
   paper: {
     icon: "paperclip",
     draggable: true,
+    csv: true,
     sortBy: "priority",
     ascending: false,
     plural: "Papers",
@@ -1351,6 +1365,7 @@ export const specs = {
   miscellaneous: {
     icon: "pencil",
     draggable: true,
+    csv: false,
     sortBy: "priority",
     ascending: true,
     plural: "Miscellaneous",
