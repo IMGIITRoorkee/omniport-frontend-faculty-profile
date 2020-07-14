@@ -576,7 +576,7 @@ export const specs = {
           key: "Interest",
           placeholder: "Interest",
           label: "Interest",
-          required: false,
+          required: true,
         },
         user_props: ["handleChange"]
       },
