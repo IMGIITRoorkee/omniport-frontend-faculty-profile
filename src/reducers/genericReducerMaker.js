@@ -55,6 +55,12 @@ export const genericReducerMaker = componentName => {
       case "HANDLE_UPDATE" + "--" + componentName:
         return { ...state, data: action.newData, rearrange: action.rearrange };
 
+      case "HANDLE_CSV_SHOW" + "--" + componentName:
+        return { ...state, csv: action.csv };
+
+      case "HANDLE_CSV_HIDE" + "--" + componentName:
+        return { ...state, csv: action.csv };
+
       default:
         return state;
     }

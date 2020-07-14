@@ -6,6 +6,7 @@ import axios from "axios";
 // local imports
 import { specs } from "./../constants/specs";
 import { DragAndDropBox } from "./dragAndDropBox";
+import { CsvIntegration } from "./csvIntegration";
 //check transition working or not
 import { ComponentTransition } from "./transition";
 import { displayContainers } from "../constants/displayContainers";
@@ -35,7 +36,8 @@ const genericListMaker = (componentName, FormComponent) => {
         formData,
         rearrange,
         loading,
-        isEmpty
+        isEmpty,
+        csv
       } = this.props.state;
       const { theme, handle, editMode } = this.props.appDetails;
       const {
@@ -45,7 +47,9 @@ const genericListMaker = (componentName, FormComponent) => {
         handleShow,
         handleDragShow,
         handleDragHide,
-        handleUpdate
+        handleUpdate,
+        handleCsvShow,
+        handleCsvHide
       } = this.props;
 
       let children;
@@ -95,6 +99,15 @@ const genericListMaker = (componentName, FormComponent) => {
                       }}
                     />
                   ) : null}
+                  {editMode &&
+                  localSpecs.csv == true ? (
+                    <Icon
+                      color="grey"
+                      name="file excel"
+                      circular
+                      onClick={() => handleCsvShow(componentName)}
+                    />
+                  ) : null}
                 </div>
                 {/* What is this?? */}
                 {/* {handle != undefined ? (
@@ -125,6 +138,15 @@ const genericListMaker = (componentName, FormComponent) => {
                     element={displayContainers[componentName]}
                     handleUpdate={handleUpdate}
                     handleDragHide={handleDragHide}
+                  />
+                </Dimmer>
+              ) : null}
+              {localSpecs.csv ? (
+                <Dimmer active={csv} page>
+                  <CsvIntegration
+                    appDetails={this.props.appDetails}
+                    componentName={componentName}
+                    handleCsvHide={handleCsvHide}
                   />
                 </Dimmer>
               ) : null}
