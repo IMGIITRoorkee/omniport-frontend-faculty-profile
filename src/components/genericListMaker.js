@@ -147,6 +147,7 @@ const genericListMaker = (componentName, FormComponent) => {
                     appDetails={this.props.appDetails}
                     componentName={componentName}
                     handleCsvHide={handleCsvHide}
+                    handleUpdate={handleUpdate}
                   />
                 </Dimmer>
               ) : null}
