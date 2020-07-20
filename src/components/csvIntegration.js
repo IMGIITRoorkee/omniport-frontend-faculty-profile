@@ -16,9 +16,9 @@ export class WriteAppendMultipleObjects extends Component {
     this.state = {
       modelName: upperFirst(props.componentName),
       data: {
-        "csv": null,
-        "csvLink": null,
-        "uploadType": "",
+        "file": null,
+        "fileLink": null,
+        "uploadType": "append",
       },
       errors: [],
     };
@@ -101,9 +101,9 @@ export class WriteAppendMultipleObjects extends Component {
   };
 
   handleSubmit = () => {
-    if (this.state.data.uploadType == "" || this.state.data.csvLink == null) {
+    if (this.state.data.fileLink == null) {
       this.setState({ 
-        errors: ["Cannot submit unitl both Type and File are selected."]
+        errors: ["You need to upload file before submitting."]
       })
     } else {
         let data = new FormData();
@@ -148,15 +148,6 @@ export class WriteAppendMultipleObjects extends Component {
               <label>Type: </label>
               <Form.Field>
                 <Radio
-                  label="New"
-                  name="uploadType"
-                  value="new"
-                  checked={this.state.data.uploadType == "new"}
-                  onChange={this.handleChange}
-                />
-              </Form.Field>
-              <Form.Field>
-                <Radio
                   label="Append"
                   name="uploadType"
                   value="append"
@@ -164,14 +155,23 @@ export class WriteAppendMultipleObjects extends Component {
                   onChange={this.handleChange}
                 />
               </Form.Field>
+              <Form.Field>
+                <Radio
+                  label="New"
+                  name="uploadType"
+                  value="new"
+                  checked={this.state.data.uploadType == "new"}
+                  onChange={this.handleChange}
+                />
+              </Form.Field>
             </Form.Group>
             <FileComponent
-                name="csv"
-                key="csv"
+                name="file"
+                key="file"
                 handleFile={this.handleFile}
                 handleDelete={this.handleDelete}
                 label="File"
-                link={this.state.data.csvLink}
+                link={this.state.data.fileLink}
               />
           </Form>
         </Segment>
