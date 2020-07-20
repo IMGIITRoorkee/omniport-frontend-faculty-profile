@@ -1302,19 +1302,6 @@ export const specs = {
         user_props: ["handleChange"]
       },
       {
-        group: false,
-        name: "contribution",
-        type: "input_field",
-        const_props: {
-          name: "contribution",
-          key: "contribution",
-          placeholder: "Your contribution",
-          label: "Contribution",
-          required: false
-        },
-        user_props: ["handleChange"]
-      },
-      {
         group: true,
         widths: "equal",
         fields: [
