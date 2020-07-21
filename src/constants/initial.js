@@ -2,7 +2,12 @@
 export const initial = {
   interest: {
     update: false,
-    data: { topic: "", id: -1, visibility: true },
+    data: {
+      topic: "",
+      id: -1,
+      priority: 1,
+      visibility: true
+    },
     links: []
   },
   education: {
@@ -148,6 +153,7 @@ export const initial = {
       isFullDate: true,
       image: "",
       imageLink: "",
+      priority: 1,
       visibility: true
     },
     links: ["image"]
@@ -164,6 +170,7 @@ export const initial = {
       category: "sem",
       role: "o",
       description: "",
+      priority: 1,
       visibility: true
     },
     links: []
@@ -178,6 +185,7 @@ export const initial = {
       startDate: "",
       endDate: "",
       isFullDate: true,
+      priority: 1,
       visibility: true
     },
     links: []
@@ -192,6 +200,7 @@ export const initial = {
       startDate: "",
       endDate: "",
       isFullDate: true,
+      priority: 1,
       visibility: true
     },
     links: []
