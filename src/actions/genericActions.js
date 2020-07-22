@@ -160,3 +160,20 @@ export function handleCsvHide(componentName) {
     csv: false
   };
 }
+
+export function fetchAffordances(componentName) {
+  let url = "/api/faculty_profile/" + specs[componentName]["url"] + "/";
+  return (dispatch) => {
+    axios.options(url)
+    .then(response => {
+      dispatch({
+        type: "FETCH_AFFORDANCES" + "--" + componentName,
+        affordances: response.data.actions.POST
+      })
+    })
+    .catch(error => {
+      console.log(error);
+    })
+
+  }
+}

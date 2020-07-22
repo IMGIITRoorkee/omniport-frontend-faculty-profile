@@ -25,6 +25,7 @@ const genericListMaker = (componentName, FormComponent) => {
     componentDidMount() {
       let {editMode, handle} = this.props.appDetails;
       this.props.fetchData(componentName, editMode, handle);
+      this.props.fetchAffordances(componentName);
     }
     render() {
       //here state is globalState[componentName]
@@ -37,7 +38,8 @@ const genericListMaker = (componentName, FormComponent) => {
         rearrange,
         loading,
         isEmpty,
-        csv
+        csv,
+        affordances
       } = this.props.state;
       const { theme, handle, editMode } = this.props.appDetails;
       const {
@@ -148,6 +150,7 @@ const genericListMaker = (componentName, FormComponent) => {
                     componentName={componentName}
                     handleCsvHide={handleCsvHide}
                     handleUpdate={handleUpdate}
+                    affordances={affordances}
                   />
                 </Dimmer>
               ) : null}
