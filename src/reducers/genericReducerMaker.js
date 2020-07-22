@@ -7,7 +7,8 @@ export const genericReducerMaker = componentName => {
     loading: true,
     isEmpty: true,
     data: [],
-    formData: initial[componentName].formData
+    formData: initial[componentName].formData,
+    affordances: {}
   };
 
   const genericReducer = (state = initialState, action) => {
@@ -20,6 +21,9 @@ export const genericReducerMaker = componentName => {
           isEmpty: action.isEmpty,
           loading: action.loading
         };
+
+      case "FETCH_AFFORDANCES" + "--" + componentName:
+        return { ...state, affordances: action.affordances };
 
       case "MANAGE_DATA" + "--" + componentName:
         return {

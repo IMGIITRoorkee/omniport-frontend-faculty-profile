@@ -1,11 +1,12 @@
 import React, { Component } from "react";
-import { Segment, Button, Icon, Form, Radio } from "semantic-ui-react";
+import { Segment, Button, Icon, Form, Radio, Message } from "semantic-ui-react";
 import { upperFirst, snakeCase, startCase } from "lodash"
 import axios from "axios";
 
 import { FieldMap } from "../constants/input";
 import { ErrorTransition } from "./transition";
 import { headers } from "../constants/formPostRequestHeaders";
+import { excludeFields } from "../constants/excludeFieldsInCSV";
 import { urlWriteAppendMultipleObjects } from "../urls";
 
 import style from "../styles.css";
@@ -127,9 +128,22 @@ export class WriteAppendMultipleObjects extends Component {
       }
   }
 
+  makeInstructions = affordances => {
+    let instructions = [];
+    for(let key in affordances) {
+      if (!excludeFields.includes(key)) {
+        let type = startCase(affordances[key].type);
+        let isRequired = affordances[key].required ? "required" : "optional";
+        instructions.push(key + " (" + isRequired + ") " + " : " + type);
+      }
+    }
+    return instructions;
+  }
+
   render() {
-    const { componentName, appDetails } = this.props;
+    const { componentName, affordances, appDetails } = this.props;
     let heading = this.state.modelName;
+    let instructions = this.makeInstructions(affordances);
     let FileComponent = FieldMap['file_field']
     return (
       <Segment basic styleName="style.csvMinWidth">
@@ -143,6 +157,11 @@ export class WriteAppendMultipleObjects extends Component {
         </Segment>
         <Segment attached styleName="style.formStyle">
           <ErrorTransition errors={this.state.errors} />
+          <Message
+            info
+            header="Column headers has to satisfy below shown order and properties."
+            list={instructions}
+          />
           <Form autoComplete="off">
             <Form.Group inline>
               <label>Type: </label>

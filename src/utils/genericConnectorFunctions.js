@@ -1,5 +1,6 @@
 import {
   fetchData,
+  fetchAffordances,
   manageData,
   appendData,
   handleShow,
@@ -23,6 +24,7 @@ export const _mapStateToProps = componentName => {
 
 export const mapDispatchToProps = dispatch => ({
   fetchData: (componentName, editMode, handle) => dispatch(fetchData(componentName, editMode, handle)),
+  fetchAffordances: (componentName) => dispatch(fetchAffordances(componentName)),
   manageData: (id, data, componentName) =>
     dispatch(manageData(id, data, componentName)),
   appendData: (item, data, componentName) =>
