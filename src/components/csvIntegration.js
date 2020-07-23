@@ -1,5 +1,13 @@
 import React, { Component } from "react";
-import { Segment, Button, Icon, Form, Radio, Message } from "semantic-ui-react";
+import {
+  Segment,
+  Button,
+  Icon,
+  Form,
+  Radio,
+  Message,
+  Label
+} from "semantic-ui-react";
 import { upperFirst, snakeCase, startCase } from "lodash"
 import axios from "axios";
 
@@ -22,6 +30,7 @@ export class WriteAppendMultipleObjects extends Component {
         "uploadType": "append",
       },
       errors: [],
+      loading: false,
     };
   }
 
@@ -102,9 +111,11 @@ export class WriteAppendMultipleObjects extends Component {
   };
 
   handleSubmit = () => {
+    this.setState({ loading: true });
     if (this.state.data.fileLink == null) {
       this.setState({ 
-        errors: ["You need to upload file before submitting."]
+        errors: ["You need to upload file before submitting."],
+        loading: false
       })
     } else {
         let data = new FormData();
@@ -118,10 +129,12 @@ export class WriteAppendMultipleObjects extends Component {
             data: data,
             headers: headers
         }).then(response => {
+          this.setState({ loading: false });
           this.props.handleUpdate(response.data, this.props.componentName);
           this.props.handleCsvHide(this.props.componentName);
         }).catch(error => {
             if (error.response.status === 400) {
+              this.setState({ loading: false });
               this.handleErrors(error.response.data);
             }
         });
@@ -134,7 +147,7 @@ export class WriteAppendMultipleObjects extends Component {
       if (!excludeFields.includes(key)) {
         let type = startCase(affordances[key].type);
         let isRequired = affordances[key].required ? "required" : "optional";
-        instructions.push(key + " (" + isRequired + ") " + " : " + type);
+        instructions.push(`${key} (${isRequired}) : ${type}`);
       }
     }
     return instructions;
@@ -142,13 +155,13 @@ export class WriteAppendMultipleObjects extends Component {
 
   render() {
     const { componentName, affordances, appDetails } = this.props;
-    let heading = this.state.modelName;
+    const { modelName, data, errors, loading } = this.state;
     let instructions = this.makeInstructions(affordances);
     let FileComponent = FieldMap['file_field']
     return (
       <Segment basic styleName="style.csvMinWidth">
         <Segment attached="top" styleName="style.headingBox">
-          <h3 styleName="style.heading">Add {heading}s via File</h3>
+          <h3 styleName="style.heading">Add {modelName}s via File</h3>
           <Icon
             color="grey"
             name="delete"
@@ -156,13 +169,26 @@ export class WriteAppendMultipleObjects extends Component {
           />
         </Segment>
         <Segment attached styleName="style.formStyle">
-          <ErrorTransition errors={this.state.errors} />
+          <ErrorTransition errors={errors} />
           <Message
             info
             header="Column headers has to satisfy below shown order and properties."
             list={instructions}
           />
           <Form autoComplete="off">
+            {data.uploadType == "append"
+              ? (
+                <Message compact size="tiny">
+                  Append: Data from file will be added without changing existing items.
+                </Message>
+              )
+              : (
+                <Message compact size="tiny" color="yellow">
+                  <Icon name="warning sign" />
+                  New: All the existing items will be deleted first before adding new.
+                </Message>
+              )
+            }
             <Form.Group inline>
               <label>Type: </label>
               <Form.Field>
@@ -170,7 +196,7 @@ export class WriteAppendMultipleObjects extends Component {
                   label="Append"
                   name="uploadType"
                   value="append"
-                  checked={this.state.data.uploadType == "append"}
+                  checked={data.uploadType == "append"}
                   onChange={this.handleChange}
                 />
               </Form.Field>
@@ -179,7 +205,7 @@ export class WriteAppendMultipleObjects extends Component {
                   label="New"
                   name="uploadType"
                   value="new"
-                  checked={this.state.data.uploadType == "new"}
+                  checked={data.uploadType == "new"}
                   onChange={this.handleChange}
                 />
               </Form.Field>
@@ -190,7 +216,7 @@ export class WriteAppendMultipleObjects extends Component {
                 handleFile={this.handleFile}
                 handleDelete={this.handleDelete}
                 label="File"
-                link={this.state.data.fileLink}
+                link={data.fileLink}
               />
           </Form>
         </Segment>
@@ -209,6 +235,7 @@ export class WriteAppendMultipleObjects extends Component {
           </div>
           <div>
             <Button
+              loading={loading}
               onClick={this.handleSubmit}
               color={appDetails.theme}
               content="Submit"
