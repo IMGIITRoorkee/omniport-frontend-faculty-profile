@@ -82,6 +82,15 @@ const genericListMaker = (componentName, FormComponent) => {
                 </h3>
                 <div>
                   {editMode &&
+                  localSpecs.csvVisibility == true ? (
+                    <Icon
+                      color="grey"
+                      name="file excel"
+                      circular
+                      onClick={() => handleCsvShow(componentName)}
+                    />
+                  ) : null}
+                  {editMode &&
                   localSpecs.draggable == true &&
                   data.length > 1 ? (
                     <Icon
@@ -99,15 +108,6 @@ const genericListMaker = (componentName, FormComponent) => {
                       onClick={() => {
                         handleShow(componentName);
                       }}
-                    />
-                  ) : null}
-                  {editMode &&
-                  localSpecs.csvVisibility == true ? (
-                    <Icon
-                      color="grey"
-                      name="file excel"
-                      circular
-                      onClick={() => handleCsvShow(componentName)}
                     />
                   ) : null}
                 </div>
