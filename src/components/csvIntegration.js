@@ -14,8 +14,10 @@ import axios from "axios";
 import { FieldMap } from "../constants/input";
 import { ErrorTransition } from "./transition";
 import { headers } from "../constants/formPostRequestHeaders";
-import { excludeFields } from "../constants/excludeFieldsInCSV";
-import { urlWriteAppendMultipleObjects } from "../urls";
+import {
+  urlDownloadCSV,
+  urlWriteAppendMultipleObjects
+} from "../urls";
 
 import style from "../styles.css";
 
@@ -50,7 +52,7 @@ export class WriteAppendMultipleObjects extends Component {
   downloadCsv = () => {
     axios({
       method: "get",
-      url: urlWriteAppendMultipleObjects(),
+      url: urlDownloadCSV(),
       params: {
         model: this.state.modelName
       },
@@ -143,11 +145,9 @@ export class WriteAppendMultipleObjects extends Component {
 
   makeInstructions = affordances => {
     let instructions = [];
-    for(let key in affordances) {
-      if (!excludeFields.includes(key)) {
-        let type = startCase(affordances[key].type);
-        let isRequired = affordances[key].required ? "required" : "optional";
-        instructions.push(`${key} (${isRequired}) : ${type}`);
+    for (let index in affordances) {
+      for (let [key, value] of Object.entries(affordances[index])) {
+        instructions.push(`${key}: ${value}`)
       }
     }
     return instructions;
