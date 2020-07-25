@@ -47,6 +47,9 @@ export class WriteAppendMultipleObjects extends Component {
     if (e.keyCode === 27) {
       this.props.handleCsvHide(this.props.componentName);
     }
+    if (e.keyCode === 13) {
+      this.handleSubmit()
+    }
   };
 
   downloadCsv = () => {
@@ -114,33 +117,26 @@ export class WriteAppendMultipleObjects extends Component {
 
   handleSubmit = () => {
     this.setState({ loading: true });
-    if (this.state.data.fileLink == null) {
-      this.setState({ 
-        errors: ["You need to upload file before submitting."],
-        loading: false
-      })
-    } else {
-        let data = new FormData();
-        data.append("model", this.state.modelName)
-        for (let prop in this.state.data) {
-          data.append(snakeCase(prop), this.state.data[prop])
-        }
-        axios({
-            method: "post",
-            url: urlWriteAppendMultipleObjects(),
-            data: data,
-            headers: headers
-        }).then(response => {
+    let data = new FormData();
+    data.append("model", this.state.modelName)
+    for (let prop in this.state.data) {
+      data.append(snakeCase(prop), this.state.data[prop])
+    }
+    axios({
+        method: "post",
+        url: urlWriteAppendMultipleObjects(),
+        data: data,
+        headers: headers
+    }).then(response => {
+      this.setState({ loading: false });
+      this.props.handleUpdate(response.data, this.props.componentName);
+      this.props.handleCsvHide(this.props.componentName);
+    }).catch(error => {
+        if (error.response.status === 400) {
           this.setState({ loading: false });
-          this.props.handleUpdate(response.data, this.props.componentName);
-          this.props.handleCsvHide(this.props.componentName);
-        }).catch(error => {
-            if (error.response.status === 400) {
-              this.setState({ loading: false });
-              this.handleErrors(error.response.data);
-            }
-        });
-      }
+          this.handleErrors(error.response.data);
+        }
+    });
   }
 
   makeInstructions = affordances => {
@@ -159,7 +155,7 @@ export class WriteAppendMultipleObjects extends Component {
     let instructions = this.makeInstructions(affordances);
     let FileComponent = FieldMap['file_field']
     return (
-      <Segment basic styleName="style.csvMinWidth">
+      <Segment basic styleName="style.formMinWidth">
         <Segment attached="top" styleName="style.headingBox">
           <h3 styleName="style.heading">Add {modelName}s via File</h3>
           <Icon
@@ -172,20 +168,24 @@ export class WriteAppendMultipleObjects extends Component {
           <ErrorTransition errors={errors} />
           <Message
             info
-            header="Column headers has to satisfy below shown order and properties."
+            header={`
+              Column headers have to satisfy the below-stated constraints.`
+            }
             list={instructions}
           />
           <Form autoComplete="off">
-            {data.uploadType == "append"
+            {data.uploadType === "append"
               ? (
                 <Message compact size="tiny">
-                  Append: Data from file will be added without changing existing items.
+                  Append: Data from file will be added without{' '}
+                  changing existing items.
                 </Message>
               )
               : (
                 <Message compact size="tiny" color="yellow">
                   <Icon name="warning sign" />
-                  New: All the existing items will be deleted first before adding new.
+                  New: All the existing items will be deleted{' '}
+                  first before adding new.
                 </Message>
               )
             }
@@ -196,7 +196,7 @@ export class WriteAppendMultipleObjects extends Component {
                   label="Append"
                   name="uploadType"
                   value="append"
-                  checked={data.uploadType == "append"}
+                  checked={data.uploadType === "append"}
                   onChange={this.handleChange}
                 />
               </Form.Field>
@@ -205,7 +205,7 @@ export class WriteAppendMultipleObjects extends Component {
                   label="New"
                   name="uploadType"
                   value="new"
-                  checked={data.uploadType == "new"}
+                  checked={data.uploadType === "new"}
                   onChange={this.handleChange}
                 />
               </Form.Field>

@@ -25,9 +25,6 @@
 .formMinWidth {
   min-width: 475px;
 }
-.csvMinWidth {
-  min-width: 480px;
-}
 .headingBox {
   display: flex;
   justify-content: space-between;

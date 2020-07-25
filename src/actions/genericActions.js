@@ -1,7 +1,7 @@
 import axios from "axios";
 import { initial } from "../constants/initial";
 import { specs } from "../constants/specs";
-import { urlGetAffordances } from "../urls"
+import { urlGetAffordances } from "../urls";
 
 function receiveFetchedResults(responseData, componentName) {
   let isEmpty = (responseData.length) ? false : true; // check if the response is empty or not
