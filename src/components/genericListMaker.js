@@ -25,7 +25,9 @@ const genericListMaker = (componentName, FormComponent) => {
     componentDidMount() {
       let {editMode, handle} = this.props.appDetails;
       this.props.fetchData(componentName, editMode, handle);
-      this.props.fetchAffordances(componentName);
+      if (localSpecs.csvVisibility) {
+        this.props.fetchAffordances(componentName);
+      }
     }
     render() {
       //here state is globalState[componentName]
