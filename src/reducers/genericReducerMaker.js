@@ -8,7 +8,7 @@ export const genericReducerMaker = componentName => {
     isEmpty: true,
     data: [],
     formData: initial[componentName].formData,
-    affordances: {}
+    affordances: []
   };
 
   const genericReducer = (state = initialState, action) => {

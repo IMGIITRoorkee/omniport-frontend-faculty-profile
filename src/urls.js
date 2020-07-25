@@ -9,3 +9,11 @@ export function urlCmsIntegration() {
 export function urlWriteAppendMultipleObjects() {
   return `${urlMainApp()}csv/`;
 }
+
+export function urlDownloadCSV() {
+	return `${urlWriteAppendMultipleObjects()}download/`;
+}
+
+export function urlGetAffordances() {
+	return `${urlWriteAppendMultipleObjects()}affordances/`;
+}

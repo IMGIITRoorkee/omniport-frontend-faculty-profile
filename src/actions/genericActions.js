@@ -1,6 +1,7 @@
 import axios from "axios";
 import { initial } from "../constants/initial";
 import { specs } from "../constants/specs";
+import { urlGetAffordances } from "../urls"
 
 function receiveFetchedResults(responseData, componentName) {
   let isEmpty = (responseData.length) ? false : true; // check if the response is empty or not
@@ -162,18 +163,20 @@ export function handleCsvHide(componentName) {
 }
 
 export function fetchAffordances(componentName) {
-  let url = "/api/faculty_profile/" + specs[componentName]["url"] + "/";
   return (dispatch) => {
-    axios.options(url)
+    axios.get(urlGetAffordances(), {
+      params: {
+        model: componentName
+      }
+    })
     .then(response => {
       dispatch({
         type: "FETCH_AFFORDANCES" + "--" + componentName,
-        affordances: response.data.actions.POST
+        affordances: response.data
       })
     })
     .catch(error => {
       console.log(error);
     })
-
   }
 }
