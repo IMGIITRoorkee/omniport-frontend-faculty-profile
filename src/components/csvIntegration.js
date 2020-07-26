@@ -139,6 +139,29 @@ export class WriteAppendMultipleObjects extends Component {
     });
   }
 
+  // This is for an error which occurs in Chrome and Chrome based browsers.
+  // If the uploaded file is changed before submitting, the browser throws:
+  // net::ERR_UPLOAD_FILE_CHANGED
+  checkUploadedFile = () => {
+    if (this.state.data.fileLink !== null) {
+      let reader = new FileReader();
+      reader.readAsText(this.state.data.file);
+      reader.onload = () => {
+        this.handleSubmit();
+      }
+      reader.onerror = (error) => {
+        this.handleDelete("file");
+        this.handleErrors({
+          "File Error" : [
+            `The file has been modified. Please attach it again.`
+          ]
+        });
+      }
+    } else {
+      this.handleErrors({"Error": ["No file uploaded."]});
+    }
+  }
+
   makeInstructions = affordances => {
     let instructions = [];
     for (let index in affordances) {
@@ -236,7 +259,7 @@ export class WriteAppendMultipleObjects extends Component {
           <div>
             <Button
               loading={loading}
-              onClick={this.handleSubmit}
+              onClick={this.checkUploadedFile}
               color={appDetails.theme}
               content="Submit"
               type="submit"
