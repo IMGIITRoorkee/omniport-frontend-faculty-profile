@@ -1037,6 +1037,19 @@ export const specs = {
       },
       {
         group: false,
+        name: "isFullDate",
+        type: "boolean_field",
+        const_props: {
+          name: "isFullDate",
+          key: "IsFullDate",
+          placeholder: "",
+          label: "I remember the exact date",
+          required: false
+        },
+        user_props: ["handleChange"]
+      },
+      {
+        group: false,
         name: "sponsor",
         type: "input_field",
         const_props: {
