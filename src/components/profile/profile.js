@@ -140,7 +140,7 @@ export class Profile extends React.Component {
                 {data.handle}
               </Card.Meta>
               <Card.Description textAlign="center">{data.description}</Card.Description>
-              <Card.Description textAlign="center">
+              <Card.Description styleName="style.personalWebsite">
                 <a target="_blank" href={data.personalWebsite} rel="noopener noreferrer">
                   {data.personalWebsite}
                 </a>
