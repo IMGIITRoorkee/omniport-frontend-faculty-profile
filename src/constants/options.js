@@ -32,7 +32,6 @@ export const scopeOptions = [
     { text: "Departmental", key: "DEPARTMENTAL", value: "d" },
     { text: "Central", key: "CENTRAL", value: "c" },
     { text: "Institute", key: "INSTITUTE", value: "i" },
-    { text: "External", key: "EXTERNAL", value: "e" }
 ];
 
 export const supervisionOptions = [

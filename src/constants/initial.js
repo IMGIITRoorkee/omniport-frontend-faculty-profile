@@ -205,6 +205,21 @@ export const initial = {
     },
     links: []
   },
+  professionalBackground: {
+    update: false,
+    data: {
+      id: -1,
+      organisation: "",
+      position: "",
+      description: "",
+      startDate: "",
+      endDate: "",
+      isFullDate: true,
+      priority: 1,
+      visibility: true
+    },
+    links: []
+  },
   miscellaneous: {
     update: false,
     data: {

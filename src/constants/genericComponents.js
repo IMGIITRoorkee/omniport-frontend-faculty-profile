@@ -1,17 +1,9 @@
-export const components = [
-  "interest",
-  "education",
-  "honour",
-  "visit",
-  "teachingEngagement",
-  "administrativePosition",
-  "collaboration",
-  "associateScholar",
-  "membership",
-  "supervision",
-  "project",
-  "event",
-  "book",
-  "paper",
-  "miscellaneous"
-];
+export const components = {
+  Interest: ['interest'],
+  BioSketch: ['education', 'professionalBackground', 'administrativePosition'],
+  Research: ['project', 'paper', 'book', 'collaboration'],
+  Honour: ['honour', 'membership'],
+  TeachingEngagement: ['teachingEngagement'],
+  Student: ['supervision', 'associateScholar'],
+  Miscellaneous: ['event', 'visit', 'miscellaneous']
+}

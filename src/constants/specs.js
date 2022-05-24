@@ -876,6 +876,101 @@ export const specs = {
     url: "administrative_position",
     name: "Administrative Position"
   },
+  professionalBackground:  {
+    icon: "building",
+    draggable: true,
+    csvVisibility: false,
+    sortBy: "priority",
+    ascending: true,
+    plural: "Professional Background",
+    fields: [
+      {
+        group: false,
+        name: "position",
+        type: "input_field",
+        const_props: {
+          name: "position",
+          key: "Position",
+          placeholder: "",
+          label: "Position",
+          required: true
+        },
+        user_props: ["handleChange"]
+      },
+      {
+        group: false,
+        name: "organisation",
+        type: "input_field",
+        const_props: {
+          name: "organisation",
+          key: "Organisation",
+          placeholder: "",
+          label: "Organisation",
+          required: true
+        },
+        user_props: ["handleChange"]
+      },
+      {
+        group: true,
+        widths: "equal",
+        fields: [
+          {
+            name: "startDate",
+            type: "date_field",
+            const_props: {
+              name: "startDate",
+              key: "StartDate",
+              placeholder: "YYYY-MM-DD",
+              label: "Start date",
+              required: true
+            },
+            user_props: ["handleChange"]
+          },
+          {
+            name: "endDate",
+            type: "date_field",
+            const_props: {
+              name: "endDate",
+              key: "EndDate",
+              placeholder: "YYYY-MM-DD",
+              label: "End Date",
+              required: false
+            },
+            user_props: ["handleChange"]
+          }
+        ]
+      },
+      {
+        group: false,
+        name: "isFullDate",
+        type: "boolean_field",
+        const_props: {
+          name: "isFullDate",
+          key: "IsFullDate",
+          placeholder: "",
+          label: "I remember the exact date",
+          required: false
+        },
+        user_props: ["handleChange"]
+      },
+        {
+        group: false,
+        name: "description",
+        type: "text_area_field",
+        const_props: {
+          name: "description",
+          key: "Description",
+          placeholder: "Description",
+          label: "Description",
+          required: false
+        },
+        user_props: ["handleChange"]
+      },
+      priority,
+    ],
+    url: "professional_background",
+    name: "Professional Background"
+  },
   membership:  {
     icon: "group",
     draggable: true,
