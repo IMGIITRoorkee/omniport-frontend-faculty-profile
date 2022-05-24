@@ -15,6 +15,8 @@ import { AppPlaceholder } from "./components/placeholders/appPlaceholder";
 import { creators } from "./constants/creators";
 import { fetchAppDetails } from "./actions/appDetails";
 import { fetchData } from "./actions/genericActions";
+import { dividerheading } from "./constants/dividerheading";
+import { SectionDivider } from "./components/divider";
 
 import style from "./styles.css";
 let count = 0;
@@ -48,22 +50,28 @@ class App extends Component {
     const { handle, theme, loading } = this.props.state.appDetails;
 
     let genericComponentList = [];
-    for (let index in components) {
-      let componentName = components[index];
+
+    Object.entries(components).forEach(entry => {
+      let headingName = entry[0]
+      genericComponentList.push(<SectionDivider heading={dividerheading[headingName]}/>)
+      let component = entry[1]
+      for (let index in component) {
+        let componentName = component[index]
         genericComponentList.push(
           <div id={componentName}>
             {React.createElement(listContainers[componentName], {})}
           </div>
         );
-    }
+      }
+    });
 
     const profile = (
       <Profile handle={handle} theme={theme} changeTheme={this.changeTheme} />
     );
 
     const allComponents = (
-      <div>
-        {genericComponentList}
+    <div>
+      {genericComponentList}
       </div>
     );
 

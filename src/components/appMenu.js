@@ -7,13 +7,11 @@ import style from "./../styles.css";
 // Navbar items must be an ordered collection
 const NAV_ITEMS = [
   { id: "interest", label: "Interests" },
-  { id: "education", label: "Education" },
-  { id: "honour", label: "Achievements" },
-  { id: "teachingEngagement", label: "Engagements" },
-  { id: "collaboration", label: "Associations" },
-  { id: "project", label: "Projects" },
-  { id: "event", label: "Events" },
-  { id: "book", label: "Publications" },
+  { id: "biosketch", label: "Biosketch" },
+  { id: "research", label: "Research" },
+  { id: "honours and awards", label: "Honours and Awards" },
+  { id: "teaching engagements", label: "Engagements" },
+  { id: "students", label: "Students" },
   { id: "miscellaneous", label: "Miscellaneous" },
 ]
 
@@ -43,7 +41,7 @@ export class AppMenu extends Component {
     return (
       <div styleName="style.appMenu">
         <BrowserView>
-          <Menu size="small" fluid icon="labeled" stackable widths={9}>
+          <Menu size="small" fluid icon="labeled" stackable widths={7}>
             {NAV_ITEMS.map(item => (
               <Menu.Item
                 color={theme}

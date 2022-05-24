@@ -18,6 +18,7 @@ import Event from "../components/displayComponents/event";
 import Membership from "../components/displayComponents/membership";
 import AdministrativePosition from "../components/displayComponents/administrativePosition";
 import Miscellaneous from "../components/displayComponents/miscellaneous";
+import ProfessionalBackground from "../components/displayComponents/professionalBackground";
 
 //can use eval() method to reduce the code
 export const displayComponents = {
@@ -35,6 +36,7 @@ export const displayComponents = {
   paper: Paper,
   teachingEngagement: TeachingEngagement,
   administrativePosition: AdministrativePosition,
+  professionalBackground: ProfessionalBackground,
   miscellaneous: Miscellaneous,
 };
 
@@ -47,14 +49,16 @@ const mapDispatchToProps = dispatch => {
 };
 
 const list = {};
-for (let index in components) {
-  let componentName = components[index];
-  // this was giving blank screen for sometime
-  // let displayComponent = import(`../components/displayComponents/${componentName}`);
-  let displayComponent = displayComponents[componentName];
-  list[componentName] = connect(
-    mapStateToProps,
-    mapDispatchToProps
-  )(displayComponent);
-}
+
+for (let key in components) { 
+  let component = components[key]
+  for (let index in component) {
+    let componentName = component[index];
+    let displayComponent = displayComponents[componentName];
+    list[componentName] = connect(
+      mapStateToProps,
+      mapDispatchToProps
+    )(displayComponent);
+  }
+} 
 export const displayContainers = list;
