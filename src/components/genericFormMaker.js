@@ -47,7 +47,7 @@ export default function genericFormMaker(info) {
       let formElements = [];
       let set = new Set(fields);
       for (let index in commonSpecs) {
-        set.add(commonSpecs[index]);
+        !info.onlyedit && set.add(commonSpecs[index]);
       }
       fields = [...set];
       for (let index in fields) {
@@ -265,14 +265,16 @@ export default function genericFormMaker(info) {
 
           {update ? (
             <Segment attached="bottom" styleName="style.headingBox">
+             {!info.onlyedit && 
               <div
-                styleName="style.delete"
-                onClick={() => {
-                  this.setState({ open: true });
-                }}
-              >
-                Delete
-              </div>
+                  styleName="style.delete"
+                  onClick={() => {
+                    this.setState({ open: true });
+                  }}
+                >
+                  Delete
+                </div>
+               }
               <Button onClick={() => handleSubmit("put")} color={theme}>
                 Save Changes
               </Button>

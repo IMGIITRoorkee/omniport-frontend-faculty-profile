@@ -229,5 +229,13 @@ export const initial = {
       visibility: true,
     },
     links: []
-  }
+  },
+  address: {
+    update: false,
+    data: {
+      address: "",
+      id: -1,
+    },
+    links: []
+  },
 };
