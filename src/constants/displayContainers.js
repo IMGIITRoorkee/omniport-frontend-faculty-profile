@@ -19,6 +19,7 @@ import Membership from "../components/displayComponents/membership";
 import AdministrativePosition from "../components/displayComponents/administrativePosition";
 import Miscellaneous from "../components/displayComponents/miscellaneous";
 import ProfessionalBackground from "../components/displayComponents/professionalBackground";
+import Address from "../components/displayComponents/address";
 
 //can use eval() method to reduce the code
 export const displayComponents = {
@@ -38,6 +39,7 @@ export const displayComponents = {
   administrativePosition: AdministrativePosition,
   professionalBackground: ProfessionalBackground,
   miscellaneous: Miscellaneous,
+  address: Address
 };
 
 const mapStateToProps = state => {

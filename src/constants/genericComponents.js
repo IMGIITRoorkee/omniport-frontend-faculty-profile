@@ -1,6 +1,6 @@
 export const components = {
   Interest: ['interest'],
-  BioSketch: ['education', 'professionalBackground', 'administrativePosition'],
+  BioSketch: ['address', 'education', 'professionalBackground', 'administrativePosition'],
   Research: ['project', 'paper', 'book', 'collaboration'],
   Honour: ['honour', 'membership'],
   TeachingEngagement: ['teachingEngagement'],

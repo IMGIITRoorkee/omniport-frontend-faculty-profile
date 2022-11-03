@@ -102,7 +102,7 @@ const genericListMaker = (componentName, FormComponent) => {
                       onClick={() => handleDragShow(componentName)}
                     />
                   ) : null}
-                  {editMode ? (
+                  {editMode && !localSpecs.onlyedit ? (
                     <Icon
                       color="grey"
                       name="add"
