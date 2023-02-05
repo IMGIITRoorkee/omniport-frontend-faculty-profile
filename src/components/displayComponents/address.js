@@ -6,7 +6,6 @@ import style from "../../styles.css";
 
 const Address = (props) => {
   const { item, rearrange, data, componentName } = props;
-  console.log("IN address", item)
   return (
     <Segment>
       <div styleName="style.flex-box">

@@ -20,6 +20,8 @@ import AdministrativePosition from "../components/displayComponents/administrati
 import Miscellaneous from "../components/displayComponents/miscellaneous";
 import ProfessionalBackground from "../components/displayComponents/professionalBackground";
 import Address from "../components/displayComponents/address";
+import ShortURL from "../components/displayComponents/shorturl";
+import KeyWord from "../components/displayComponents/keyword";
 
 //can use eval() method to reduce the code
 export const displayComponents = {
@@ -39,7 +41,9 @@ export const displayComponents = {
   administrativePosition: AdministrativePosition,
   professionalBackground: ProfessionalBackground,
   miscellaneous: Miscellaneous,
-  address: Address
+  address: Address,
+  shorturl: ShortURL,
+  keyword: KeyWord
 };
 
 const mapStateToProps = state => {

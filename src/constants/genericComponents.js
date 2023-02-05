@@ -5,5 +5,7 @@ export const components = {
   Honour: ['honour', 'membership'],
   TeachingEngagement: ['teachingEngagement'],
   Student: ['supervision', 'associateScholar'],
-  Miscellaneous: ['event', 'visit', 'miscellaneous']
+  Miscellaneous: ['event', 'visit', 'miscellaneous'],
+  ShortURL: ['shorturl'],
+  KeyWord: ['keyword']
 }
