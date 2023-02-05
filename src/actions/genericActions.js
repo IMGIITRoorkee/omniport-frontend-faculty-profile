@@ -1,7 +1,10 @@
 import axios from "axios";
+import React from 'react';
 import { initial } from "../constants/initial";
 import { specs } from "../constants/specs";
 import { urlGetAffordances } from "../urls";
+import { toast } from 'react-semantic-toasts';
+const TOAST_TIME = 0
 
 function receiveFetchedResults(responseData, componentName) {
   let isEmpty = (responseData.length) ? false : true; // check if the response is empty or not
@@ -23,7 +26,20 @@ export function fetchData(componentName, editMode, handle) {
         dispatch(receiveFetchedResults(response.data, componentName));
       })
       .catch(error => {
-        // console.error(error);
+        console.error(error)
+        const description = (
+          <p>
+            Error occured in connecting to Chakra-CMS.
+            Failed to load {componentName}.
+          </p>
+        )
+        toast({
+          type: 'error',
+          title: 'Preview Error',
+          icon: 'print',
+          description: description,
+          time: TOAST_TIME
+        });
       });
   };
 }

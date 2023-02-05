@@ -47,7 +47,7 @@ export default function genericFormMaker(info) {
       let formElements = [];
       let set = new Set(fields);
       for (let index in commonSpecs) {
-        !info.onlyedit && set.add(commonSpecs[index]);
+        info.visibilityOption && set.add(commonSpecs[index]);
       }
       fields = [...set];
       for (let index in fields) {

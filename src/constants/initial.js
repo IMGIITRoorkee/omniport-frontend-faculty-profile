@@ -238,4 +238,20 @@ export const initial = {
     },
     links: []
   },
+  shorturl: {
+    update: false,
+    data: {
+      shorturl: "",
+      id: -1,
+    },
+    links: []
+  },
+  keyword: {
+    update: false,
+    data: {
+      keyword: "",
+      id: -1,
+    },
+    links: []
+  },
 };
