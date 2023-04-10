@@ -44,7 +44,7 @@ export const specs = {
     icon: "book",
     draggable: false,
     csvVisibility: false,
-    visibilityOption: true,   
+    visibilityOption: true,
     onlyedit: false,
     sortBy: "year",
     ascending: true,
@@ -876,8 +876,8 @@ export const specs = {
           required: true
         },
         user_props: ["handleChange"]
-        },
-        {
+      },
+      {
         group: false,
         name: "description",
         type: "text_area_field",
@@ -974,7 +974,7 @@ export const specs = {
         },
         user_props: ["handleChange"]
       },
-        {
+      {
         group: false,
         name: "description",
         type: "text_area_field",
@@ -1526,12 +1526,12 @@ export const specs = {
     url: "miscellaneous",
     name: "Miscellaneous"
   },
-  address : {
+  address: {
     icon: "building",
     draggable: false,
     csvVisibility: false,
     visibilityOption : false ,
-    onlyedit: true,
+    onlyedit: false,
     sortBy: "address",
     ascending: true,
     plural: "Address",
@@ -1543,12 +1543,56 @@ export const specs = {
         const_props: {
           name: "address",
           key: "Address",
-          placeholder: "Current Address",
+          placeholder: "Enter your current address",
           label: "Address",
           required: true
         },
         user_props: ["handleChange"]
       },
+      {
+        group: true,
+        widths: "equal",
+        fields: [
+          {
+            name: "city",
+            type: "input_field",
+            const_props: {
+              name: "city",
+              key: "City",
+              placeholder: "City",
+              label: "City",
+              required: true
+            },
+            user_props: ["handleChange"]
+          },
+          {
+            name: "state",
+            type: "input_field",
+            const_props: {
+              name: "state",
+              key: "State",
+              placeholder: "State",
+              label: "State",
+              required: true
+            },
+            user_props: ["handleChange"]
+          }
+        ]
+      },
+      {
+        group: false,
+        name: "country",
+        type: "choice_field_dynamic",
+        const_props: {
+          name: "country",
+          key: "Country",
+          placeholder: "Country",
+          label: "Country",
+          required: true,
+          options: []
+        },
+        user_props: ["handleChange"]
+      }
     ],
     url: "address",
     name: "Address"
