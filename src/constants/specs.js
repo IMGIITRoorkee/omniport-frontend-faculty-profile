@@ -7,9 +7,11 @@ import {
   categoryOptions,
   semesterOptions,
   collaborationOptions,
-  phdOptions
+  phdOptions,
+  countryOptions
 } from "./options";
 import { priority } from "./commonSpecs";
+
 
 export const specs = {
   interest: {
@@ -79,6 +81,20 @@ export const specs = {
             user_props: ["handleChange"]
           }
         ]
+      },
+      {
+        group: false,
+        name: "country",
+        type: "choice_field",
+        const_props: {
+          name: "country",
+          key: "Country",
+          placeholder: "Country",
+          label: "Country",
+          required: true,
+          options: countryOptions
+        },
+        user_props: ["handleChange"]
       },
       {
         group: false,
@@ -286,6 +302,20 @@ export const specs = {
       },
       {
         group: false,
+        name: "country",
+        type: "choice_field",
+        const_props: {
+          name: "country",
+          key: "Country",
+          placeholder: "Country",
+          label: "Country",
+          required: true,
+          options: countryOptions
+        },
+        user_props: ["handleChange"]
+      },
+      {
+        group: false,
         name: "year",
         type: "year_field",
         const_props: {
@@ -322,6 +352,20 @@ export const specs = {
           placeholder: "Topic",
           label: "Topic",
           required: true
+        },
+        user_props: ["handleChange"]
+      },
+      {
+        group: false,
+        name: "country",
+        type: "choice_field",
+        const_props: {
+          name: "country",
+          key: "Country",
+          placeholder: "Country",
+          label: "Country",
+          required: true,
+          options: countryOptions
         },
         user_props: ["handleChange"]
       },
@@ -470,6 +514,20 @@ export const specs = {
       },
       {
         group: false,
+        name: "country",
+        type: "choice_field",
+        const_props: {
+          name: "country",
+          key: "Country",
+          placeholder: "Country",
+          label: "Country",
+          required: true,
+          options: countryOptions
+        },
+        user_props: ["handleChange"]
+      },
+      {
+        group: false,
         name: "purpose",
         type: "input_field",
         const_props: {
@@ -532,6 +590,20 @@ export const specs = {
           placeholder: "Organisation",
           label: "Organisation",
           required: true,
+        },
+        user_props: ["handleChange"]
+      },
+      {
+        group: false,
+        name: "country",
+        type: "choice_field",
+        const_props: {
+          name: "country",
+          key: "Country",
+          placeholder: "Country",
+          label: "Country",
+          required: true,
+          options: countryOptions
         },
         user_props: ["handleChange"]
       },
@@ -654,6 +726,20 @@ export const specs = {
           placeholder: "Field of project",
           label: "Field",
           required: true
+        },
+        user_props: ["handleChange"]
+      },
+      {
+        group: false,
+        name: "country",
+        type: "choice_field",
+        const_props: {
+          name: "country",
+          key: "Country",
+          placeholder: "Country",
+          label: "Country",
+          required: true,
+          options: countryOptions
         },
         user_props: ["handleChange"]
       },
@@ -821,6 +907,20 @@ export const specs = {
         user_props: ["handleChange"]
       },
       {
+        group: false,
+        name: "country",
+        type: "choice_field",
+        const_props: {
+          name: "country",
+          key: "Country",
+          placeholder: "Country",
+          label: "Country",
+          required: true,
+          options: countryOptions
+        },
+        user_props: ["handleChange"]
+      },
+      {
         group: true,
         widths: "equal",
         fields: [
@@ -932,6 +1032,20 @@ export const specs = {
         user_props: ["handleChange"]
       },
       {
+        group: false,
+        name: "country",
+        type: "choice_field",
+        const_props: {
+          name: "country",
+          key: "Country",
+          placeholder: "Country",
+          label: "Country",
+          required: true,
+          options: countryOptions
+        },
+        user_props: ["handleChange"]
+      },
+      {
         group: true,
         widths: "equal",
         fields: [
@@ -1029,6 +1143,20 @@ export const specs = {
         user_props: ["handleChange"]
       },
       {
+        group: false,
+        name: "country",
+        type: "choice_field",
+        const_props: {
+          name: "country",
+          key: "Country",
+          placeholder: "Country",
+          label: "Country",
+          required: true,
+          options: countryOptions
+        },
+        user_props: ["handleChange"]
+      },
+      {
         group: true,
         widths: "equal",
         fields: [
@@ -1122,6 +1250,20 @@ export const specs = {
           placeholder: "",
           label: "Place of the event",
           required: true
+        },
+        user_props: ["handleChange"]
+      },
+      {
+        group: false,
+        name: "country",
+        type: "choice_field",
+        const_props: {
+          name: "country",
+          key: "Country",
+          placeholder: "Country",
+          label: "Country",
+          required: true,
+          options: countryOptions
         },
         user_props: ["handleChange"]
       },
