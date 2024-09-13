@@ -83,6 +83,36 @@ export const specs = {
         ]
       },
       {
+        group: true,
+        widths: "equal",
+        fields: [
+          {
+            name: "city",
+            type: "input_field",
+            const_props: {
+              name: "city",
+              key: "City",
+              placeholder: "City",
+              label: "City",
+              required: false
+            },
+            user_props: ["handleChange"]
+          },
+          {
+            name: "state",
+            type: "input_field",
+            const_props: {
+              name: "state",
+              key: "State",
+              placeholder: "State",
+              label: "State",
+              required: false
+            },
+            user_props: ["handleChange"]
+          }
+        ]
+      },
+      {
         group: false,
         name: "country",
         type: "choice_field",
@@ -301,6 +331,36 @@ export const specs = {
         user_props: ["handleChange"]
       },
       {
+        group: true,
+        widths: "equal",
+        fields: [
+          {
+            name: "placeOfAward",
+            type: "input_field",
+            const_props: {
+              name: "placeOfAward",
+              key: "PlaceOfAward",
+              placeholder: "Place Of Award",
+              label: "Place Of Award",
+              required: false
+            },
+            user_props: ["handleChange"]
+          },
+          {
+            name: "city",
+            type: "input_field",
+            const_props: {
+              name: "city",
+              key: "City",
+              placeholder: "City",
+              label: "City",
+              required: false
+            },
+            user_props: ["handleChange"]
+          }
+        ]
+      },
+      {
         group: false,
         name: "country",
         type: "choice_field",
@@ -513,6 +573,36 @@ export const specs = {
         user_props: ["handleChange"]
       },
       {
+        group: true,
+        widths: "equal",
+        fields: [
+          {
+            name: "city",
+            type: "input_field",
+            const_props: {
+              name: "city",
+              key: "City",
+              placeholder: "City",
+              label: "City",
+              required: false
+            },
+            user_props: ["handleChange"]
+          },
+          {
+            name: "state",
+            type: "input_field",
+            const_props: {
+              name: "state",
+              key: "State",
+              placeholder: "State",
+              label: "State",
+              required: false
+            },
+            user_props: ["handleChange"]
+          }
+        ]
+      },
+      {
         group: false,
         name: "country",
         type: "choice_field",
@@ -590,6 +680,19 @@ export const specs = {
           placeholder: "Organisation",
           label: "Organisation",
           required: true,
+        },
+        user_props: ["handleChange"]
+      },
+      {
+        group: false,
+        name: "city",
+        type: "input_field",
+        const_props: {
+          name: "city",
+          key: "City",
+          placeholder: "City",
+          label: "City",
+          required: false,
         },
         user_props: ["handleChange"]
       },
@@ -726,6 +829,19 @@ export const specs = {
           placeholder: "Field of project",
           label: "Field",
           required: true
+        },
+        user_props: ["handleChange"]
+      },
+      {
+        group: false,
+        name: "collaboratingInstitute",
+        type: "input_field",
+        const_props: {
+          name: "collaboratingInstitute",
+          key: "CollaboratingInstitute",
+          placeholder: "Collaborating Institute",
+          label: "Collaborating Institute",
+          required: false
         },
         user_props: ["handleChange"]
       },
@@ -907,6 +1023,36 @@ export const specs = {
         user_props: ["handleChange"]
       },
       {
+        group: true,
+        widths: "equal",
+        fields: [
+          {
+            name: "city",
+            type: "input_field",
+            const_props: {
+              name: "city",
+              key: "City",
+              placeholder: "City",
+              label: "City",
+              required: false
+            },
+            user_props: ["handleChange"]
+          },
+          {
+            name: "state",
+            type: "input_field",
+            const_props: {
+              name: "state",
+              key: "State",
+              placeholder: "State",
+              label: "State",
+              required: false
+            },
+            user_props: ["handleChange"]
+          }
+        ]
+      },
+      {
         group: false,
         name: "country",
         type: "choice_field",
@@ -1030,6 +1176,36 @@ export const specs = {
           required: true
         },
         user_props: ["handleChange"]
+      },
+      {
+        group: true,
+        widths: "equal",
+        fields: [
+          {
+            name: "city",
+            type: "input_field",
+            const_props: {
+              name: "city",
+              key: "City",
+              placeholder: "City",
+              label: "City",
+              required: false
+            },
+            user_props: ["handleChange"]
+          },
+          {
+            name: "state",
+            type: "input_field",
+            const_props: {
+              name: "state",
+              key: "State",
+              placeholder: "State",
+              label: "State",
+              required: false
+            },
+            user_props: ["handleChange"]
+          }
+        ]
       },
       {
         group: false,
