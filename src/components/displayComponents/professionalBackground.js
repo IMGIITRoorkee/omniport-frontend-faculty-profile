@@ -2,6 +2,7 @@ import React from "react";
 import { Segment,  List } from "semantic-ui-react";
 import style from "../../styles.css";
 import { formatDate } from "../../utils/formatDate";
+import { formatCountry } from "../../utils/formatCountry";
 import { EditIcon } from "../editIcon";
 
 export const ProfessionalBackground = props => {
@@ -19,6 +20,9 @@ export const ProfessionalBackground = props => {
               <List.Content>
                 <div>
                   {item.position} in {item.organisation}
+                  {item.city && ", " + item.city}
+                  {item.state && ", " + item.state}
+                  {item.country !== "NONE" ? ", " + formatCountry(item.country) : ""}
                   <div styleName="style.gray">{duration}</div>
                   {item.description && <div styleName="style.description">{item.description}</div>}
                 </div>

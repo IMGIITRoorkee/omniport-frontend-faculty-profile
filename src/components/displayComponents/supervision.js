@@ -4,6 +4,7 @@ import {List, Segment} from "semantic-ui-react";
 
 import { EditIcon } from "../editIcon";
 import { formatDate } from "../../utils/formatDate";
+import { formatCountry } from "../../utils/formatCountry";
 import { supervisionOptions, reduceValueToText } from "../../constants/options";
 import style from "../../styles.css";
 
@@ -22,6 +23,7 @@ const Supervision = props => {
                     <List.Content>
                         <div>
                             {item.topic} ({category})
+                            {item.country !== "NONE" ? ", " + formatCountry(item.country) : ""}
                             <div styleName="style.gray">{duration}</div>
                             <div styleName="style.gray">{item.scholarsName}</div>
                             {item.nameOfOtherSupervisors && <div styleName="style.gray">Other supervisors: {item.nameOfOtherSupervisors}</div>}
