@@ -4,6 +4,7 @@ import style from "../../styles.css";
 import { formatDate } from "../../utils/formatDate";
 import { categoryOptions, roleOptions, reduceValueToText } from  "../../constants/options";
 import { EditIcon } from "../editIcon";
+import { formatCountry } from "../../utils/formatCountry";
 
 export const Event = props => {
   const item = {props};
@@ -23,6 +24,7 @@ export const Event = props => {
               <List.Content>
                 <div>
                   {props.item.name} {props.item.place && `in ${props.item.place}`}
+                  {props.item.country !== "NONE" ? ", " + formatCountry(props.item.country) : ""}
                   {props.item.category && <div styleName="style.gray">( {category} )</div>}
                   {props.item.sponsor && (
                     <div styleName="style.gray">

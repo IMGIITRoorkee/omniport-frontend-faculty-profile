@@ -4,6 +4,7 @@ import { EditIcon } from "../editIcon";
 import { graduationOptionsMap } from "../../constants/graduationOptions";
 
 import style from "../../styles.css";
+import { formatCountry } from "../../utils/formatCountry";
 
 const Honour = props => {
   const {item, rearrange, data, componentName} = props;
@@ -16,6 +17,9 @@ const Honour = props => {
               {item.award} 
               <p styleName="style.gray">
                 {item.organisation + ", "}
+                {item.placeOfAward && item.placeOfAward + ", "}
+                {item.city && item.city + ", "}
+                {item.country !== "NONE" ? formatCountry(item.country) + ", " : ""}
                 {item.year}
               </p>
             </div>

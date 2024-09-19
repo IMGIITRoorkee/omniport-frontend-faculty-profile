@@ -7,6 +7,7 @@ import {
 } from  "../../constants/options";
 
 import style from "../../styles.css";
+import { formatCountry } from "../../utils/formatCountry";
 
 const Collaboration = props => {
   const {item, rearrange, data, componentName} = props;
@@ -19,7 +20,11 @@ const Collaboration = props => {
           <List.Content>
             <div>
               {item.topic}
-              <div styleName="style.gray">with {item.organisation}</div>
+              <div styleName="style.gray">
+                with {item.organisation}
+                {item.city && ", " + item.city}
+                {item.country !== "NONE" ? ", " + formatCountry(item.country) : ""}
+              </div>
               { level && <div styleName="style.gray">Level: {level}</div> }
             </div>
           </List.Content>

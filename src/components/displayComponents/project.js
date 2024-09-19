@@ -5,6 +5,7 @@ import { isMobile } from "react-device-detect";
 import { formatDate } from "../../utils/formatDate";
 
 import { EditIcon } from "../editIcon";
+import { formatCountry } from "../../utils/formatCountry";
 //css for mobile version is left
 export const Project = props => {
   const {startDate, endDate, isFullDate} = props.item;
@@ -21,6 +22,9 @@ export const Project = props => {
                 <b>{props.item.topic}</b>
                 <div>
                   <p>{props.item.field}</p>
+                  <p>{props.item.collaboratingInstitute}</p>
+                  <p>{props.item.country !== "NONE" ? formatCountry(props.item.country) : ""}</p>
+                  <p></p>
                   <p>
                     {props.item.startDate}
                     {props.endDate != "" ? " to " + props.item.endDate : null}
@@ -45,6 +49,8 @@ export const Project = props => {
               <List.Item>
                 <List.Content>
                   {props.item.topic} {props.item.field && `in ${props.item.field}`}
+                  {props.item.collaboratingInstitute && ", " + props.item.collaboratingInstitute}
+                  {props.item.country !== "NONE" ? ", " + formatCountry(props.item.country) : ""}
                   <div styleName="style.gray">
                     {duration}
                   </div>

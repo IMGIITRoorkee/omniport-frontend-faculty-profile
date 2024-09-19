@@ -4,6 +4,7 @@ import { EditIcon } from "../editIcon";
 import { graduationOptionsMap } from "../../constants/graduationOptions";
 
 import style from "../../styles.css";
+import { formatCountry } from "../../utils/formatCountry";
 
 const Visit = props => {
   const {item, rearrange, data, componentName} = props;
@@ -14,6 +15,9 @@ const Visit = props => {
           <List.Content>
             <div>
               {item.place}
+              {item.city && ", " + item.city}
+              {item.state && ", " + item.state}
+              {item.country !== "NONE" ? ", " + formatCountry(item.country) : ""}
               {item.date ? ", " + item.date: null} 
               <p styleName="style.gray">
                 {item.purpose}

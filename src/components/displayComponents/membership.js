@@ -2,6 +2,7 @@ import React from "react";
 import { Modal, Segment, Icon, Image, List } from "semantic-ui-react";
 import style from "../../styles.css";
 import { formatDate } from "../../utils/formatDate";
+import { formatCountry } from "../../utils/formatCountry";
 import { EditIcon } from "../editIcon";
 
 export const Membership = props => {
@@ -19,6 +20,7 @@ export const Membership = props => {
               <List.Content>
                 <div>
                   {item.position} in {item.organisation}
+                  {item.country !== "NONE" ? ", " + formatCountry(item.country) : ""}
                   <div styleName="style.gray">{duration}</div>
                   {item.description && <div styleName="style.description">{item.description}</div>}
                 </div>
