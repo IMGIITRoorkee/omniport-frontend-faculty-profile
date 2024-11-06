@@ -4,6 +4,12 @@ import { Dropdown, Form } from "semantic-ui-react";
 import { handleParentDropdownChange } from "../../actions/dependentDropdown";
 
 class ChoiceField extends React.Component {
+  constructor(props){
+    super(props);
+    this.state = {
+      filteredOptions: this.props.options,
+    };
+  }
   componentDidMount() {
     const {
       handleParentDropdownChange,
@@ -13,6 +19,12 @@ class ChoiceField extends React.Component {
     } = this.props;
 
     handleParentDropdownChange(componentName, name, value);
+  }
+  handleSearchChange=(e,{searchQuery})=>{
+    const filteredOptions = this.props.options.filter((option) =>
+      option.text.toLowerCase().includes(searchQuery.toLowerCase())
+    );
+    this.setState({ filteredOptions });
   }
 
   render() {
@@ -28,6 +40,7 @@ class ChoiceField extends React.Component {
       autoFocus,
       handleParentDropdownChange,
     } = this.props;
+    const { filteredOptions } = this.state;
     return (
       <Form.Field key={name} required={required}>
         <label>{label}</label>
@@ -37,9 +50,11 @@ class ChoiceField extends React.Component {
             handleChange(name, value);
             handleParentDropdownChange(componentName, name, value);
           }}
+          onSearchChange={this.handleSearchChange} 
           name={name}
-          options={options}
+          options={filteredOptions}
           placeholder={placeholder}
+          search
           selection
           value={value}
           clearable
