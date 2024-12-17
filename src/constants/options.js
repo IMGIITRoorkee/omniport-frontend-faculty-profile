@@ -299,7 +299,7 @@ export const countryOptions = [
     { text: "Uganda", key: "UGANDA", value: "UGANDA" },
     { text: "United Kingdom", key: "UNITED_KINGDOM", value: "UNITED_KINGDOM" },
     { text: "Ukraine", key: "UKRAINE", value: "UKRAINE" },
-    { text: "United Arab Erimates", key: "UNITED_ARAB_ERIMATES", value: "UNITED_ARAB_ERIMATES" },
+    { text: "United Arab Emirates", key: "UNITED_ARAB_EMIRATES", value: "UNITED_ARAB_EMIRATES" },
     { text: "United States of America", key: "UNITED_STATES_OF_AMERICA", value: "UNITED_STATES_OF_AMERICA" },
     { text: "Uruguay", key: "URUGUAY", value: "URUGUAY" },
     { text: "Uzbekistan", key: "UZBEKISTAN", value: "UZBEKISTAN" },
