@@ -1,11 +1,5 @@
 import React from "react";
-import {
-  Form,
-  Button,
-  Icon,
-  Dropdown,
-  Segment
-} from "semantic-ui-react";
+import { Form, Button, Icon, Dropdown, Segment } from "semantic-ui-react";
 import axios from "axios";
 
 import { EditUpload } from "../input_fields/editUpload";
@@ -16,14 +10,20 @@ import { headers } from "../../constants/formPostRequestHeaders";
 import { themeOptions } from "../../constants/themeOptions";
 
 import { ProfileImagePreview } from "./profileImagePreview";
-import {Crop} from "./crop";
-import {debounce} from "./../../utils/debounce";
+import { Crop } from "./crop";
+import { debounce } from "./../../utils/debounce";
 
 export class ProfileForm extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      data: props.data,
+      data: {
+        ...props.data,
+        personalWebsite:
+          props.data && props.data.personalWebsite
+            ? props.data.personalWebsite.split(";").map((url) => url.trim())
+            : [""],
+      },
       createNew: props.createNew,
       resumeLink: props.data.resume,
       resume: null,
@@ -35,10 +35,9 @@ export class ProfileForm extends React.Component {
       initial_handle: props.data.handle,
       handleFieldProperties: { loading: false, color: null, name: null },
       crop: false,
-      crop_image:""
+      crop_image: "",
     };
     this.checkHandleWithDebounce = debounce(this.checkHandle, 1000);
-
   }
   componentDidMount() {
     document.addEventListener("keydown", this.handleEscape, false);
@@ -46,7 +45,7 @@ export class ProfileForm extends React.Component {
   componentWillUnmount() {
     document.removeEventListener("keydown", this.handleEscape, false);
   }
-  handleEscape = e => {
+  handleEscape = (e) => {
     if (e.keyCode === 27) {
       this.props.handleHide();
     }
@@ -54,68 +53,76 @@ export class ProfileForm extends React.Component {
       this.handleErrors();
     }
   };
-  isHandleAllowed = allowed => {
+  isHandleAllowed = (allowed) => {
     if (allowed == true) {
       this.setState({ handleAvailable: true });
       this.setState({
-        handleFieldProperties: { loading: false, color: "green", name: "check" }
+        handleFieldProperties: {
+          loading: false,
+          color: "green",
+          name: "check",
+        },
       });
     } else {
       this.setState({ handleAvailable: false });
       this.setState({
-        handleFieldProperties: { loading: false, color: "red", name: "times" }
+        handleFieldProperties: { loading: false, color: "red", name: "times" },
       });
     }
   };
   checkHandle = (name) => {
-    if(name != "handle") return;
+    if (name != "handle") return;
     const value = this.state.data.handle;
     axios
       .get("/api/faculty_profile/profile/" + value + "/handle/")
-      .then(response => {
-	let valid = response.data;
+      .then((response) => {
+        let valid = response.data;
         if (valid == "yes") {
           this.isHandleAllowed(true);
         } else if (valid == "no" && value == this.props.data.handle) {
           this.isHandleAllowed(true);
+        } else {
+          this.isHandleAllowed(false);
         }
-	else {
-	  this.isHandleAllowed(false);
-	}
       })
-      .catch(error => {
-        this.isHandleAllowed(false);});
-
-  }
+      .catch((error) => {
+        this.isHandleAllowed(false);
+      });
+  };
   handleChange = (event, { name, value }) => {
     event.persist();
     if (this.state.data.hasOwnProperty(name)) {
       this.setState({ data: { ...this.state.data, [name]: value } });
     }
-    if(name == 'handle') {
+    if (name == "handle") {
       this.setState({
-        handleFieldProperties: { loading: true, color: "green", name: null }
+        handleFieldProperties: { loading: true, color: "green", name: null },
       });
       this.checkHandleWithDebounce(name);
     }
   };
-  handleSubmit = e => {
-    let {data, createNew, resume, resumeLink, image, img_file} = this.state;
-    let {handleUpdate} = this.props;
+  handleSubmit = (e) => {
+    let { data, createNew, resume, resumeLink, image, img_file } = this.state;
+
+    // const preparedData = {
+    //   personalWebsite: persoal
+    // }
+
+    let { handleUpdate } = this.props;
     let request = new FormData(); // create a form object to attach the image data and the other profile information
-    
+
     request.append("handle", data.handle);
     request.append("theme", data.theme);
     request.append("description", data.description);
-    request.append("personalWebsite", data.personalWebsite);
+    request.append("personalWebsite", data.personalWebsite.join(";"));
 
     if (resumeLink != null && resume != null) {
       request.append("resume", this.state.resume);
     } else if (resume == null && resumeLink != null) {
     } else if (resume == null && resumeLink == null) {
-     request.append("resume", "");
+      request.append("resume", "");
     }
-    
+
     if (image != "" && img_file != "") {
       request.append("image", img_file);
     } else if (img_file == "" && image != "") {
@@ -123,16 +130,16 @@ export class ProfileForm extends React.Component {
       request.append("image", null);
     }
 
-    let request_type = (createNew)? "post":"patch";
-    let url = "/api/faculty_profile/profile/";
-    if(!createNew) url += this.state.data.id + "/";
-    
+    let request_type = createNew ? "post" : "patch";
+    let url = "api/faculty_profile/profile/";
+    if (!createNew) url += this.state.data.id + "/";
+
     axios({
       method: request_type,
       data: request,
       url,
-      headers
-    }).then(response => {
+      headers,
+    }).then((response) => {
       let data = response.data;
       let displayPicture = data.displayPicture;
       if (displayPicture != null) {
@@ -142,17 +149,52 @@ export class ProfileForm extends React.Component {
     });
   };
 
-  handleFile = event => {
+  handleWebsiteChange = (e, index) => {
+    const updatedWebsites = [...this.state.data.personalWebsite];
+    updatedWebsites[index] = e.target.value;
+
+    this.setState((prevState) => ({
+      data: {
+        ...prevState.data,
+        personalWebsite: updatedWebsites,
+      },
+    }));
+  };
+
+  handleAddUrl = () => {
+    this.setState((prevState) => ({
+      data: {
+        ...prevState.data,
+        personalWebsite: [...prevState.data.personalWebsite, ""],
+      },
+    }));
+  };
+
+  handleRemoveUrl = () => {
+    this.setState((prevState) => {
+      if (prevState.data.personalWebsite.length > 1) {
+        return {
+          data: {
+            ...prevState.data,
+            personalWebsite: prevState.data.personalWebsite.slice(0, -1),
+          },
+        };
+      }
+      return null;
+    });
+  };
+
+  handleFile = (event) => {
     this.setState({
       resume: event.target.files[0],
-      resumeLink: event.target.value
+      resumeLink: event.target.value,
     });
     event.target.value = null;
   };
   handleDelete = () => {
     this.setState({
       resume: null,
-      resumeLink: null
+      resumeLink: null,
     });
   };
   handleErrors = () => {
@@ -170,9 +212,9 @@ export class ProfileForm extends React.Component {
     axios({
       method: "get",
       url: "/api/faculty_profile/profile/" + handle + "/handle/",
-      headers: headers
+      headers: headers,
     })
-      .then(response => {
+      .then((response) => {
         if (createNew == true || response.data.faculty != faculty) {
           errors.push("Handle is already taken");
         }
@@ -186,7 +228,7 @@ export class ProfileForm extends React.Component {
           });
         }
       })
-      .catch(error => {
+      .catch((error) => {
         if (errors.length > 0) {
           this.setState({ errors: errors });
         } else {
@@ -198,7 +240,7 @@ export class ProfileForm extends React.Component {
         }
       });
   };
-  handleImageChange = e => {
+  handleImageChange = (e) => {
     e.preventDefault();
     let reader = new FileReader();
     let file = e.target.files[0];
@@ -206,14 +248,14 @@ export class ProfileForm extends React.Component {
       const image = reader.result;
       this.setState({
         img_file: file,
-        image: image
+        image: image,
       });
     };
 
     reader.readAsDataURL(file);
   };
 
-  cropImageChange = e => {
+  cropImageChange = (e) => {
     e.preventDefault();
     let reader = new FileReader();
     let file = e.target.files[0];
@@ -221,34 +263,45 @@ export class ProfileForm extends React.Component {
       const image = reader.result;
       this.setState({
         crop_image: image,
-        crop: true
+        crop: true,
       });
     };
 
     reader.readAsDataURL(file);
-
-  }
+  };
   removeImage = () => {
     this.setState({ image: "", img_file: "" });
   };
 
   cancelCrop = () => {
-    this.setState({crop:false, crop_image:""});
-  }
+    this.setState({ crop: false, crop_image: "" });
+  };
 
   setImage = (crop_image, croppedImageUrl) => {
     this.setState({
       img_file: crop_image,
       image: croppedImageUrl,
-      crop:false,
-      crop_image:""
+      crop: false,
+      crop_image: "",
     });
-  }
+  };
 
   render() {
-    const { handleFile, handleImageChange, handleDelete, removeImage, handleChange, handleErrors, cancelCrop, setImage} = this;
-    const {image, resumeLink, errors, data, crop, crop_image} = this.state;
-    const {handleHide, theme} = this.props;
+    const {
+      handleWebsiteChange,
+      handleAddUrl,
+      handleRemoveUrl,
+      handleFile,
+      handleImageChange,
+      handleDelete,
+      removeImage,
+      handleChange,
+      handleErrors,
+      cancelCrop,
+      setImage,
+    } = this;
+    const { image, resumeLink, errors, data, crop, crop_image } = this.state;
+    const { handleHide, theme } = this.props;
     const { name, color, loading } = this.state.handleFieldProperties;
     const buttonClass = "ui " + theme + " button";
     let res = (
@@ -271,7 +324,7 @@ export class ProfileForm extends React.Component {
       <div>
         <input
           type="file"
-          onChange={this.cropImageChange }
+          onChange={this.cropImageChange}
           styleName="style.inputfile"
           id="embedpollfileinput"
         />
@@ -301,13 +354,13 @@ export class ProfileForm extends React.Component {
     }
     let Cropper = null;
     if (crop) {
-      Cropper = <Crop
-        src = {crop_image}
-        cancelCrop = {cancelCrop}
-        setImage = {setImage}
-      />;
+      Cropper = (
+        <Crop src={crop_image} cancelCrop={cancelCrop} setImage={setImage} />
+      );
     }
-    return crop ? Cropper :(
+    return crop ? (
+      Cropper
+    ) : (
       <ComponentTransition>
         <div style={{ minWidth: "350px" }}>
           <Segment attached="top" styleName="style.headingBox">
@@ -334,14 +387,23 @@ export class ProfileForm extends React.Component {
                 </Form.Input>
               </Form.Field>
               <Form.Field>
-                <Form.Input
-                  label="Personal Website"
-                  onChange={handleChange}
-                  value={data.personalWebsite}
-                  name="personalWebsite"
-                  placeholder="Add personal website's url"
-                >
-                </Form.Input>
+                <label>Personal Website(s)</label>
+                {this.state.data.personalWebsite.map((url, index) => (
+                  <Form.Input
+                    key={index}
+                    value={url}
+                    placeholder={"Add personal website url"}
+                    onChange={(e) => this.handleWebsiteChange(e, index)}
+                  />
+                ))}
+                <Button onClick={handleAddUrl} color="blue" type="button">
+                  Add URL
+                </Button>
+                {data.personalWebsite.length > 1 && (
+                  <Button onClick={handleRemoveUrl} color="red" type="button">
+                    Remove Last URL
+                  </Button>
+                )}
               </Form.Field>
               <Form.Field required styleName="style.themeField">
                 <label>Theme</label>
