@@ -21,7 +21,8 @@ const Education = props => {
                 {props.item.institute + ", "}
                 {props.item.city && props.item.city + ", "}
                 {props.item.state && props.item.state + ", "}
-                {props.item.country && formatCountry(props.item.country)} 
+                {props.item.country !== "NONE" &&
+                  formatCountry(props.item.country)} 
                 {props.item.year}
               </p>
             </div>
