@@ -7,7 +7,7 @@ import DefaultDP from "../../../../../formula_one/src/components/default-dp";
 import { getCookie } from "formula_one";
 
 import { ProfileForm } from "./profileForm";
-import { urlCmsIntegration } from "../../urls"
+import { urlCmsIntegration } from "../../urls";
 
 import style from "../../styles.css";
 
@@ -22,7 +22,7 @@ export class Profile extends React.Component {
         customWebsite: false,
         resume: null,
         displayPicture: null,
-        theme: "blue"
+        theme: "blue",
       },
       loading: true,
       person_data: "",
@@ -30,16 +30,16 @@ export class Profile extends React.Component {
       createNew: true,
       image: null,
       cmsIntegration: false,
-      CmsIntegrationComponent: <></>
+      CmsIntegrationComponent: <></>,
     };
   }
   componentDidMount() {
     this.fetchData();
   }
-  fetchData = e => {
+  fetchData = (e) => {
     const self = this;
     let headers = {
-      "X-CSRFToken": getCookie("csrftoken")
+      "X-CSRFToken": getCookie("csrftoken"),
     };
     const person_promise = axios
       .get("/kernel/who_am_i/")
@@ -51,7 +51,7 @@ export class Profile extends React.Component {
       });
     const faculty_promise = axios
       .get("/api/faculty_profile/profile/")
-      .then(response => {
+      .then((response) => {
         if (response.data.length != 0) {
           let data = response.data[0];
           self.setState({ data: data, createNew: false });
@@ -64,27 +64,30 @@ export class Profile extends React.Component {
       });
     const cmsIntegrationPromise = axios
       .get(urlCmsIntegration())
-      .then(response => {
+      .then((response) => {
         if (response.status === 200) {
-          this.setState({
-            cmsIntegration: true,
-            CmsIntegrationComponent:
-              React.lazy(() => import('./cmsIntegration'))
-          }, () => {
-
-          })
+          this.setState(
+            {
+              cmsIntegration: true,
+              CmsIntegrationComponent: React.lazy(() =>
+                import("./cmsIntegration")
+              ),
+            },
+            () => {}
+          );
         }
       })
-      .catch(error => {
+      .catch((error) => {
         console.error(error.response.data);
       });
-    Promise.all([person_promise, faculty_promise, cmsIntegrationPromise])
-    .then(() => this.setState({ loading: false }));
+    Promise.all([person_promise, faculty_promise, cmsIntegrationPromise]).then(
+      () => this.setState({ loading: false })
+    );
   };
 
-  handleShow = e => {
+  handleShow = (e) => {
     this.setState({
-      active: true
+      active: true,
     });
   };
   handleUpdate = (data, flag, displayPicture) => {
@@ -92,31 +95,46 @@ export class Profile extends React.Component {
       active: false,
       data: data,
       createNew: flag,
-      person_data: { ...this.state.person_data, displayPicture: displayPicture }
+      person_data: {
+        ...this.state.person_data,
+        displayPicture: displayPicture,
+      },
     });
   };
   handleHide = () => {
     this.setState({ active: false });
-  };  
+  };
 
   render() {
     let { theme, changeTheme } = this.props;
     theme = "blue";
-    const {handleHide, handleUpdate} = this;
+    const { handleHide, handleUpdate } = this;
     const {
       data,
       person_data,
       createNew,
       loading,
       cmsIntegration,
-      CmsIntegrationComponent
+      CmsIntegrationComponent,
     } = this.state;
     const style = {
-      boxShadow: "0 0 0 1px #d4d4d5,0 2px 0 0 #d4d4d5,0 1px 3px 0 #d4d4d5"
+      boxShadow: "0 0 0 1px #d4d4d5,0 2px 0 0 #d4d4d5,0 1px 3px 0 #d4d4d5",
     };
-    let imageView = <Image centered src={person_data.displayPicture} size="small" circular />;
-    if (loading == false && data.facultyMember != "" && person_data.displayPicture == null) {
-      imageView = <DefaultDP gravatarHash={person_data.gravatarHash} name={data.facultyMember} size={"7em"} />
+    let imageView = (
+      <Image centered src={person_data.displayPicture} size="small" circular />
+    );
+    if (
+      loading == false &&
+      data.facultyMember != "" &&
+      person_data.displayPicture == null
+    ) {
+      imageView = (
+        <DefaultDP
+          gravatarHash={person_data.gravatarHash}
+          name={data.facultyMember}
+          size={"7em"}
+        />
+      );
     }
     if (data)
       return (
@@ -128,22 +146,36 @@ export class Profile extends React.Component {
                 <Icon name="edit" onClick={this.handleShow} color="grey" />
               </div>
             </Card.Content>
-            <div className="center aligned content"
-              style={{ border: "0", textAlign: "center" }}>
+            <div
+              className="center aligned content"
+              style={{ border: "0", textAlign: "center" }}
+            >
               {imageView}
             </div>
-            <div className="center aligned content"
-              style={{ border: "0", textAlign: "center" }}>
+            <div
+              className="center aligned content"
+              style={{ border: "0", textAlign: "center" }}
+            >
               <Card.Header textAlign="center">{data.faculty}</Card.Header>
               <Card.Meta textAlign="center">
                 {data.handle ? "@" : null}
                 {data.handle}
               </Card.Meta>
-              <Card.Description textAlign="center">{data.description}</Card.Description>
+              <Card.Description textAlign="center">
+                {data.description}
+              </Card.Description>
               <Card.Description styleName="style.personalWebsite">
-                <a target="_blank" href={data.personalWebsite} rel="noopener noreferrer">
-                  {data.personalWebsite}
-                </a>
+                {(data.personalWebsite || "")
+                  .split(";")
+                  .map((url) => url.trim().replace(/;+$/, "")) 
+                  .filter((url) => url) 
+                  .map((url, index) => (
+                    <div key={index}>
+                      <a target="_blank" href={url} rel="noopener noreferrer">
+                        {url}
+                      </a>
+                      </div>
+                  ))}
               </Card.Description>
             </div>
             <Dimmer active={this.state.active} page>
@@ -159,11 +191,7 @@ export class Profile extends React.Component {
             </Dimmer>
           </Card>
 
-          {cmsIntegration && (
-            <CmsIntegrationComponent
-              theme={theme}
-            />
-          )}
+          {cmsIntegration && <CmsIntegrationComponent theme={theme} />}
         </div>
       );
   }
