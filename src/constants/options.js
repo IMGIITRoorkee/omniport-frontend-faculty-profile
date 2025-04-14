@@ -68,7 +68,7 @@ export const collaborationOptions = [
 ];
 
 export const countryOptions = [
-    { text: "None", key: "NONE", value: "NONE"},
+
     { text: "Afghanistan", key: "AFGHANISTAN", value: "AFGHANISTAN" },
     { text: "Albania", key: "ALBANIA", value: "ALBANIA" },
     { text: "Algeria", key: "ALGERIA", value: "ALGERIA" },

@@ -23,7 +23,7 @@ const Supervision = props => {
                     <List.Content>
                         <div>
                             {item.topic} ({category})
-                            {item.country !== "NONE" ? ", " + formatCountry(item.country) : ""}
+                            {props.item.country && formatCountry(props.item.country)} 
                             <div styleName="style.gray">{duration}</div>
                             <div styleName="style.gray">{item.scholarsName}</div>
                             {item.nameOfOtherSupervisors && <div styleName="style.gray">Other supervisors: {item.nameOfOtherSupervisors}</div>}
