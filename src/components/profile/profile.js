@@ -166,7 +166,7 @@ export class Profile extends React.Component {
               </Card.Description>
               <Card.Description styleName="style.personalWebsite">
                 {(data.personalWebsite || "")
-                  .split(";")
+                  .split(",")
                   .map((url) => url.trim().replace(/;+$/, "")) 
                   .filter((url) => url) 
                   .map((url, index) => (

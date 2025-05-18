@@ -226,7 +226,7 @@ export class WriteAppendMultipleObjects extends Component {
               <Form.Field>
                 <Radio
                   label="New"
-                  name="uploadType"
+                  name=""
                   value="new"
                   checked={data.uploadType === "new"}
                   onChange={this.handleChange}

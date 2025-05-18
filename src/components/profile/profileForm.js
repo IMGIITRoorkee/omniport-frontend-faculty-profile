@@ -21,7 +21,7 @@ export class ProfileForm extends React.Component {
         ...props.data,
         personalWebsite:
           props.data && props.data.personalWebsite
-            ? props.data.personalWebsite.split(";").map((url) => url.trim())
+            ? props.data.personalWebsite.split(",").map((url) => url.trim())
             : [""],
       },
       createNew: props.createNew,
@@ -104,17 +104,13 @@ export class ProfileForm extends React.Component {
   handleSubmit = (e) => {
     let { data, createNew, resume, resumeLink, image, img_file } = this.state;
 
-    // const preparedData = {
-    //   personalWebsite: persoal
-    // }
-
     let { handleUpdate } = this.props;
     let request = new FormData(); // create a form object to attach the image data and the other profile information
 
     request.append("handle", data.handle);
     request.append("theme", data.theme);
     request.append("description", data.description);
-    request.append("personalWebsite", data.personalWebsite.join(";"));
+    request.append("personalWebsite", data.personalWebsite.join(","));
 
     if (resumeLink != null && resume != null) {
       request.append("resume", this.state.resume);
