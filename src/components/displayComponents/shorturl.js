@@ -5,7 +5,7 @@ import style from '../../styles.css'
 
 const ShortURL = props => {
   if(props.item.approvalStatus==='pen'){
-    props.item.rejectionReason="shortutl yet to be approved"
+    props.item.rejectionReason="shorturl yet to be approved"
   }
 
   const rows = []
