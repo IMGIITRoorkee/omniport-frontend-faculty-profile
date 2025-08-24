@@ -61,7 +61,7 @@ export const Project = props => {
           </div>
           {props.item.image ? (
             <div>
-              <Modal basic trigger={<Image src={props.item.image} styleName="style.compPicture" />} basic fluid>
+              <Modal basic trigger={<Image src={props.item.image} styleName="style.compPicture" />}  fluid>
                 <Modal.Content image>
                   <Image src={props.item.image} styleName="style.compPicture" wrapped size={"massive"} />
                 </Modal.Content>
