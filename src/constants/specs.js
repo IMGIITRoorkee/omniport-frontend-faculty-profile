@@ -44,7 +44,7 @@ export const specs = {
   },
   education: {
     icon: "book",
-    draggable: false,
+    draggable: true,
     csvVisibility: false,
     visibilityOption: true,
     onlyedit: false,
